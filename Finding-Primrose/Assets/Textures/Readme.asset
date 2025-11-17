@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Readme
   m_EditorClassIdentifier: 
   icon: {fileID: 2800000, guid: 727a75301c3d24613a3ebcec4a24c2c8, type: 3}
-  title: Scripts Folder
+  title: Textures Folder
   sections:
-  - heading: All of the scripts for the project go here
-    text: Give each script a descriptive name.
+  - heading: All of the textures for the project go here
+    text: Give each texture a descriptive name.
+    linkText: 
+    url: 
+  - heading: '**IMPORTANT:  Organize textures for each material in subfolders.**'
+    text: 
     linkText: 
     url: 
   loadedLayout: 0
