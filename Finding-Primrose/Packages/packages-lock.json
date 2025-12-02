@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.3dconnexion.3dxunity3d": {
-      "version": "file:3DxUnity3D",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,
@@ -194,7 +188,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.9.8",
+      "version": "1.9.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {
