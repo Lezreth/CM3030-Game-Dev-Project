@@ -5,7 +5,7 @@ public class ChoiceTrigger : MonoBehaviour
     public GameObject choiceUI;
     public PlayerMove player;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
