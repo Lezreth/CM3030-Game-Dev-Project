@@ -1,25 +1,21 @@
 using UnityEngine;
 
-public class ChoiceUIController : MonoBehaviour
+public class ChoiceUI : MonoBehaviour
 {
-    public PlayerMove player;
-    public GameObject choiceUI;
+    public InteractionController interaction;
 
-    public void Return()
+    public void OnChoiceA()
     {
-        choiceUI.SetActive(false);
-        player.canMove = true;
+        interaction.ChooseOption(0);
     }
 
-    public void ApproachDockWorker()
+    public void OnChoiceB()
     {
-        Debug.Log("Approach Dock Worker chosen");
-        Return();
+        interaction.ChooseOption(1);
     }
 
-    public void ExploreContainers()
+    public void OnReturn()
     {
-        Debug.Log("Explore Containers chosen");
-        Return();
+        interaction.ReturnToExploration();
     }
 }

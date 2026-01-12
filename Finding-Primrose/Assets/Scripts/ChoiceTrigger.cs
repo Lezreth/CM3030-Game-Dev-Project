@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class ChoiceTrigger : MonoBehaviour
+public class InteractionTrigger : MonoBehaviour
 {
-    public GameObject choiceUI;
-    public PlayerMove player;
+    public InteractionController interaction;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            player.canMove = false;
-            choiceUI.SetActive(true);
+            interaction.BeginInteraction();
         }
     }
 }

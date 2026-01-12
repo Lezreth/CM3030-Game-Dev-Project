@@ -18,7 +18,6 @@ public class PlayerMove : MonoBehaviour
         inputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
 
-        // 🔒 Stop rolling / tipping
         rb.freezeRotation = true;
     }
 
@@ -45,7 +44,6 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        // ✅ SAME logic as your 2D version, just 3D
         rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, 0f);
     }
 
