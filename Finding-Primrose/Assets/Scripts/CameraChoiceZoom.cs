@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public float focusSpeed = 5f;
 
     [Header("Zoom")]
-    public float focusedSize = 4f;   // Smaller = closer
+    public float focusedSize = 4f;  
     private float defaultSize;
 
     private Transform target;
@@ -39,7 +39,6 @@ public class CameraController : MonoBehaviour
             );
         }
 
-        // Smooth zoom
         float targetSize = isFocusing ? focusedSize : defaultSize;
         cam.orthographicSize = Mathf.Lerp(
             cam.orthographicSize,
