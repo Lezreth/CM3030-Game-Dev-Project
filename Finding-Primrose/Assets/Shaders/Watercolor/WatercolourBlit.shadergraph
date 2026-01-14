@@ -2101,8 +2101,8 @@
     "m_ObjectId": "3a6535f32e8a4e29a19bb4c1de2ae4e2",
     "m_Title": "Sample Blit Source",
     "m_Position": {
-        "x": -575.0001220703125,
-        "y": -77.0
+        "x": -575.0,
+        "y": -77.00007629394531
     }
 }
 
@@ -2361,8 +2361,8 @@
     "m_ObjectId": "41c8f96d7c9a49a5894dd147d30f02cf",
     "m_Title": "White Vignette (Paper edge)",
     "m_Position": {
-        "x": -790.0001220703125,
-        "y": -567.0
+        "x": -790.0,
+        "y": -567.0000610351563
     }
 }
 
@@ -3206,8 +3206,8 @@
     "m_ObjectId": "6dc26c78cdfc4ca8aa24ce6b36b8d5e9",
     "m_Title": "Distortion",
     "m_Position": {
-        "x": -1408.0,
-        "y": -147.0
+        "x": -1407.9998779296875,
+        "y": -147.00009155273438
     }
 }
 
@@ -3786,7 +3786,7 @@
     "m_Title": "Edge Detection",
     "m_Position": {
         "x": -1243.0,
-        "y": 360.9999694824219
+        "y": 360.9999084472656
     }
 }
 

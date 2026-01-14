@@ -965,7 +965,7 @@
     "m_ObjectId": "01231dbed3e04940b1b5e67090b8bec3",
     "m_Title": "Add noise",
     "m_Position": {
-        "x": 1703.0006103515625,
+        "x": 1702.9998779296875,
         "y": -338.0
     }
 }
@@ -976,8 +976,8 @@
     "m_ObjectId": "0136ada3724c4030af44ce3f72bd4eb1",
     "m_Title": "Combined Noise from earlier",
     "m_Position": {
-        "x": 1345.000244140625,
-        "y": 189.00006103515626
+        "x": 1344.999755859375,
+        "y": 189.0
     }
 }
 
@@ -2305,7 +2305,7 @@
     "m_Title": "Take colour's alpha into account",
     "m_Position": {
         "x": 1186.0,
-        "y": -125.99996948242188
+        "y": -125.99995422363281
     }
 }
 
@@ -2340,8 +2340,8 @@
     "m_ObjectId": "336a7d83b90e4abca143d57753c0d0f2",
     "m_Title": "Mask alpha",
     "m_Position": {
-        "x": 1771.000244140625,
-        "y": 35.0
+        "x": 1770.999755859375,
+        "y": 34.99993896484375
     }
 }
 
@@ -3161,8 +3161,8 @@
     "m_ObjectId": "50684be5854947d1bb2d9de58e675803",
     "m_Title": "Projected Decal Pos",
     "m_Position": {
-        "x": -1533.0001220703125,
-        "y": -136.0
+        "x": -1533.0,
+        "y": -136.00006103515626
     }
 }
 
@@ -3684,7 +3684,7 @@
     "m_Title": "Reconstruct World Pos from Depth",
     "m_Position": {
         "x": -2340.0,
-        "y": -210.00001525878907
+        "y": -210.00006103515626
     }
 }
 
@@ -4264,7 +4264,7 @@
     "m_Title": "Using  scale.x as noise scale, bit hacky",
     "m_Position": {
         "x": -1315.0,
-        "y": 431.00006103515627
+        "y": 431.0
     }
 }
 
@@ -4943,8 +4943,8 @@
     "m_ObjectId": "a5a038a0c257467c93b8608210d52f1d",
     "m_Title": "Paint Splodge = 1, everything else = 0",
     "m_Position": {
-        "x": 564.000244140625,
-        "y": 59.000057220458987
+        "x": 563.999755859375,
+        "y": 58.99993896484375
     }
 }
 
@@ -4954,8 +4954,8 @@
     "m_ObjectId": "a65e65cda7c04370886010e10261c0ca",
     "m_Title": "Splodge \"gradient\" is best way to describe this",
     "m_Position": {
-        "x": 591.0003051757813,
-        "y": -336.9999694824219
+        "x": 590.9999389648438,
+        "y": -336.99993896484377
     }
 }
 
@@ -5691,8 +5691,8 @@
     "m_ObjectId": "cc600990f5d8457d98cd6cab55aadb85",
     "m_Title": "Offset Position",
     "m_Position": {
-        "x": 231.00027465820313,
-        "y": -138.0
+        "x": 231.0,
+        "y": -138.00006103515626
     }
 }
 
@@ -6114,8 +6114,8 @@
     "m_ObjectId": "db34d0299bea4e509f4965edfb3bb043",
     "m_Title": "Noise",
     "m_Position": {
-        "x": -800.0,
-        "y": 230.99996948242188
+        "x": -800.0000610351563,
+        "y": 230.99998474121095
     }
 }
 
@@ -6530,8 +6530,8 @@
     "m_ObjectId": "e81e4bd6970f409aafa5de90a3567d46",
     "m_Title": "Combine Noise",
     "m_Position": {
-        "x": -213.0,
-        "y": 230.99996948242188
+        "x": -213.00001525878907,
+        "y": 230.99998474121095
     }
 }
 
@@ -6909,8 +6909,8 @@
     "m_ObjectId": "ff45593048884d408aaa506ca5928c11",
     "m_Title": "Center Noise",
     "m_Position": {
-        "x": -439.9999694824219,
-        "y": 230.99996948242188
+        "x": -440.00006103515627,
+        "y": 230.99998474121095
     }
 }
 
