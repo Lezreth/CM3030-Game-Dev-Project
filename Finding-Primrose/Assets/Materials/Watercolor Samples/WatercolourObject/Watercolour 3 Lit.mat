@@ -121,6 +121,7 @@ Material:
     - _AO_Strength: 1
     - _AlphaClip: 0
     - _Blend: 0
+    - _Blue_Adjust: 1
     - _BumpScale: 1
     - _Calculated_Shadow_Color_Contrast: 0.5
     - _Cull: 2
@@ -134,6 +135,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Green_Adjust: 1
     - _MAIN_LIGHT_SHADOWS_CASCADE: 1
     - _Metallic: 0
     - _Noise_Brighten: 0.2
@@ -143,6 +145,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Red_Adjust: 1
     - _SHADOWS_SOFT: 1
     - _Saturation: 1
     - _Shadow_Color_Reduction: 0.5
@@ -152,7 +155,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Use_Custom_Shadow_Color: 0
+    - _Use_Custom_Shadow_Color: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
