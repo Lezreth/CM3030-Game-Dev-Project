@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
         inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled += _ => moveInput = Vector2.zero;
 
-        inputActions.Player.Jump.performed += _ => Jump();
+        //inputActions.Player.Jump.performed += _ => Jump();
     }
 
     private void OnDisable()
@@ -45,22 +45,24 @@ public class PlayerMove : MonoBehaviour
         }
 
         rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, 0f);
+        //I couldn't get her to move well, so i restricted the W/S
+        //rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.y * moveSpeed
     }
 
-    void Jump()
-    {
-        if (!canMove)
-            return;
+    //void Jump()
+    //{
+    //    if (!canMove)
+    //        return;
 
-        if (IsGrounded())
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
+    //    if (IsGrounded())
+    //    {
+    //        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+    //        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    //    }
+    //}
 
-    bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
-    }
+    //bool IsGrounded()
+    //{
+    //    return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+    //}
 }
