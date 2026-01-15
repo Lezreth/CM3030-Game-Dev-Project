@@ -5,10 +5,11 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
 
     [Header("Movement")]
-    public float focusSpeed = 5f;
+    [SerializeField] float focusSpeed = 5f;
+    [SerializeField] float arriveThreshold = 0.05f;
 
     [Header("Zoom")]
-    public float focusedSize = 4f;  
+    [SerializeField] float focusedSize = 4f;
     private float defaultSize;
 
     private Transform target;
@@ -58,5 +59,24 @@ public class CameraController : MonoBehaviour
         target = null;
         isFocusing = false;
     }
-}
 
+    public bool HasArrived()
+    {
+        if (!isFocusing || target == null)
+            return true;
+
+        Vector3 desiredPos = new Vector3(
+            target.position.x,
+            target.position.y,
+            transform.position.z
+        );
+
+        bool positionArrived =
+            Vector3.Distance(transform.position, desiredPos) < arriveThreshold;
+
+        bool zoomArrived =
+            Mathf.Abs(cam.orthographicSize - focusedSize) < arriveThreshold;
+
+        return positionArrived && zoomArrived;
+    }
+}
