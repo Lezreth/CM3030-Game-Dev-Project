@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Choice System Testing.unity
+    path: Assets/Scenes/Watercolor Test Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 78f080f4703fb2f4b85157689ad9f4e8, type: 2}
