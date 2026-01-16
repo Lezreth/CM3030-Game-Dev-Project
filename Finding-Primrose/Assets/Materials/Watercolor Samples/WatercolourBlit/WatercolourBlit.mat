@@ -42,9 +42,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Distortion: 1
+    - _Edge1: 0.42
+    - _Edge2: 0.7
+    - _Float: 3
+    - _Outline_Intensity: 3
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Wavy_Line: 1
+    m_Colors:
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Vector4: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2743671687286662585
