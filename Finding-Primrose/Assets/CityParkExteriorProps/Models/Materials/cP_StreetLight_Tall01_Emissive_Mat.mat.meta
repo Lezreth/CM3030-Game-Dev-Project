@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bba2f6c9f47096b498d009cd708248db
+timeCreated: 1464864368
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_StreetLight_Tall01_Emissive_Mat.mat
+  uploadId: 494766

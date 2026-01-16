@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e5b46412a2388464591033d9a7be3683
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/Camera/RenderCam_Night.prefab
+  uploadId: 494766

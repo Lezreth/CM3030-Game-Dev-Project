@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 34f247403412a8f479ac733e1e5d4039
+timeCreated: 1447026666
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_StreetLight_Tall01.prefab
+  uploadId: 494766

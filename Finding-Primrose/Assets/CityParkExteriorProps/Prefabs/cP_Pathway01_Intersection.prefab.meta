@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8b23160baf3586146992381df3b16599
+timeCreated: 1460781815
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_Pathway01_Intersection.prefab
+  uploadId: 494766

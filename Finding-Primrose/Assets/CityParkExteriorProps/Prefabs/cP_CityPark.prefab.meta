@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9f142af7611ecee4685771ee4c1185b6
+timeCreated: 1447021858
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_CityPark.prefab
+  uploadId: 494766

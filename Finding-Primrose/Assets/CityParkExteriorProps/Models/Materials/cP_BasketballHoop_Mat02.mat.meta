@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: acf6b1122e81f6048abe7c8e3a2e57ed
+timeCreated: 1464850245
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_BasketballHoop_Mat02.mat
+  uploadId: 494766

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: cb175c59e86a80940868b60aafd1e690
+timeCreated: 1461444876
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _MainTex: {fileID: 2800000, guid: 25e9f4cd7a3a12a43b4156ef348b9876, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Shaders/LightRay.shader
+  uploadId: 494766

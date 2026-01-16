@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5deceb7ae02f97147a9d91f5e77ebb5d
+timeCreated: 1460781828
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_Pathway01_sCurve.prefab
+  uploadId: 494766

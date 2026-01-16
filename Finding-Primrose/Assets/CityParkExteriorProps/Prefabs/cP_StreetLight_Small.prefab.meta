@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4a65224a48c1fbd4d9b1743725d2a4d3
+timeCreated: 1447026576
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_StreetLight_Small.prefab
+  uploadId: 494766

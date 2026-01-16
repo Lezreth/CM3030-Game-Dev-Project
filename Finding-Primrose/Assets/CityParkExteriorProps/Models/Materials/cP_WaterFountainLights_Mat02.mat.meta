@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 61675fdfe7e8ff54b87319da695a488e
+timeCreated: 1464864632
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_WaterFountainLights_Mat02.mat
+  uploadId: 494766
