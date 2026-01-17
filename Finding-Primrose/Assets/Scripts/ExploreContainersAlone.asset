@@ -19,8 +19,6 @@ MonoBehaviour:
     delta: -10
   - stat: 1
     delta: -10
-  - stat: 1
-    delta: -10
   - stat: 3
     delta: -20
   - stat: 2
