@@ -46,10 +46,11 @@ Material:
     - _Edge1: 0.42
     - _Edge2: 0.7
     - _Float: 3
+    - _Noise_Scale: 66
     - _Outline_Intensity: 3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Wavy_Line: 1
+    - _Wavy_Line: 0
     m_Colors:
     - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Vector4: {r: 0, g: 0, b: 0, a: 0}

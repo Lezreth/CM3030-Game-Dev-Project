@@ -115,13 +115,16 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Hardness: 0.938
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Outline_Thickness: 0.335
     - _Parallax: 0.005
     - _QueueOffset: 0
-    - _Radius: 0.5
+    - _Radius: -0.1
     - _ReceiveShadows: 1
+    - _Saturation_New: 1
+    - _Saturation_Old: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -129,6 +132,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _Thickness: 0.95
     - _Vertical_Dissolve: 0
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
@@ -136,9 +140,10 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Edge_Color: {r: 2.039216, g: 0, b: 1.364706, a: 1}
+    - _Edge_Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Transition_Center: {r: 0, g: 0, b: 0, a: 0}
     - _Transition_Point: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
