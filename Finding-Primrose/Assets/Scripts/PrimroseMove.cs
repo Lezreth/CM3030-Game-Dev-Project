@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForce = 5f;
-    [SerializeField] float groundCheckDistance = 0.2f;
+    //[SerializeField] float jumpForce = 5f;
+    //[SerializeField] float groundCheckDistance = 0.2f;
 
     public bool canMove = true;
 
