@@ -3,18 +3,29 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StatMeterUI : MonoBehaviour
 {
     [SerializeField] private StatType stat;
     [SerializeField] private Image barFill;
+    [SerializeField] private TextMeshProUGUI valueText;
 
-    private void OnEnable()
+    //private void OnEnable()
+    //{
+    //    if (StatsManager.I != null)
+    //        StatsManager.I.OnStatsChanged += Refresh;
+    //    Refresh();
+    //}
+    private void Start()
     {
         if (StatsManager.I != null)
+        {
             StatsManager.I.OnStatsChanged += Refresh;
-        Refresh();
+            Refresh();
+        }
     }
+
 
     private void OnDisable()
     {
@@ -24,9 +35,14 @@ public class StatMeterUI : MonoBehaviour
 
     public void Refresh()
     {
+        Debug.Log($"Refreshing {stat}");
+
         if (StatsManager.I == null || barFill == null) return;
 
         int value = StatsManager.I.Get(stat);     
-        barFill.fillAmount = value / 100f;       
+        barFill.fillAmount = value / 100f;
+
+        if (valueText != null)
+            valueText.text = $"{value}%";
     }
 }

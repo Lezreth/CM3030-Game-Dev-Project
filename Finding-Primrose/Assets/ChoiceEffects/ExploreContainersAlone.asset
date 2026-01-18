@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: ExploreContainersAlone
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceEffect
   choiceId: ExploreContainersAlone
-  sceneId: HarborScene
+  sceneId: Harbor
   deltas:
   - stat: 0
-    delta: -10
-  - stat: 1
     delta: -10
   - stat: 1
     delta: -10
