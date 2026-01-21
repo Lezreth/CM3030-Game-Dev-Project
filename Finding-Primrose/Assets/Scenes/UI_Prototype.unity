@@ -879,10 +879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffda006c10c66484b9ecf942bb85e70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  trust: 88
+  trust: 10
   hope: 8
   hunger: 9
-  energy: 50
+  energy: 9
   requiredSceneIds: []
 --- !u!4 &1159165591
 Transform:
