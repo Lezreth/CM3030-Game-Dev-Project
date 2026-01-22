@@ -80,3 +80,59 @@ public class CameraController : MonoBehaviour
         return positionArrived && zoomArrived;
     }
 }
+//using UnityEngine;
+
+//public class CameraController : MonoBehaviour
+//{
+//    public static CameraController Instance;
+
+//    [Header("Movement")]
+//    [SerializeField] float focusSpeed = 5f;
+//    [SerializeField] float arriveThreshold = 0.05f;
+
+//    [Header("Focus Offset")]
+//    [SerializeField] Vector3 offset = new Vector3(0, 2, -5); 
+
+//    private Transform target;
+//    private bool isFocusing = false;
+
+//    void Awake()
+//    {
+//        Instance = this;
+//    }
+
+//    void LateUpdate()
+//    {
+//        if (target != null)
+//        {
+//            // position 
+//            Vector3 desiredPos = target.position + offset;
+
+//            // movement
+//            transform.position = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime * focusSpeed);
+//            transform.LookAt(target);
+//        }
+//    }
+
+//    public void FocusOn(Transform focusTarget)
+//    {
+//        target = focusTarget;
+//        isFocusing = true;
+//    }
+
+//    public void ClearFocus()
+//    {
+//        target = null;
+//        isFocusing = false;
+//    }
+
+//    public bool HasArrived()
+//    {
+//        if (!isFocusing || target == null)
+//            return true;
+
+//        Vector3 desiredPos = target.position + offset;
+//        float distance = Vector3.Distance(transform.position, desiredPos);
+//        return distance < arriveThreshold;
+//    }
+//}

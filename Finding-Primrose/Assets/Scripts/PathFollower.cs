@@ -449,8 +449,16 @@ public class PathFollower : MonoBehaviour
         {
             isMoving = false;
         }
+
+        //Checks for ChoiceWaypoint
+        if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
+        {
+            isMoving = false;
+            CheckForChoiceWaypoint();
+        }
+
     }
-    
+
     void ShowClickMarker(Vector3 position)
     {
         if (clickMarkerPrefab != null)
@@ -490,7 +498,26 @@ public class PathFollower : MonoBehaviour
             transform.position = transitionEndPos;
         }
     }
-    
+
+    // tells ChoiceWaypoint script to trigger choice system. 
+    void CheckForChoiceWaypoint()
+    {
+        if (currentPath == null || currentPath.waypoints == null)
+            return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            ChoiceWaypoint choice = wp.GetComponent<ChoiceWaypoint>();
+            if (choice != null && choice.CanTrigger(transform.position))
+            {
+                choice.Trigger();
+                return;
+            }
+        }
+    }
+
     void OnGUI()
     {
         GUI.contentColor = Color.yellow;

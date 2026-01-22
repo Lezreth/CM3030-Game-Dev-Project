@@ -4,7 +4,7 @@ using UnityEngine;
 public class InteractionController : MonoBehaviour
 {
     [Header("References")]
-    public PlayerMove player;
+    //public PlayerMove player;
     public GameObject choiceUI;
     public Transform npcFocusPoint;
     public CanvasGroup choiceCanvas;
@@ -18,7 +18,7 @@ public class InteractionController : MonoBehaviour
         if (interactionActive) return;
 
         interactionActive = true;
-        player.canMove = false;
+        //player.canMove = false;
 
         choiceUI.SetActive(true);
         choiceCanvas.alpha = 0;
@@ -33,7 +33,7 @@ public class InteractionController : MonoBehaviour
     public void ReturnToExploration()
     {
         choiceUI.SetActive(false);
-        player.canMove = true;
+        //player.canMove = true;
 
         CameraController.Instance.ClearFocus();
 
