@@ -1,40 +1,49 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class InteractionController : MonoBehaviour
 {
-    [Header("References")]
-    //public PlayerMove player;
-    public GameObject choiceUI;
-    public Transform npcFocusPoint;
-    public CanvasGroup choiceCanvas;
-    public ChoiceEffect choiceAEffect;  
-    public ChoiceEffect choiceBEffect;
+    [Header("Primrose")]
+    //public GameObject choiceUI;
+    //public CanvasGroup choiceCanvas;
+    public PathFollower playerPathFollower;
 
+    //Private variables 
+    private ChoiceWaypoint currentWaypoint;
     private bool interactionActive = false;
 
-    public void BeginInteraction()
+    public void BeginInteraction(ChoiceWaypoint source)
     {
         if (interactionActive) return;
-
         interactionActive = true;
-        //player.canMove = false;
+        currentWaypoint = source;
 
-        choiceUI.SetActive(true);
-        choiceCanvas.alpha = 0;
-        choiceCanvas.interactable = false;
-        choiceCanvas.blocksRaycasts = false;
+        //Freeze Primrose
+        if (playerPathFollower != null)
+            playerPathFollower.LockMovement();
 
-        CameraController.Instance.FocusOn(npcFocusPoint);
+        if (source.choiceUI != null)
+            source.choiceUI.SetActive(true);
 
-        StartCoroutine(WaitForCameraThenFade());
+        if (CameraController.Instance != null && source.npcFocusPoint != null)
+        {
+            CameraController.Instance.FocusOn(source.npcFocusPoint);
+        }
+
+        StartCoroutine(FadeInChoices(source.choiceCanvas));
     }
 
     public void ReturnToExploration()
     {
-        choiceUI.SetActive(false);
-        //player.canMove = true;
+        if (currentWaypoint != null && currentWaypoint.choiceUI != null)
+            currentWaypoint.choiceUI.SetActive(false);
 
+        //Unfreeze Primrose
+        if (playerPathFollower != null)
+        {
+            playerPathFollower.UnlockMovement();
+        }
         CameraController.Instance.ClearFocus();
 
         interactionActive = false;
@@ -42,40 +51,36 @@ public class InteractionController : MonoBehaviour
 
     public void ChooseOption(int optionIndex)
     {
-        choiceUI.SetActive(false);
+        if (currentWaypoint == null) return;
 
-        if (optionIndex == 0 && choiceAEffect != null)
-        {
-            StatsManager.I.ApplyChoice(choiceAEffect);
-            Debug.Log("Choice A made!");
-        }
-        else if (optionIndex == 1 && choiceBEffect != null)
-        {
-            StatsManager.I.ApplyChoice(choiceBEffect);
-            Debug.Log("Choice B made!");
-        }
+        if (optionIndex == 0 && currentWaypoint.choiceA != null)
+            StatsManager.I.ApplyChoice(currentWaypoint.choiceA);
+
+        if (optionIndex == 1 && currentWaypoint.choiceB != null)
+            StatsManager.I.ApplyChoice(currentWaypoint.choiceB);
 
         ReturnToExploration();
     }
 
-    IEnumerator WaitForCameraThenFade()
+    IEnumerator FadeInChoices(CanvasGroup canvas)
     {
-        while (!CameraController.Instance.HasArrived())
-            yield return null;
+        if (canvas == null) yield break;
 
         float t = 0f;
-        float fadeDuration = 0.4f;
+        float duration = 0.4f;
+        canvas.alpha = 0;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
 
-        while (t < fadeDuration)
+        while (t < duration)
         {
             t += Time.deltaTime;
-            choiceCanvas.alpha = Mathf.Lerp(0, 1, t / fadeDuration);
+            canvas.alpha = Mathf.Lerp(0, 1, t / duration);
             yield return null;
         }
 
-        choiceCanvas.alpha = 1;
-        choiceCanvas.interactable = true;
-        choiceCanvas.blocksRaycasts = true;
+        canvas.alpha = 1;
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
     }
-
 }

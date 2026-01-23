@@ -1,13 +1,24 @@
 using UnityEngine;
-
+// Used on the trigger waypoint to trigger BigenInteraction(). 
 public class ChoiceWaypoint : MonoBehaviour
 {
+    [Header("Interaction")]
     public InteractionController interaction;
+    public Transform npcFocusPoint;
+
+    [Header("Choices")]
+    public ChoiceEffect choiceA;
+    public ChoiceEffect choiceB;
+    public GameObject choiceUI;        
+    public CanvasGroup choiceCanvas;
+
     public float triggerRadius = 1.5f;
     private bool triggered = false;
+    private bool waitingForExit = false;
 
     public bool CanTrigger(Vector3 dogPosition)
     {
+        if (waitingForExit) return false;
         if (triggered) return false;
         return Vector3.Distance(dogPosition, transform.position) <= triggerRadius;
     }
@@ -19,8 +30,24 @@ public class ChoiceWaypoint : MonoBehaviour
 
         if (interaction != null)
         {
-            interaction.BeginInteraction();
+            interaction.BeginInteraction(this);
         }
+    }
+
+    public void CheckExit(Vector3 dogPosition)
+    {
+        if (!triggered) return;
+
+        float distance = Vector3.Distance(dogPosition, transform.position);
+        if (distance > triggerRadius)
+        {
+            triggered = false;
+        }
+    }
+
+    public void ResetTrigger()
+    {
+        triggered = false;
     }
 
     void OnDrawGizmosSelected()
