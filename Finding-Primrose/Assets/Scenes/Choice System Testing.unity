@@ -191,17 +191,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4023122411366445518, guid: e2282b7b881cc054fb916a33f4ec4178, type: 3}
   m_PrefabInstance: {fileID: 220526469}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &253867290 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4032896161091147777, guid: e2282b7b881cc054fb916a33f4ec4178, type: 3}
-  m_PrefabInstance: {fileID: 220526469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253867289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a20967e602bd364c99bafc41de025f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!54 &253867292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -402,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   focusSpeed: 4
   arriveThreshold: 0.05
-  focusedSize: 2
+  offset: {x: 0, y: 2, z: -5}
 --- !u!1 &399440775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6428079925263309521, guid: a33fcb58f609f584b8bdb386874dc31a, type: 3}
@@ -973,7 +962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4fe7e4f1748fa4bb1a5266c6269155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 253867290}
   choiceUI: {fileID: 910181203}
   npcFocusPoint: {fileID: 1528649243}
   choiceCanvas: {fileID: 910181204}
@@ -1210,6 +1198,10 @@ PrefabInstance:
       propertyPath: interaction
       value: 
       objectReference: {fileID: 1559948953}
+    - target: {fileID: 8669635785156271990, guid: 4d329b2829e000e4b83f3fbf3cccdb4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8709075076476293125, guid: 4d329b2829e000e4b83f3fbf3cccdb4f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1237,6 +1229,14 @@ PrefabInstance:
     - target: {fileID: 8709075076476293125, guid: 4d329b2829e000e4b83f3fbf3cccdb4f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730376548765145137, guid: 4d329b2829e000e4b83f3fbf3cccdb4f, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730376548765145137, guid: 4d329b2829e000e4b83f3fbf3cccdb4f, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -300,7 +300,10 @@ public class PathFollower : MonoBehaviour
     private float transitionTimer = 0f;
     private Vector3 transitionStartPos;
     private Vector3 transitionEndPos;
-    
+    //to freeze primrose during UI choice
+    private bool movementLocked = false;
+
+
     // Debug
     private Vector3 lastClickPosition;
     private string debugInfo = "Click to see position";
@@ -316,6 +319,12 @@ public class PathFollower : MonoBehaviour
     
     void Update()
     {
+        //used for freezing/unfreezing primrose
+        if (movementLocked)
+        {
+            return;
+        }
+            
         if (isTransitioning)
         {
             HandleTransition();
@@ -331,8 +340,29 @@ public class PathFollower : MonoBehaviour
         {
             MoveToTarget();
         }
+
+        CheckChoiceWaypointExit();
     }
-    
+
+    //Checks if primrose has exited the waypoint to re-trigger
+    void CheckChoiceWaypointExit()
+    {
+        if (currentPath == null || currentPath.waypoints == null)
+            return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            ChoiceWaypoint choice = wp.GetComponent<ChoiceWaypoint>();
+            if (choice != null)
+            {
+                choice.CheckExit(transform.position);
+            }
+        }
+    }
+
+
     void HandleClick()
     {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -449,8 +479,16 @@ public class PathFollower : MonoBehaviour
         {
             isMoving = false;
         }
+
+        //Checks for ChoiceWaypoint
+        if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
+        {
+            isMoving = false;
+            CheckForChoiceWaypoint();
+        }
+
     }
-    
+
     void ShowClickMarker(Vector3 position)
     {
         if (clickMarkerPrefab != null)
@@ -490,7 +528,39 @@ public class PathFollower : MonoBehaviour
             transform.position = transitionEndPos;
         }
     }
-    
+
+    //Used to freeze primrose 
+    public void LockMovement()
+    {
+        movementLocked = true;
+        isMoving = false;
+        isTransitioning = false;
+    }
+
+    public void UnlockMovement()
+    {
+        movementLocked = false;
+    }
+
+    // tells ChoiceWaypoint script to trigger choice system. 
+    void CheckForChoiceWaypoint()
+    {
+        if (currentPath == null || currentPath.waypoints == null)
+            return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            ChoiceWaypoint choice = wp.GetComponent<ChoiceWaypoint>();
+            if (choice != null && choice.CanTrigger(transform.position))
+            {
+                choice.Trigger();
+                return;
+            }
+        }
+    }
+
     void OnGUI()
     {
         GUI.contentColor = Color.yellow;

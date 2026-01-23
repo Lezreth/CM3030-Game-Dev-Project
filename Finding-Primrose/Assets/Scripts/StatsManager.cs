@@ -10,10 +10,10 @@ public class StatsManager : MonoBehaviour
     public static StatsManager I { get; private set; }
 
     [Header("Stats 0-100")]
-    [Range(0,100)] public int trust = 50;
-    [Range(0,100)] public int hope = 50;
+    [Range(0,100)] public int trust = 40;
+    [Range(0,100)] public int hope = 45;
     [Range(0,100)] public int hunger = 50;
-    [Range(0,100)] public int energy = 50;
+    [Range(0,100)] public int energy = 65;
 
     [Header("Progress")]
     [SerializeField] private string[] requiredSceneIds; 
