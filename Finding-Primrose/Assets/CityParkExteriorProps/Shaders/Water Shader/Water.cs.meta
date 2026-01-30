@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a66e4c2342f0c5649941f4e189cd0cfb
+timeCreated: 1517085977
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Shaders/Water Shader/Water.cs
+  uploadId: 494766

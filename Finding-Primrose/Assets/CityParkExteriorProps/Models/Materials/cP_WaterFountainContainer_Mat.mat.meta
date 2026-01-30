@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b2e307d71d90aa44eaa6e79a38ef2670
+timeCreated: 1453669311
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_WaterFountainContainer_Mat.mat
+  uploadId: 494766

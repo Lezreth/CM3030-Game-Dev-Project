@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03120072bf20b45409a94100a1661dfe
+timeCreated: 1460888821
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_SmallCementBase01.prefab
+  uploadId: 494766

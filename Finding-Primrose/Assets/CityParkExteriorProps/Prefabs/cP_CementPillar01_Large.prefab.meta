@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0e54bf6fb5a0b0b4f98d1e69d798a94a
+timeCreated: 1460780407
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_CementPillar01_Large.prefab
+  uploadId: 494766

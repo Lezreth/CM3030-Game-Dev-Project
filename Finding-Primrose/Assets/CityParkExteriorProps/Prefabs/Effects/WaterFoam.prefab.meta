@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9988cb1b37bb7d84995d70beb309a367
+timeCreated: 1461729613
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/Effects/WaterFoam.prefab
+  uploadId: 494766

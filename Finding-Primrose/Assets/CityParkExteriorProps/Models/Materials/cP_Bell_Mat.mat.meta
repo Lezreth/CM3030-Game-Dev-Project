@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d6fcf58aafd0312468f1439c0810f15f
+timeCreated: 1446941285
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_Bell_Mat.mat
+  uploadId: 494766

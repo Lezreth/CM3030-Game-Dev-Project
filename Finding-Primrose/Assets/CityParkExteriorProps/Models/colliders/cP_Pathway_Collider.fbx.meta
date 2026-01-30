@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 829cb0ad84d923f4abf563a20c5c1310
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: cP_Pathway010_Collider
+    100002: cP_Pathway011_Collider
+    100004: cP_Pathway012_Collider
+    100006: cP_Pathway01_Collider
+    100008: cP_Pathway02_Collider
+    100010: cP_Pathway03_Collider
+    100012: cP_Pathway04_Collider
+    100014: cP_Pathway05_Collider
+    100016: cP_Pathway06_Collider
+    100018: cP_Pathway07_Collider
+    100020: cP_Pathway08_Collider
+    100022: cP_Pathway09_Collider
+    100024: //RootNode
+    400000: cP_Pathway010_Collider
+    400002: cP_Pathway011_Collider
+    400004: cP_Pathway012_Collider
+    400006: cP_Pathway01_Collider
+    400008: cP_Pathway02_Collider
+    400010: cP_Pathway03_Collider
+    400012: cP_Pathway04_Collider
+    400014: cP_Pathway05_Collider
+    400016: cP_Pathway06_Collider
+    400018: cP_Pathway07_Collider
+    400020: cP_Pathway08_Collider
+    400022: cP_Pathway09_Collider
+    400024: //RootNode
+    2100000: cP_Pathway_Mat
+    2100002: cP_Pathway_Mat02
+    2300000: cP_Pathway010_Collider
+    2300002: cP_Pathway011_Collider
+    2300004: cP_Pathway012_Collider
+    2300006: cP_Pathway01_Collider
+    2300008: cP_Pathway02_Collider
+    2300010: cP_Pathway03_Collider
+    2300012: cP_Pathway04_Collider
+    2300014: cP_Pathway05_Collider
+    2300016: cP_Pathway06_Collider
+    2300018: cP_Pathway07_Collider
+    2300020: cP_Pathway08_Collider
+    2300022: cP_Pathway09_Collider
+    3300000: cP_Pathway010_Collider
+    3300002: cP_Pathway011_Collider
+    3300004: cP_Pathway012_Collider
+    3300006: cP_Pathway01_Collider
+    3300008: cP_Pathway02_Collider
+    3300010: cP_Pathway03_Collider
+    3300012: cP_Pathway04_Collider
+    3300014: cP_Pathway05_Collider
+    3300016: cP_Pathway06_Collider
+    3300018: cP_Pathway07_Collider
+    3300020: cP_Pathway08_Collider
+    3300022: cP_Pathway09_Collider
+    4300000: cP_Pathway01_Collider
+    4300002: cP_Pathway02_Collider
+    4300004: cP_Pathway03_Collider
+    4300006: cP_Pathway04_Collider
+    4300008: cP_Pathway05_Collider
+    4300010: cP_Pathway06_Collider
+    4300012: cP_Pathway07_Collider
+    4300014: cP_Pathway08_Collider
+    4300016: cP_Pathway09_Collider
+    4300018: cP_Pathway010_Collider
+    4300020: cP_Pathway011_Collider
+    4300022: cP_Pathway012_Collider
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/colliders/cP_Pathway_Collider.fbx
+  uploadId: 494766

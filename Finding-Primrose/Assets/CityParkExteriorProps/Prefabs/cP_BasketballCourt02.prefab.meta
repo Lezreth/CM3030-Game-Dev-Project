@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cc6d16e8fcddfc44b88a71132f4fa57f
+timeCreated: 1447019005
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_BasketballCourt02.prefab
+  uploadId: 494766

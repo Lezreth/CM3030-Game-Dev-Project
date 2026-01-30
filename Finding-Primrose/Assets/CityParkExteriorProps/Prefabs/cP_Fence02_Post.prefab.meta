@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c239373b381cbb45b2d5ccd254fe1ef
+timeCreated: 1447022607
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_Fence02_Post.prefab
+  uploadId: 494766

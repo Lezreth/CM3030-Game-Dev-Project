@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66a829768745f0b4db6f4cf2c97dcf57
+timeCreated: 1464864504
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_StreetLight_Flat_Emissive_Mat.mat
+  uploadId: 494766

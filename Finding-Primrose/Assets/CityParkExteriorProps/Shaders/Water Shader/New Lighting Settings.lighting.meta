@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43bc5e11c4d7b5549aa8fd912476f5fa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Shaders/Water Shader/New Lighting Settings.lighting
+  uploadId: 494766

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7e67de8b9c0c28c459d8a778f17c2540
+timeCreated: 1446941284
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_Bench01_Mat.mat
+  uploadId: 494766

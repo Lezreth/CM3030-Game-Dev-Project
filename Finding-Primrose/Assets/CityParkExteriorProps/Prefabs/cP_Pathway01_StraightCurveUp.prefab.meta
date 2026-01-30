@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2200d4515c9f3ed4fac1289d595afe3b
+timeCreated: 1460781864
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_Pathway01_StraightCurveUp.prefab
+  uploadId: 494766

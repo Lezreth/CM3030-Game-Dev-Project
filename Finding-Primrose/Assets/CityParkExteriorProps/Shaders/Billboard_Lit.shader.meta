@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 47c4ed344b56bf14ebffb1847c13c67c
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Shaders/Billboard_Lit.shader
+  uploadId: 494766

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dccea90ad4b10004ca14095fb9a49651
+timeCreated: 1460780978
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_Fence04_Straight.prefab
+  uploadId: 494766

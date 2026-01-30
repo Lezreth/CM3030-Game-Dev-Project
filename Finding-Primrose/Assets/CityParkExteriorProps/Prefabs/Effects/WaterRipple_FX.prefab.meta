@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 199ec0e1e3b5e994db6153c93ee4bd79
+timeCreated: 1461296708
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/Effects/WaterRipple_FX.prefab
+  uploadId: 494766

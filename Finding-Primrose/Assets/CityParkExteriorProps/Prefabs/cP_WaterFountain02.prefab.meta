@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: db7c3073cf54df54494037506db10023
+timeCreated: 1460782440
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/cP_WaterFountain02.prefab
+  uploadId: 494766

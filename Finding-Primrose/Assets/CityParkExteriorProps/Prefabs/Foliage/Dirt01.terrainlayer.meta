@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 34a450d5d8ae4c24fa8be72f070b4783
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Prefabs/Foliage/Dirt01.terrainlayer
+  uploadId: 494766

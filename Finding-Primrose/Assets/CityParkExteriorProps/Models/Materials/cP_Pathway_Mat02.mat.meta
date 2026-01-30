@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ad2695de83c6d9042bff0358e3b4cb12
+timeCreated: 1447379653
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50596
+  packageName: City Park Exterior Props
+  packageVersion: 5.1
+  assetPath: Assets/CityParkExteriorProps/Models/Materials/cP_Pathway_Mat02.mat
+  uploadId: 494766
