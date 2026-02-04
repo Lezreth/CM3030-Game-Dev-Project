@@ -15,23 +15,30 @@ public class InteractionController : MonoBehaviour
 
     public void BeginInteraction(ChoiceWaypoint source)
     {
-        if (interactionActive) return;
-        interactionActive = true;
+        //if (interactionActive) return;
+        //interactionActive = true;
+        //currentWaypoint = source;
+
+        ////Freeze Primrose
+        //if (playerPathFollower != null)
+        //    playerPathFollower.LockMovement();
+
+        //if (source.choiceUI != null)
+        //    source.choiceUI.SetActive(true);
+
+        //if (CameraController.Instance != null && source.npcFocusPoint != null)
+        //{
+        //    CameraController.Instance.FocusOn(source.npcFocusPoint);
+        //}
+
+        //StartCoroutine(FadeInChoices(source.choiceCanvas));
         currentWaypoint = source;
 
-        //Freeze Primrose
-        if (playerPathFollower != null)
-            playerPathFollower.LockMovement();
-
-        if (source.choiceUI != null)
-            source.choiceUI.SetActive(true);
-
-        if (CameraController.Instance != null && source.npcFocusPoint != null)
-        {
-            CameraController.Instance.FocusOn(source.npcFocusPoint);
-        }
-
-        StartCoroutine(FadeInChoices(source.choiceCanvas));
+        BeginInteraction(
+            source.choiceUI,
+            source.choiceCanvas,
+            source.npcFocusPoint
+        );
     }
 
     public void ReturnToExploration()
@@ -83,4 +90,26 @@ public class InteractionController : MonoBehaviour
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
     }
+
+    public void BeginInteraction(
+    GameObject ui,
+    CanvasGroup canvas,
+    Transform focusPoint
+)
+    {
+        if (interactionActive) return;
+        interactionActive = true;
+
+        if (playerPathFollower != null)
+            playerPathFollower.LockMovement();
+
+        if (ui != null)
+            ui.SetActive(true);
+
+        if (CameraController.Instance != null && focusPoint != null)
+            CameraController.Instance.FocusOn(focusPoint);
+
+        StartCoroutine(FadeInChoices(canvas));
+    }
+
 }
