@@ -5,33 +5,17 @@ using static Unity.VisualScripting.Member;
 public class InteractionController : MonoBehaviour
 {
     [Header("Primrose")]
-    //public GameObject choiceUI;
-    //public CanvasGroup choiceCanvas;
     public PathFollower playerPathFollower;
 
     //Private variables 
     private ChoiceWaypoint currentWaypoint;
     private bool interactionActive = false;
+    private GameObject activeUI;
+    private CanvasGroup activeCanvas;
+
 
     public void BeginInteraction(ChoiceWaypoint source)
     {
-        //if (interactionActive) return;
-        //interactionActive = true;
-        //currentWaypoint = source;
-
-        ////Freeze Primrose
-        //if (playerPathFollower != null)
-        //    playerPathFollower.LockMovement();
-
-        //if (source.choiceUI != null)
-        //    source.choiceUI.SetActive(true);
-
-        //if (CameraController.Instance != null && source.npcFocusPoint != null)
-        //{
-        //    CameraController.Instance.FocusOn(source.npcFocusPoint);
-        //}
-
-        //StartCoroutine(FadeInChoices(source.choiceCanvas));
         currentWaypoint = source;
 
         BeginInteraction(
@@ -43,15 +27,17 @@ public class InteractionController : MonoBehaviour
 
     public void ReturnToExploration()
     {
-        if (currentWaypoint != null && currentWaypoint.choiceUI != null)
-            currentWaypoint.choiceUI.SetActive(false);
+        if (activeUI != null)
+            activeUI.SetActive(false);
 
-        //Unfreeze Primrose
+        activeUI = null;
+        activeCanvas = null;
+
         if (playerPathFollower != null)
-        {
             playerPathFollower.UnlockMovement();
-        }
-        CameraController.Instance.ClearFocus();
+
+        if (CameraController.Instance != null)
+            CameraController.Instance.ClearFocus();
 
         interactionActive = false;
     }
@@ -92,13 +78,16 @@ public class InteractionController : MonoBehaviour
     }
 
     public void BeginInteraction(
-    GameObject ui,
-    CanvasGroup canvas,
-    Transform focusPoint
-)
+     GameObject ui,
+     CanvasGroup canvas,
+     Transform focusPoint
+ )
     {
         if (interactionActive) return;
         interactionActive = true;
+
+        activeUI = ui;
+        activeCanvas = canvas;
 
         if (playerPathFollower != null)
             playerPathFollower.LockMovement();
@@ -111,5 +100,4 @@ public class InteractionController : MonoBehaviour
 
         StartCoroutine(FadeInChoices(canvas));
     }
-
 }

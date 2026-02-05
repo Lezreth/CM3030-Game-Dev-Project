@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening Scene.unity
     guid: be028348ec9cb714782bf3b7f77d2f38
   - enabled: 1
-    path: Assets/Scenes/Harbor_SniffPrototype.unity
+    path: Assets/Scenes/Harbor.unity
     guid: 2b54fa469edb84f5891cf31d7d4afe45
+  - enabled: 1
+    path: Assets/Scenes/FoodTrucks.unity
+    guid: d0ccaaa571be44f4284c39d0ba060a70
+  - enabled: 1
+    path: Assets/Scenes/LakeMerrit.unity
+    guid: b2f20b97e6902411a9da98218bf75309
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 78f080f4703fb2f4b85157689ad9f4e8, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c8d81390c96b5fe4e82666e036c11b7f, type: 3}

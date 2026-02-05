@@ -33,8 +33,21 @@ public class TransitionWaypoint : MonoBehaviour
         );
     }
 
+    public void CheckExit(Vector3 dogPosition)
+    {
+        if (!triggered) return;
+
+        float distance = Vector3.Distance(dogPosition, transform.position);
+        if (distance > triggerRadius)
+        {
+            triggered = false;
+        }
+    }
+
     public void ConfirmTransition()
     {
+        Debug.Log("TRANSITION BUTTON CLICKED");
+        Debug.Log($"Transitioning to scene: {sceneToLoad}");
         transitionController.StartSceneTransition(sceneToLoad);
     }
 
