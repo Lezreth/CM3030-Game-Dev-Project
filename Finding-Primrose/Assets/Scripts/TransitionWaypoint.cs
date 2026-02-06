@@ -48,6 +48,7 @@ public class TransitionWaypoint : MonoBehaviour
     {
         Debug.Log("TRANSITION BUTTON CLICKED");
         Debug.Log($"Transitioning to scene: {sceneToLoad}");
+        Debug.Log($"Scene Name in Transition: {sceneToLoad}");
         transitionController.StartSceneTransition(sceneToLoad);
     }
 
