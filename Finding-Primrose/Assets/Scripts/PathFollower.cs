@@ -319,6 +319,9 @@ public class PathFollower : MonoBehaviour
     
     void Update()
     {
+        CheckChoiceWaypointExit();
+        CheckTransitionWaypointExit();
+
         //used for freezing/unfreezing primrose
         if (movementLocked)
         {
@@ -341,7 +344,8 @@ public class PathFollower : MonoBehaviour
             MoveToTarget();
         }
 
-        CheckChoiceWaypointExit();
+        CheckForTransitionWaypoint();
+        CheckForChoiceWaypoint();
     }
 
     //Checks if primrose has exited the waypoint to re-trigger
@@ -362,6 +366,22 @@ public class PathFollower : MonoBehaviour
         }
     }
 
+    void CheckTransitionWaypointExit()
+    {
+        if (currentPath == null || currentPath.waypoints == null)
+            return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            TransitionWaypoint transition = wp.GetComponent<TransitionWaypoint>();
+            if (transition != null)
+            {
+                transition.CheckExit(transform.position);
+            }
+        }
+    }
 
     void HandleClick()
     {
@@ -480,13 +500,6 @@ public class PathFollower : MonoBehaviour
             isMoving = false;
         }
 
-        //Checks for ChoiceWaypoint
-        if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
-        {
-            isMoving = false;
-            CheckForChoiceWaypoint();
-        }
-
     }
 
     void ShowClickMarker(Vector3 position)
@@ -542,7 +555,6 @@ public class PathFollower : MonoBehaviour
         movementLocked = false;
     }
 
-    // tells ChoiceWaypoint script to trigger choice system. 
     void CheckForChoiceWaypoint()
     {
         if (currentPath == null || currentPath.waypoints == null)
@@ -555,7 +567,27 @@ public class PathFollower : MonoBehaviour
             ChoiceWaypoint choice = wp.GetComponent<ChoiceWaypoint>();
             if (choice != null && choice.CanTrigger(transform.position))
             {
-                choice.Trigger();
+                choice.Trigger(); // Trigger on entry
+                return;
+            }
+        }
+    }
+
+    void CheckForTransitionWaypoint()
+    {
+        if (movementLocked) return;
+        if (currentPath == null || currentPath.waypoints == null)
+            return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            TransitionWaypoint transition = wp.GetComponent<TransitionWaypoint>();
+            if (transition != null && transition.CanTrigger(transform.position))
+            {
+                Debug.Log("Triggering waypoint: " + wp.name);
+                transition.Trigger();
                 return;
             }
         }
