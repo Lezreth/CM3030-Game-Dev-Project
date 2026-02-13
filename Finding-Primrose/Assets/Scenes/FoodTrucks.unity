@@ -1578,7 +1578,7 @@ PrefabInstance:
     - target: {fileID: 3556477850584229164, guid: 459db6c578de4224ba5b84492ca277f5, type: 3}
       propertyPath: transitionSound
       value: 
-      objectReference: {fileID: 8300000, guid: b70ba99ded23ba344b42fca36428661e, type: 3}
+      objectReference: {fileID: 8300000, guid: 1cda05993039f7048bd3362323c19168, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
