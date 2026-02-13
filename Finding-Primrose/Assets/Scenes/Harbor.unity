@@ -381,9 +381,7 @@ MonoBehaviour:
   markerYOffset: 0.1
   depthThreshold: 0.5
   transitionDuration: 7
-  visualRoot: {fileID: 1688109252}
-  modelForwardYawOffset: 0
-  minTurnSpeedThreshold: 0.05
+  showDebugInfo: 1
 --- !u!1 &28441859
 GameObject:
   m_ObjectHideFlags: 0
@@ -24192,7 +24190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0fcd7db9100d540daae75d95ca77fd10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.334
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0fcd7db9100d540daae75d95ca77fd10, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24200,7 +24198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0fcd7db9100d540daae75d95ca77fd10, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.999726
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0fcd7db9100d540daae75d95ca77fd10, type: 3}
       propertyPath: m_LocalRotation.w
