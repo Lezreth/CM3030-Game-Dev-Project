@@ -25490,6 +25490,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2416466170821777262, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -25498,6 +25502,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1599358374}
+    - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519595321918415388, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0311efc801d2b5a4694862228da77189, type: 3}
     - target: {fileID: 5634116382855583704, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -25505,6 +25521,50 @@ PrefabInstance:
     - target: {fileID: 5634116382855583704, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300044, guid: e71d312ce01e68b4ab90d1c43c7d9599, type: 3}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b9fa6b1772f586e4b996cd3511b11329, type: 2}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 259.9473
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 125.7851
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -173.74883
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.8926
       objectReference: {fileID: 0}
     - target: {fileID: 6741019964626201443, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Name
@@ -26212,3 +26272,4 @@ SceneRoots:
   - {fileID: 2004643855}
   - {fileID: 1310821978}
   - {fileID: 6098009009582881600}
+  - {fileID: 1939739914}

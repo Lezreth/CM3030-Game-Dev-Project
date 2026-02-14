@@ -19857,6 +19857,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Back to the harbor
       objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3764706
+      objectReference: {fileID: 0}
     - target: {fileID: 6741019964626201443, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Name
       value: CanvasTransitionBubblesHarbor
