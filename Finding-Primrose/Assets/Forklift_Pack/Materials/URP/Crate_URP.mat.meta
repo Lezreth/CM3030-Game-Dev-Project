@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 05b305025df14f144a7234ab3e7ddc3f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 179618
+  packageName: Sci-fi Forklift - HDRP
+  packageVersion: 1.0
+  assetPath: Assets/Forklift_Pack/Materials/URP/Crate_URP.mat
+  uploadId: 391401

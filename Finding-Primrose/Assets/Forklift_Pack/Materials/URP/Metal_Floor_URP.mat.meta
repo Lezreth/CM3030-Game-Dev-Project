@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 40dd9dd840948e24f9f568eb38aeae15
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 179618
+  packageName: Sci-fi Forklift - HDRP
+  packageVersion: 1.0
+  assetPath: Assets/Forklift_Pack/Materials/URP/Metal_Floor_URP.mat
+  uploadId: 391401
