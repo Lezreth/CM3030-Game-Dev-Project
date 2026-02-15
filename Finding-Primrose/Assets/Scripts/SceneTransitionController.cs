@@ -69,9 +69,6 @@ public class SceneTransitionController : MonoBehaviour
 
     IEnumerator TransitionRoutine(string sceneName)
     {
-<<<<<<< HEAD
-        Debug.Log("Fading out");
-=======
         Debug.Log($"Fading out scene transition for: {sceneName}");
         Debug.Log("Fade OUT start");
 
@@ -81,7 +78,6 @@ public class SceneTransitionController : MonoBehaviour
         }
 
         fadeAnimator.SetTrigger("Out");
->>>>>>> 1788fc8363705f7e600342952f889eb579dd7834
 
         if (transitionSound != null && audioSource != null)
         {
