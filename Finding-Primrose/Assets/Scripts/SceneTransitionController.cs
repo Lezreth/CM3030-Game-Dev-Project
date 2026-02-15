@@ -42,6 +42,25 @@ public class SceneTransitionController : MonoBehaviour
         }
     }
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip transitionSound;
+
+    private static SceneTransitionController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);  
+        }
+        else
+        {
+            Destroy(gameObject);  
+        }
+    }
+
     public void StartSceneTransition(string sceneName)
     {
         Debug.Log("Starting transition to scene: " + sceneName);
@@ -50,7 +69,19 @@ public class SceneTransitionController : MonoBehaviour
 
     IEnumerator TransitionRoutine(string sceneName)
     {
+<<<<<<< HEAD
         Debug.Log("Fading out");
+=======
+        Debug.Log($"Fading out scene transition for: {sceneName}");
+        Debug.Log("Fade OUT start");
+
+        if (transitionSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(transitionSound);
+        }
+
+        fadeAnimator.SetTrigger("Out");
+>>>>>>> 1788fc8363705f7e600342952f889eb579dd7834
 
         if (transitionSound != null && audioSource != null)
         {
