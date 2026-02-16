@@ -12,6 +12,7 @@ public class ChoiceWaypoint : MonoBehaviour
     public GameObject choiceUI;
     public CanvasGroup choiceCanvas;
 
+    public GameObject npcObject;
     public float triggerRadius = 1.5f;
     private bool triggered = false;
     private bool waitingForExit = false;
@@ -28,6 +29,16 @@ public class ChoiceWaypoint : MonoBehaviour
     {
         if (triggered) return;
         triggered = true;
+
+        if (npcObject != null)
+        {
+            ChefPatrolRoutine patrol = npcObject.GetComponent<ChefPatrolRoutine>();
+            if (patrol != null)
+            {
+                Debug.Log("[ChoiceWaypoint] Stopping chef patrol");
+                patrol.StopPatrol();
+            }
+        }
 
         if (interaction != null)
         {
