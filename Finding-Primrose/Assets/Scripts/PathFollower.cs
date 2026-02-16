@@ -7,8 +7,14 @@ public class PathFollower : MonoBehaviour
     public PathData frontPath;
     public PathData middlePath;
     public PathData backPath;
-    public PathData backBackPath; // NEW 4th path
+    public PathData backBackPath; //4th path if desired
+
     public PathData currentPath;
+
+
+[Header("Animation")]  
+public Animator animator;
+
 
     [Header("Visuals")]
     public GameObject clickMarkerPrefab;
@@ -48,6 +54,7 @@ public class PathFollower : MonoBehaviour
     [Header("Transition Settings")]
     public float depthThreshold = 1.5f;
     public float transitionDuration = 0.5f;
+    public bool requireHallwayForTransitions = true;
 
     [Header("Debug")]
     public bool showDebugInfo = true;
@@ -75,7 +82,29 @@ public class PathFollower : MonoBehaviour
 
         if (currentPath == null)
             currentPath = frontPath;
+
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+        
+        // ADD THIS DEBUG
+        Debug.Log($"[PathFollower] Animator found: {(animator != null ? "YES" : "NO")}");
+        if (animator != null)
+        {
+            Debug.Log($"[PathFollower] Animator name: {animator.name}");
+            Debug.Log($"[PathFollower] Animator has 'Walk' parameter: {HasParameter(animator, "Walk")}");
+        }
     }
+
+    // ADD THIS HELPER METHOD
+    bool HasParameter(Animator anim, string paramName)
+    {
+        foreach (AnimatorControllerParameter param in anim.parameters)
+        {
+            if (param.name == paramName) return true;
+        }
+        return false;
+    }
+
 
     void Update()
     {
@@ -177,9 +206,8 @@ public class PathFollower : MonoBehaviour
         }
         else if (x > 0)
         {
-            // RIGHT SIDE - check both inner and outer hallways
-            
-            // Right outer hallway: 7.7 to 9.7
+         
+     
             if (x >= rightOuterHallwayInner)
             {
                 if (x > rightOuterHallwayOuter)
@@ -197,7 +225,7 @@ public class PathFollower : MonoBehaviour
                     debugMessage = "In right outer hallway";
                 }
             }
-            // Right inner hallway: 2.2 to 3.4
+           
             else
             {
                 if (x < rightInnerHallwayInner)
@@ -258,69 +286,106 @@ public class PathFollower : MonoBehaviour
         isMoving = true;
         ShowClickMarker(targetPosition);
         debugMessage = "Moving on current path";
-    }
+        }
+    
+void MoveToTarget()
+{
+    Vector3 currentPos = transform.position;
+    Vector3 targetPos = targetPosition;
+    
+    Vector3 moveDirection = targetPos - currentPos;
+    moveDirection.y = 0;
+    
+    float distanceToTarget = moveDirection.magnitude;
 
-    void MoveToTarget()
+    if (distanceToTarget > stoppingDistance)
     {
-        Vector3 currentPos = transform.position;
-        Vector3 targetPos = targetPosition;
         
-        Vector3 moveDirection = targetPos - currentPos;
-        moveDirection.y = 0;
+        Debug.Log($"[Animation] Moving! Distance: {distanceToTarget:F2}");
+        Debug.Log($"[Animation] Animator null? {(animator == null)}");
         
-        float distanceToTarget = moveDirection.magnitude;
-
-        if (distanceToTarget > stoppingDistance)
+        if (animator != null)
         {
-            Vector3 newPosition = Vector3.MoveTowards(
-                currentPos,
-                targetPos,
-                moveSpeed * Time.deltaTime
-            );
-            
-            transform.position = newPosition;
-
-            if (moveDirection.magnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime
-                );
-            }
+            animator.SetBool("Walk", true);
+            Debug.Log("[Animation] Set Walk = TRUE");
         }
         else
         {
-            isMoving = false;
-            transform.position = targetPosition;
+            Debug.LogError("[Animation] ANIMATOR IS NULL!");
+        }
+            
+        Vector3 newPosition = Vector3.MoveTowards(
+            currentPos,
+            targetPos,
+            moveSpeed * Time.deltaTime
+        );
+        
+        transform.position = newPosition;
+
+        if (moveDirection.magnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
         }
     }
+    else
+    {
+        
+        Debug.Log("[Animation] Stopped - Set Walk = FALSE");
+        
+        if (animator != null)
+            animator.SetBool("Walk", false);  
+            
+        isMoving = false;
+        transform.position = targetPosition;
+    }
+}
 
     public void LockMovement()
     {
         movementLocked = true;
         isMoving = false;
         isTransitioning = false;
+        
+        // Stop animation when locked
+        if (animator != null)
+            animator.SetBool("Walk", false);  
     }
 
     public void UnlockMovement()
     {
         movementLocked = false;
     }
-
+    
     bool ShouldTransition(Vector3 clickPosition)
     {
         float zDifference = clickPosition.z - transform.position.z;
+        
+        Debug.Log($"[ShouldTransition] Z diff: {Mathf.Abs(zDifference):F2}, Threshold: {depthThreshold}");
+        Debug.Log($"[ShouldTransition] Meets threshold: {(Mathf.Abs(zDifference) >= depthThreshold)}");
 
         if (Mathf.Abs(zDifference) < depthThreshold)
         {
+            Debug.Log("[ShouldTransition] FAILED - Not deep enough");
             return false;
         }
 
-        return IsInHallway(clickPosition.x);
-    }
+       
+        if (!requireHallwayForTransitions)
+        {
+            Debug.Log("[ShouldTransition] Hallway check disabled - allowing transition");
+            return true;
+        }
 
+     
+        bool inHallway = IsInHallway(clickPosition.x);
+        Debug.Log($"[ShouldTransition] Click X: {clickPosition.x:F2}, In hallway: {inHallway}");
+        return inHallway;
+    }
     bool IsInHallway(float xPosition)
     {
         // Check all 4 hallways
@@ -331,76 +396,86 @@ public class PathFollower : MonoBehaviour
         
         return inLeftInner || inRightInner || inLeftOuter || inRightOuter;
     }
+PathData GetTargetPath(Vector3 clickPosition)
+{
+    float zDifference = clickPosition.z - transform.position.z;
+    bool clickingBackward = zDifference > 0;
 
-    PathData GetTargetPath(Vector3 clickPosition)
+    string currentPathName = GetPathName(currentPath);
+    
+    Debug.Log("════════════════════════════════════════");
+    Debug.Log($"GetTargetPath CALLED");
+    Debug.Log($"Current: {currentPathName}");
+    Debug.Log($"Player Z: {transform.position.z:F2}");
+    Debug.Log($"Click Z: {clickPosition.z:F2}");
+    Debug.Log($"Z diff: {zDifference:F2}");
+    Debug.Log($"Clicking: {(clickingBackward ? "BACKWARD" : "FORWARD")}");
+    Debug.Log($"Middle Path assigned: {(middlePath != null ? "YES" : "NULL")}");
+    Debug.Log($"Back Path assigned: {(backPath != null ? "YES" : "NULL")}");
+    Debug.Log($"BackBack Path assigned: {(backBackPath != null ? "YES" : "NULL")}");
+
+    // Front → Middle (backward only)
+    if (currentPath == frontPath)
     {
-        float zDifference = clickPosition.z - transform.position.z;
-        bool clickingBackward = zDifference > 0;
-
-        string currentPathName = GetPathName(currentPath);
-        Debug.Log($"Current: {currentPathName}, Z diff: {zDifference:F2}, Clicking: {(clickingBackward ? "BACKWARD" : "FORWARD")}");
-
-        // Front → Middle (backward only)
-        if (currentPath == frontPath)
+        if (clickingBackward && middlePath != null)
         {
-            if (clickingBackward)
-            {
-                Debug.Log("Transitioning: Front → Middle");
-                debugMessage = "Front → Middle";
-                return middlePath;
-            }
-            return null;
+            Debug.Log("✓ Transitioning: Front → Middle");
+            return middlePath;
         }
-
-        // Middle → Front or Back
-        if (currentPath == middlePath)
-        {
-            if (clickingBackward)
-            {
-                Debug.Log("Transitioning: Middle → Back");
-                debugMessage = "Middle → Back";
-                return backPath;
-            }
-            else
-            {
-                Debug.Log("Transitioning: Middle → Front");
-                debugMessage = "Middle → Front";
-                return frontPath;
-            }
-        }
-
-        // Back → Middle or BackBack
-        if (currentPath == backPath)
-        {
-            if (clickingBackward)
-            {
-                Debug.Log("Transitioning: Back → BackBack");
-                debugMessage = "Back → BackBack";
-                return backBackPath;
-            }
-            else
-            {
-                Debug.Log("Transitioning: Back → Middle");
-                debugMessage = "Back → Middle";
-                return middlePath;
-            }
-        }
-
-        // BackBack → Back (forward only)
-        if (currentPath == backBackPath)
-        {
-            if (!clickingBackward)
-            {
-                Debug.Log("Transitioning: BackBack → Back");
-                debugMessage = "BackBack → Back";
-                return backPath;
-            }
-            return null;
-        }
-
+        Debug.Log("✗ Can't transition from Front (either not backward or middlePath null)");
         return null;
     }
 
+    // Middle → Front or Back
+    if (currentPath == middlePath)
+    {
+        if (clickingBackward && backPath != null)
+        {
+            Debug.Log("✓ Transitioning: Middle → Back");
+            return backPath;
+        }
+        else if (!clickingBackward && frontPath != null)
+        {
+            Debug.Log("✓ Transitioning: Middle → Front");
+            return frontPath;
+        }
+        Debug.Log("✗ Can't transition from Middle");
+        return null;
+    }
+
+    // Back → Middle or BackBack
+    if (currentPath == backPath)
+    {
+        if (clickingBackward && backBackPath != null)
+        {
+            Debug.Log("✓ Transitioning: Back → BackBack");
+            return backBackPath;
+        }
+        else if (!clickingBackward && middlePath != null)
+        {
+            Debug.Log("✓ Transitioning: Back → Middle");
+            return middlePath;
+        }
+        Debug.Log("✗ Can't transition from Back");
+        return null;
+    }
+
+    // BackBack → Back (forward only)
+    if (currentPath == backBackPath)
+    {
+        if (!clickingBackward && backPath != null)
+        {
+            Debug.Log("✓ Transitioning: BackBack → Back");
+            return backPath;
+        }
+        Debug.Log("✗ Can't transition from BackBack");
+        return null;
+    }
+
+    Debug.Log("✗ Current path doesn't match any known path!");
+    Debug.Log("════════════════════════════════════════");
+    return null;
+}
     void TransitionToPath(PathData newPath, float clickX)
     {
         if (newPath == null || isTransitioning) return;
@@ -422,34 +497,43 @@ public class PathFollower : MonoBehaviour
 
     void HandleTransition()
     {
-        transitionTimer += Time.deltaTime;
-        float progress = Mathf.Clamp01(transitionTimer / transitionDuration);
 
-        Vector3 newPos = Vector3.Lerp(transitionStartPos, transitionEndPos, progress);
-        newPos.x = transitionHallwayX;
+        if (animator != null)
+        animator.SetBool("Walk", true);
         
-        transform.position = newPos;
-        
-        Vector3 direction = transitionEndPos - transitionStartPos;
-        direction.y = 0;
-        direction.x = 0;
-        
-        if (direction.magnitude > 0.01f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
-        }
+    transitionTimer += Time.deltaTime;
+    float progress = Mathf.Clamp01(transitionTimer / transitionDuration);
 
-        if (progress >= 1f)
-        {
-            isTransitioning = false;
-            transform.position = transitionEndPos;
-            Debug.Log($"Transition complete. Now on: {GetPathName(currentPath)}");
-        }
+    Vector3 newPos = Vector3.Lerp(transitionStartPos, transitionEndPos, progress);
+    newPos.x = transitionHallwayX;
+    
+    transform.position = newPos;
+    
+    Vector3 direction = transitionEndPos - transitionStartPos;
+    direction.y = 0;
+    direction.x = 0;
+    
+    if (direction.magnitude > 0.01f)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
+    }
+
+    if (progress >= 1f)
+    {
+        // ADD THIS - Stop walking when transition completes
+        if (animator != null)
+            animator.SetBool("Walk", false);
+            
+        isTransitioning = false;
+        transform.position = transitionEndPos;
+        Debug.Log($"Transition complete. Now on: {GetPathName(currentPath)}");
+    
+    }
     }
 
     void CheckWaypointExits()
@@ -507,98 +591,98 @@ public class PathFollower : MonoBehaviour
         return "UNKNOWN";
     }
 
-    void OnGUI()
-    {
-        if (!showDebugInfo) return;
+    // void OnGUI()
+    // {
+    //     if (!showDebugInfo) return;
 
-        GUI.color = Color.yellow;
-        GUI.Label(new Rect(10, 10, 400, 20), $"Current Path: {GetPathName(currentPath)}");
-        GUI.Label(new Rect(10, 30, 400, 20), $"Status: {debugMessage}");
-        GUI.Label(new Rect(10, 50, 400, 20), $"Moving: {isMoving} | Transitioning: {isTransitioning}");
+    //     GUI.color = Color.yellow;
+    //     GUI.Label(new Rect(10, 10, 400, 20), $"Current Path: {GetPathName(currentPath)}");
+    //     GUI.Label(new Rect(10, 30, 400, 20), $"Status: {debugMessage}");
+    //     GUI.Label(new Rect(10, 50, 400, 20), $"Moving: {isMoving} | Transitioning: {isTransitioning}");
         
-        GUI.Label(new Rect(10, 70, 400, 20), $"Left Inner: [{leftInnerHallwayOuter:F2} to {leftInnerHallwayInner:F2}]");
-        GUI.Label(new Rect(10, 90, 400, 20), $"Right Inner: [{rightInnerHallwayInner:F2} to {rightInnerHallwayOuter:F2}]");
-        GUI.Label(new Rect(10, 110, 400, 20), $"Left Outer: [{leftOuterHallwayOuter:F2} to {leftOuterHallwayInner:F2}]");
-        GUI.Label(new Rect(10, 130, 400, 20), $"Right Outer: [{rightOuterHallwayInner:F2} to {rightOuterHallwayOuter:F2}]");
+    //     GUI.Label(new Rect(10, 70, 400, 20), $"Left Inner: [{leftInnerHallwayOuter:F2} to {leftInnerHallwayInner:F2}]");
+    //     GUI.Label(new Rect(10, 90, 400, 20), $"Right Inner: [{rightInnerHallwayInner:F2} to {rightInnerHallwayOuter:F2}]");
+    //     GUI.Label(new Rect(10, 110, 400, 20), $"Left Outer: [{leftOuterHallwayOuter:F2} to {leftOuterHallwayInner:F2}]");
+    //     GUI.Label(new Rect(10, 130, 400, 20), $"Right Outer: [{rightOuterHallwayInner:F2} to {rightOuterHallwayOuter:F2}]");
         
-        if (isTransitioning)
-        {
-            GUI.Label(new Rect(10, 150, 400, 20), $"Hallway X: {transitionHallwayX:F2}");
-        }
-    }
+    //     if (isTransitioning)
+    //     {
+    //         GUI.Label(new Rect(10, 150, 400, 20), $"Hallway X: {transitionHallwayX:F2}");
+    //     }
+    // }
 
-    void OnDrawGizmos()
-    {
-        if (!showBoundaries) return;
+    // void OnDrawGizmos()
+    // {
+    //     if (!showBoundaries) return;
 
-        float zPos = transform.position.z;
-        float zLength = 30f;
+    //     float zPos = transform.position.z;
+    //     float zLength = 30f;
         
-        // Left inner hallway (cyan)
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(
-            new Vector3(leftInnerHallwayOuter, 0.5f, zPos - zLength/2),
-            new Vector3(leftInnerHallwayOuter, 0.5f, zPos + zLength/2)
-        );
-        Gizmos.DrawLine(
-            new Vector3(leftInnerHallwayInner, 0.5f, zPos - zLength/2),
-            new Vector3(leftInnerHallwayInner, 0.5f, zPos + zLength/2)
-        );
+    //     // Left inner hallway (cyan)
+    //     Gizmos.color = Color.cyan;
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftInnerHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftInnerHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftInnerHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftInnerHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
         
-        // Right inner hallway (cyan)
-        Gizmos.DrawLine(
-            new Vector3(rightInnerHallwayInner, 0.5f, zPos - zLength/2),
-            new Vector3(rightInnerHallwayInner, 0.5f, zPos + zLength/2)
-        );
-        Gizmos.DrawLine(
-            new Vector3(rightInnerHallwayOuter, 0.5f, zPos - zLength/2),
-            new Vector3(rightInnerHallwayOuter, 0.5f, zPos + zLength/2)
-        );
+    //     // Right inner hallway (cyan)
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightInnerHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightInnerHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightInnerHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightInnerHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
 
-        // Left outer hallway (magenta)
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(
-            new Vector3(leftOuterHallwayOuter, 0.5f, zPos - zLength/2),
-            new Vector3(leftOuterHallwayOuter, 0.5f, zPos + zLength/2)
-        );
-        Gizmos.DrawLine(
-            new Vector3(leftOuterHallwayInner, 0.5f, zPos - zLength/2),
-            new Vector3(leftOuterHallwayInner, 0.5f, zPos + zLength/2)
-        );
+    //     // Left outer hallway (magenta)
+    //     Gizmos.color = Color.magenta;
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftOuterHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftOuterHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftOuterHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftOuterHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
         
-        // Right outer hallway (magenta)
-        Gizmos.DrawLine(
-            new Vector3(rightOuterHallwayInner, 0.5f, zPos - zLength/2),
-            new Vector3(rightOuterHallwayInner, 0.5f, zPos + zLength/2)
-        );
-        Gizmos.DrawLine(
-            new Vector3(rightOuterHallwayOuter, 0.5f, zPos - zLength/2),
-            new Vector3(rightOuterHallwayOuter, 0.5f, zPos + zLength/2)
-        );
+    //     // Right outer hallway (magenta)
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightOuterHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightOuterHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightOuterHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightOuterHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
 
-        // Draw transition path
-        if (isTransitioning)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(
-                new Vector3(transitionHallwayX, 0.5f, transitionStartPos.z),
-                new Vector3(transitionHallwayX, 0.5f, transitionEndPos.z)
-            );
-        }
+    //     // Draw transition path
+    //     if (isTransitioning)
+    //     {
+    //         Gizmos.color = Color.yellow;
+    //         Gizmos.DrawLine(
+    //             new Vector3(transitionHallwayX, 0.5f, transitionStartPos.z),
+    //             new Vector3(transitionHallwayX, 0.5f, transitionEndPos.z)
+    //         );
+    //     }
 
-        // Draw last click
-        if (lastClickPosition != Vector3.zero)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(lastClickPosition, 0.3f);
-        }
+    //     // Draw last click
+    //     if (lastClickPosition != Vector3.zero)
+    //     {
+    //         Gizmos.color = Color.red;
+    //         Gizmos.DrawSphere(lastClickPosition, 0.3f);
+    //     }
         
-        // Draw current target
-        if (isMoving && targetPosition != Vector3.zero)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawSphere(targetPosition, 0.2f);
-            Gizmos.DrawLine(transform.position, targetPosition);
-        }
-    }
+    //     // Draw current target
+    //     if (isMoving && targetPosition != Vector3.zero)
+    //     {
+    //         Gizmos.color = Color.white;
+    //         Gizmos.DrawSphere(targetPosition, 0.2f);
+    //         Gizmos.DrawLine(transform.position, targetPosition);
+    //     }
+    // }
 }

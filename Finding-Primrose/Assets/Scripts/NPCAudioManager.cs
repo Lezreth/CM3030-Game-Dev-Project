@@ -29,9 +29,42 @@ public class NPCAudioManager : MonoBehaviour
     [Header("Choice B Sequence (plays AFTER choice B selected)")]
     public AudioSequence choiceB;
 
+  
+    [Header("Proximity Detection")]
+    public float triggerDistance = 0.5f;
+    public string playerTag = "Player";
+    
+    private bool hasPlayedApproach = false;
+    private Transform playerTransform;
+    
     private Coroutine currentPlayback;
 
-    // Called when player first approaches NPC (before choices shown)
+
+    void Start()
+    {
+        // Find the player
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        if (player != null)
+            playerTransform = player.transform;
+    }
+
+
+    void Update()
+    {
+        if (playerTransform == null || hasPlayedApproach)
+            return;
+
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        
+        if (distance <= triggerDistance)
+        {
+            Debug.Log($"[NPCAudio] Player within {triggerDistance}m! Playing approach sequence.");
+            hasPlayedApproach = true;
+            PlayApproachSequence();
+        }
+    }
+
+    
     public void PlayApproachSequence()
     {
         PlaySequence(approachSequence);
@@ -49,7 +82,7 @@ public class NPCAudioManager : MonoBehaviour
         PlaySequence(choiceB);
     }
 
-    // Generic play method
+   
     public void PlaySequence(AudioSequence sequence)
     {
         if (sequence == null || sequence.steps == null || sequence.steps.Length == 0)
@@ -71,10 +104,10 @@ public class NPCAudioManager : MonoBehaviour
             source.clip = step.clip;
             source.Play();
 
-            // Wait until the clip finishes
+    
             yield return new WaitForSeconds(step.clip.length);
 
-            // Optional extra pause
+          
             if (step.delayAfter > 0f)
                 yield return new WaitForSeconds(step.delayAfter);
         }
@@ -97,5 +130,11 @@ public class NPCAudioManager : MonoBehaviour
             }
         }
         return totalDuration;
+    }
+
+
+    public void ResetApproachTrigger()
+    {
+        hasPlayedApproach = false;
     }
 }
