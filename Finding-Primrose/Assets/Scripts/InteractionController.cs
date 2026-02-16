@@ -23,6 +23,10 @@ public class InteractionController : MonoBehaviour
             source.choiceCanvas,
             source.npcFocusPoint
         );
+
+        
+    interactionActive = true;
+    Debug.Log("[InteractionController] Starting new interaction");
     }
 
     public void ReturnToExploration()

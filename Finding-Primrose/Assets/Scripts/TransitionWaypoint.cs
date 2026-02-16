@@ -57,3 +57,4 @@ public class TransitionWaypoint : MonoBehaviour
         triggered = false;
     }
 }
+
