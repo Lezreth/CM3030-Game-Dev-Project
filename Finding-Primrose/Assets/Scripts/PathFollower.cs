@@ -86,7 +86,7 @@ public Animator animator;
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
         
-        // ADD THIS DEBUG
+        // debug
         Debug.Log($"[PathFollower] Animator found: {(animator != null ? "YES" : "NO")}");
         if (animator != null)
         {
@@ -95,7 +95,7 @@ public Animator animator;
         }
     }
 
-    // ADD THIS HELPER METHOD
+ 
     bool HasParameter(Animator anim, string paramName)
     {
         foreach (AnimatorControllerParameter param in anim.parameters)
@@ -165,8 +165,7 @@ public Animator animator;
         // Determine which hallway based on X position
         if (x < 0)
         {
-            // LEFT SIDE - check both inner and outer hallways
-            
+           
             // Left outer hallway: -10.5 to -8
             if (x <= leftOuterHallwayInner)
             {
@@ -525,7 +524,7 @@ PathData GetTargetPath(Vector3 clickPosition)
 
     if (progress >= 1f)
     {
-        // ADD THIS - Stop walking when transition completes
+        //  Stop walking when transition completes
         if (animator != null)
             animator.SetBool("Walk", false);
             
@@ -591,6 +590,14 @@ PathData GetTargetPath(Vector3 clickPosition)
         return "UNKNOWN";
     }
 
+
+
+///
+/// 
+///    GUI PRINTOUT ON SCREEN FOR DEBUGGING 
+///     
+/// 
+/// 
     // void OnGUI()
     // {
     //     if (!showDebugInfo) return;

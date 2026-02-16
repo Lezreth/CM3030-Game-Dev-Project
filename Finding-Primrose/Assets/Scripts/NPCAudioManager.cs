@@ -37,7 +37,7 @@ public class NPCAudioManager : MonoBehaviour
     private Transform playerTransform;
     private Coroutine currentPlayback;
     
-    // For debug logging
+    // debug logging
     private float lastDebugTime = 0f;
     private float debugInterval = 0.5f; 
 
