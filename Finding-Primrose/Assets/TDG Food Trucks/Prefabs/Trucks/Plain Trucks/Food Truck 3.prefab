@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1629271412936024172
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9052822581370804179, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Rear Door R
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8643513823032092451, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Top Door
+      objectReference: {fileID: 0}
+    - target: {fileID: -7155924147128628699, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Rear Door L
+      objectReference: {fileID: 0}
+    - target: {fileID: -6630984988947143355, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Board 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5820988678768660327, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Side Door
+      objectReference: {fileID: 0}
+    - target: {fileID: -5516008889983768367, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Board 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4298654220823988024, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Board 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3921211961424963885, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wheel RR
+      objectReference: {fileID: 0}
+    - target: {fileID: -2071749345623812775, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wiper R
+      objectReference: {fileID: 0}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: e07adc1afbbe9e34cad314d14af41e52, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 627d668fbb41dbb4d8895dba2b38e2ef, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[10]
+      value: 
+      objectReference: {fileID: 2100000, guid: 627d668fbb41dbb4d8895dba2b38e2ef, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[11]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[12]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[13]
+      value: 
+      objectReference: {fileID: 2100000, guid: 627d668fbb41dbb4d8895dba2b38e2ef, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[14]
+      value: 
+      objectReference: {fileID: 2100000, guid: a62e92047b0bf354c84a9e663293c2ec, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[17]
+      value: 
+      objectReference: {fileID: 2100000, guid: fa770510b1f84914398185e54ff2e239, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[21]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49e0be60da2847c4280731d4aa4069a0, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[23]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[24]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: -1969848244874594330, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[25]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66975a8f53b51f648b112dffe63ca61f, type: 2}
+    - target: {fileID: -1504594061483356156, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47b5d428cac45a34a83a7f23d3692456, type: 2}
+    - target: {fileID: 250986125936358388, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wheel FL
+      objectReference: {fileID: 0}
+    - target: {fileID: 444001523030854386, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Roof Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Food Truck 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090757852647683129, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wheel RL
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869358581504038677, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccb22fb8b1ac23a4da764b4c66cf8403, type: 2}
+    - target: {fileID: 7343166796176588092, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d344252aaf2e03b428154314e6b826ef, type: 2}
+    - target: {fileID: 7380404194360812919, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Main Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748574470494689995, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wheel FR
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758837645878354759, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}
+      propertyPath: m_Name
+      value: Wiper L
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7fefc28d78fabd42993db3c1d4a5c5d, type: 3}

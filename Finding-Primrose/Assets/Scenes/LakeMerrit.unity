@@ -194,6 +194,7 @@ MonoBehaviour:
   backPath: {fileID: 396292076}
   backBackPath: {fileID: 0}
   currentPath: {fileID: 1674317452}
+  animator: {fileID: 0}
   clickMarkerPrefab: {fileID: 1997578560882967963, guid: f8b553b4cf812e74a8d5df01e98943ab, type: 3}
   mainCamera: {fileID: 1305973987}
   moveSpeed: 3
@@ -22848,15 +22849,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1737641357, guid: 5f1749b12bf86c645ae80d92fdd45e6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.452
+      value: -7.868
       objectReference: {fileID: 0}
     - target: {fileID: 1737641357, guid: 5f1749b12bf86c645ae80d92fdd45e6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
+      value: 0.147
       objectReference: {fileID: 0}
     - target: {fileID: 1737641357, guid: 5f1749b12bf86c645ae80d92fdd45e6d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.08
+      value: 1.479
       objectReference: {fileID: 0}
     - target: {fileID: 1737641357, guid: 5f1749b12bf86c645ae80d92fdd45e6d, type: 3}
       propertyPath: m_LocalRotation.w
