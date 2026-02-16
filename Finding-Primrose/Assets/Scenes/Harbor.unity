@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 101614523}
   - component: {fileID: 101614522}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: speaking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,7 +814,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 4762faabd2f9c47ae835f7efad0a6e5d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -909,7 +909,7 @@ Transform:
   m_GameObject: {fileID: 101614521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 10.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12896,7 +12896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c032fb4e23fc149318f92ad466dbf19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCAudioManager
-  source: {fileID: 0}
+  source: {fileID: 101614522}
   approachSequence:
     steps:
     - clip: {fileID: 8300000, guid: 4762faabd2f9c47ae835f7efad0a6e5d, type: 3}
@@ -12913,7 +12913,7 @@ MonoBehaviour:
     steps:
     - clip: {fileID: 8300000, guid: 8e970582e927641079d49162c99f87f3, type: 3}
       delayAfter: 0
-  triggerDistance: 0.5
+  triggerDistance: 2.5
   playerTag: Player
 --- !u!1 &1504418046
 GameObject:
