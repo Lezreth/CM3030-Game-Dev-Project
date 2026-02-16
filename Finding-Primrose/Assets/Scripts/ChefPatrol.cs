@@ -25,8 +25,8 @@ public class ChefPatrolRoutine : MonoBehaviour
 
         [Header("Animation Trigger")]
         [Tooltip("Animator trigger to fire after arriving (and after facing, if enabled).")]
-        public string triggerName;          // e.g. "DoCleanTable"
-        public float triggerDelay = 0f;     // delay after arrival before triggering
+        public string triggerName;    
+        public float triggerDelay = 0f;   
     }
 
     [Header("Route (in order)")]
@@ -79,10 +79,12 @@ public class ChefPatrolRoutine : MonoBehaviour
             Debug.Log($"[Chef] Walking to route point {i}: {p.point.name}");
             yield return WalkToWaypoint(p.point);
 
-            // Stop orientation (before action)
+            // Stop orientation 
             if (p.setFacing)
             {
                 float y = p.useWaypointRotation ? p.point.eulerAngles.y : p.facingY;
+                Debug.Log($"[Chef] STOP FACE at {p.point.name}: setFacing={p.setFacing} useWaypointRotation={p.useWaypointRotation} facingY={p.facingY:F1} waypointY={p.point.eulerAngles.y:F1} rotateTarget={rotateTarget.name} currentY={rotateTarget.eulerAngles.y:F1}");
+
                 yield return RotateToFacing(y);
             }
 
