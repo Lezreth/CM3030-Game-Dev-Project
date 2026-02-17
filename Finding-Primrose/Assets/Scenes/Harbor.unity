@@ -25421,6 +25421,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: enableTestingKeys
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: requiredScenes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: 'requiredScenes.Array.data[0]'
+      value: Ending1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: 'requiredScenes.Array.data[1]'
+      value: Ending2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: 'requiredScenes.Array.data[2]'
+      value: Ending3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432589302513877526, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
+      propertyPath: 'requiredScenes.Array.data[3]'
+      value: Ending4
+      objectReference: {fileID: 0}
     - target: {fileID: 5665655469682748337, guid: eb99864ec962a5b49a8b4bc30a2163aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.01

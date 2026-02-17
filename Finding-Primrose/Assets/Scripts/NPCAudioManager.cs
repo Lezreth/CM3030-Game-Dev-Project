@@ -86,17 +86,17 @@ public class NPCAudioManager : MonoBehaviour
         // Print distance periodically
         if (Time.time - lastDebugTime >= debugInterval)
         {
-            Debug.Log($"[NPCAudio] Distance to player: {distance:F2}m (trigger at {triggerDistance}m)");
+            //Debug.Log($"[NPCAudio] Distance to player: {distance:F2}m (trigger at {triggerDistance}m)");
             lastDebugTime = Time.time;
         }
         
         if (!hasPlayedApproach && distance <= triggerDistance)
         {
-            Debug.Log("════════════════════════════════════════");
-            Debug.Log($"[NPCAudio] TRIGGERED! Player within {triggerDistance}m!");
-            Debug.Log($"[NPCAudio] Current distance: {distance:F2}m");
-            Debug.Log($"[NPCAudio] Playing approach sequence NOW");
-            Debug.Log("════════════════════════════════════════");
+            // Debug.Log("════════════════════════════════════════");
+            // Debug.Log($"[NPCAudio] TRIGGERED! Player within {triggerDistance}m!");
+            // Debug.Log($"[NPCAudio] Current distance: {distance:F2}m");
+            // Debug.Log($"[NPCAudio] Playing approach sequence NOW");
+            // Debug.Log("════════════════════════════════════════");
             
             hasPlayedApproach = true;
             PlayApproachSequence();
