@@ -33,7 +33,7 @@ public class SceneTransitionController : MonoBehaviour
 
     void Start()
     {
-        // Start clear
+        
         if (fadeImage != null)
         {
             Color c = fadeImage.color;
