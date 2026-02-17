@@ -1,270 +1,3 @@
-// using UnityEngine;
-// using UnityEngine.InputSystem;
-
-// public class PathFollower : MonoBehaviour
-// {
-
-
-//     public PathData frontPath;
-//     public PathData middlePath;
-//     public PathData backPath;
-//     public PathData currentPath;
-//     public GameObject clickMarkerPrefab;
-//     public Camera mainCamera;
-   
-    
-   
-//     public float moveSpeed = 3f;
-//     public float rotationSpeed = 5f;
-//     public float stoppingDistance = 0.1f;
-    
-//     public float markerLifetime = 0.5f;
-//     public float markerYOffset = 0.1f;
-    
-  
-//     public float transitionZThreshold = -1f; // Z value to trigger path switch
-//     public float transitionDuration = 0.5f;
-    
-//     private Vector3 targetPosition;
-//     private bool isMoving = false;
-//     private bool isTransitioning = false;
-//     private float transitionTimer = 0f;
-
-//     private Vector3 lastClickPosition;
-//     private string debugInfo = "Click to see position";
-//     private Vector3 transitionStartPos;
-//     private Vector3 transitionEndPos;
-    
-//     void Start()
-//     {
-//         if (mainCamera == null)
-//             mainCamera = Camera.main;
-            
-//         // Start on front path by default
-//         if (currentPath == null)
-//             currentPath = frontPath;
-//     }
-    
-//     void Update()
-//     {
-//         // Handle path transitions
-//         if (isTransitioning)
-//         {
-//             HandleTransition();
-//             return;
-//         }
-        
-//         // Handle mouse click
-//         if (Mouse.current.leftButton.wasPressedThisFrame)
-//         {
-//             HandleClick();
-//         }
-                
-//         // Move character
-//         if (isMoving)
-//         {
-//             MoveToTarget();
-//         }
-//     }
-    
-//     void HandleClick()
-//     {
-//         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-//         RaycastHit hit;
-        
-//         // Raycast to find click position
-//         if (Physics.Raycast(ray, out hit, 100f))
-//         {
-//             //store last click position for debug
-//             lastClickPosition = hit.point;
-//             debugInfo = $"Click: X={hit.point.x:F2}, Y={hit.point.y:F2}, Z={hit.point.z:F2}";
-            
-//             // Check if this click should trigger a transition
-//             if (ShouldTransition(hit.point))
-//             {
-//                 // Determine which path to transition to
-//                 PathData targetPath = DeterminePathFromClick(hit.point);
-                
-//                 if (targetPath != currentPath && targetPath != null)
-//                 {
-//                     TransitionToPath(targetPath);
-//                     return; // Don't set movement target during transition
-//                 }
-//             }
-//              else
-//             {
-//                 debugInfo = "Click missed - no collider!";
-//             }
-            
-//             // Normal movement on current path
-//             if (currentPath != null)
-//             {
-//                 targetPosition = currentPath.GetClosestPointOnPath(hit.point);
-//                 isMoving = true;
-//                 ShowClickMarker(targetPosition);
-//             }
-//         }
-//             }
-//         bool ShouldTransition(Vector3 clickPosition)
-//         {
-//             // Calculate Z difference between click and dog
-//             float zDifference = clickPosition.z - transform.position.z;
-            
-//             // Only transition if clicking significantly forward or backward
-//             float depthThreshold = 1f;
-            
-//             if (Mathf.Abs(zDifference) < depthThreshold)
-//             {
-//                 // Click is roughly at dog's depth - just move horizontally
-//                 return false;
-//             }
-            
-//             // Check if click is in valid transition zones (gaps between containers)
-//             bool inLeftGap = clickPosition.x >= -3.75f && clickPosition.x <= -1.75f;
-//             bool inRightGap = clickPosition.x >= 1.75f && clickPosition.x <= 3.75f;
-            
-//             return inLeftGap || inRightGap;
-//         }
-
-//         PathData DeterminePathFromClick(Vector3 clickPosition)
-//         {
-//             // Compare click position and primrose current position
-//             float zDifference = clickPosition.z - transform.position.z;
-            
-//             // Determine direction
-//             bool clickingForward = zDifference < 0;
-//             bool clickingBackward = zDifference > 0;
-            
-//             // Transition to next path based on current path and click direction
-//             if (currentPath == frontPath)
-//             {
-//                 if (clickingBackward)
-//                     return middlePath; // Front → Middle
-//                 else
-//                     return frontPath; // Stay on front
-//             }
-//             else if (currentPath == middlePath)
-//             {
-//                 if (clickingBackward)
-//                     return backPath; // Middle → Back
-//                 else if (clickingForward)
-//                     return frontPath; // Middle → Front
-//                 else
-//                     return middlePath; // Stay on middle
-//             }
-//             else if (currentPath == backPath)
-//             {
-//                 if (clickingForward)
-//                     return middlePath; // Back → Middle
-//                 else
-//                     return backPath; // Stay on back
-//             }
-            
-//             // Fallback
-//             return currentPath;
-//         }
-    
-//     void MoveToTarget()
-//     {
-//         // Calculate direction
-//         Vector3 direction = (targetPosition - transform.position);
-//         direction.y = 0; // Keep on same y-level
-        
-//         // Move toward target
-//         transform.position = Vector3.MoveTowards(
-//             transform.position,
-//             targetPosition,
-//             moveSpeed * Time.deltaTime
-//         );
-        
-//         // turn toward movement direction
-//         if (direction.magnitude > 0.1f)
-//         {
-//             direction.Normalize();
-//             Quaternion targetRotation = Quaternion.LookRotation(direction);
-//             transform.rotation = Quaternion.Slerp(
-//                 transform.rotation,
-//                 targetRotation,
-//                 rotationSpeed * Time.deltaTime
-//             );
-//         }
-        
-//         // Stop when point reached
-//         if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
-//         {
-//             isMoving = false;
-//         }
-//     }
-    
-//     void ShowClickMarker(Vector3 position)
-//     {
-//         if (clickMarkerPrefab != null)
-//         {
-//             Vector3 markerPos = position;
-//             markerPos.y += markerYOffset;
-            
-//             GameObject marker = Instantiate(clickMarkerPrefab, markerPos, Quaternion.identity);
-//             Destroy(marker, markerLifetime);
-//         }
-//     }
-    
-//     void TransitionToPath(PathData newPath)
-//     {
-//         if (newPath == null || isTransitioning)
-//             return;
-            
-//         // Find closest point on new path
-//         Vector3 newPathPoint = newPath.GetClosestPointOnPath(transform.position);
-        
-//         // Start transition
-//         isTransitioning = true;
-//         isMoving = false;
-//         transitionTimer = 0f;
-//         transitionStartPos = transform.position;
-//         transitionEndPos = newPathPoint;
-        
-//         // Switch path
-//         currentPath = newPath;
-//     }
-    
-//     void HandleTransition()
-//     {
-//         transitionTimer += Time.deltaTime;
-//         float progress = transitionTimer / transitionDuration;
-        
-//         // move between paths
-//         transform.position = Vector3.Lerp(transitionStartPos, transitionEndPos, progress);
-        
-//         // End transition
-//         if (progress >= 1f)
-//         {
-//             isTransitioning = false;
-//             transform.position = transitionEndPos;
-//         }
-//     }
-
-//   void OnGUI()
-//     {
-//         GUI.contentColor = Color.yellow;
-//         GUI.Label(new Rect(10, 10, 500, 20), debugInfo);
-        
-//         if (lastClickPosition != Vector3.zero)
-//         {
-//             float zDiff = lastClickPosition.z - transform.position.z;
-//             bool shouldTrans = ShouldTransition(lastClickPosition);
-            
-//             string currentPathName = currentPath == frontPath ? "Front" : 
-//                                     currentPath == middlePath ? "Middle" : "Back";
-            
-//             GUI.Label(new Rect(10, 30, 500, 20), $"Current Path: {currentPathName}");
-//             GUI.Label(new Rect(10, 50, 500, 20), $"Z Difference: {zDiff:F2} (Threshold: 1.5)");
-//             GUI.Label(new Rect(10, 70, 500, 20), $"Should Transition: {shouldTrans}");
-//         }
-//     }
-// }
-
-
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -274,279 +7,550 @@ public class PathFollower : MonoBehaviour
     public PathData frontPath;
     public PathData middlePath;
     public PathData backPath;
+    public PathData backBackPath; //4th path if desired
+
     public PathData currentPath;
-    
+
+
+[Header("Animation")]  
+public Animator animator;
+
+
     [Header("Visuals")]
     public GameObject clickMarkerPrefab;
     public Camera mainCamera;
-    
+
     [Header("Movement")]
     public float moveSpeed = 3f;
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 10f;
     public float stoppingDistance = 0.1f;
+
+    [Header("Inner Hallway Boundaries")]
+    [Tooltip("Left inner hallway - inner edge (closest to center)")]
+    public float leftInnerHallwayInner = -2.1f;
+    [Tooltip("Left inner hallway - outer edge (further from center)")]
+    public float leftInnerHallwayOuter = -3.3f;
     
-    [Header("Marker (aka bone)")]
+    [Tooltip("Right inner hallway - inner edge (closest to center)")]
+    public float rightInnerHallwayInner = 2.2f;
+    [Tooltip("Right inner hallway - outer edge (further from center)")]
+    public float rightInnerHallwayOuter = 3.4f;
+
+    [Header("Outer Hallway Boundaries")]
+    [Tooltip("Left outer hallway - inner edge")]
+    public float leftOuterHallwayInner = -8f;
+    [Tooltip("Left outer hallway - outer edge")]
+    public float leftOuterHallwayOuter = -10.5f;
+    
+    [Tooltip("Right outer hallway - inner edge")]
+    public float rightOuterHallwayInner = 7.7f;
+    [Tooltip("Right outer hallway - outer edge")]
+    public float rightOuterHallwayOuter = 9.7f;
+
+    [Header("Marker")]
     public float markerLifetime = 0.5f;
     public float markerYOffset = 0.1f;
-    
+
     [Header("Transition Settings")]
-    public float depthThreshold = 1.5f; // How far forward/back to trigger transition
+    public float depthThreshold = 1.5f;
     public float transitionDuration = 0.5f;
-    
-    // Private variables
+    public bool requireHallwayForTransitions = true;
+
+    [Header("Debug")]
+    public bool showDebugInfo = true;
+    public bool showBoundaries = true;
+
+    // State
     private Vector3 targetPosition;
-    private bool isMoving = false;
-    private bool isTransitioning = false;
-    private float transitionTimer = 0f;
+    private bool isMoving;
+    private bool isTransitioning;
+    private bool movementLocked;
+
+    // Transition state
+    private float transitionTimer;
     private Vector3 transitionStartPos;
     private Vector3 transitionEndPos;
-    //to freeze primrose during UI choice
-    private bool movementLocked = false;
+    private float transitionHallwayX;
 
-
-    // Debug
     private Vector3 lastClickPosition;
-    private string debugInfo = "Click to see position";
-    
+    private string debugMessage = "";
+
     void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
-            
+
         if (currentPath == null)
             currentPath = frontPath;
+
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+        
+        // debug
+        Debug.Log($"[PathFollower] Animator found: {(animator != null ? "YES" : "NO")}");
+        if (animator != null)
+        {
+            Debug.Log($"[PathFollower] Animator name: {animator.name}");
+            Debug.Log($"[PathFollower] Animator has 'Walk' parameter: {HasParameter(animator, "Walk")}");
+        }
     }
-    
+
+ 
+    bool HasParameter(Animator anim, string paramName)
+    {
+        foreach (AnimatorControllerParameter param in anim.parameters)
+        {
+            if (param.name == paramName) return true;
+        }
+        return false;
+    }
+
+
     void Update()
     {
-        //used for freezing/unfreezing primrose
-        if (movementLocked)
-        {
-            return;
-        }
-            
+        CheckWaypointExits();
+
+        if (movementLocked) return;
+
         if (isTransitioning)
         {
             HandleTransition();
             return;
         }
-        
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            HandleClick();
-        }
-                
+
+        HandleInput();
+
         if (isMoving)
-        {
             MoveToTarget();
-        }
 
-        CheckChoiceWaypointExit();
+        CheckWaypointTriggers();
     }
 
-    //Checks if primrose has exited the waypoint to re-trigger
-    void CheckChoiceWaypointExit()
+    void HandleInput()
     {
-        if (currentPath == null || currentPath.waypoints == null)
-            return;
+        if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 
-        foreach (Transform wp in currentPath.waypoints)
-        {
-            if (wp == null) continue;
-
-            ChoiceWaypoint choice = wp.GetComponent<ChoiceWaypoint>();
-            if (choice != null)
-            {
-                choice.CheckExit(transform.position);
-            }
-        }
-    }
-
-
-    void HandleClick()
-    {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, 100f))
+        if (!Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
-            lastClickPosition = hit.point;
-            debugInfo = $"Click: X={hit.point.x:F2}, Y={hit.point.y:F2}, Z={hit.point.z:F2}";
-            
-            if (ShouldTransition(hit.point))
+            debugMessage = "no collider hit";
+            return;
+        }
+
+        lastClickPosition = hit.point;
+        
+        float zDiff = hit.point.z - transform.position.z;
+        bool isTransitionClick = Mathf.Abs(zDiff) >= depthThreshold;
+
+        Vector3 processedClick = hit.point;
+        
+        if (isTransitionClick)
+        {
+            processedClick = ClampToHallway(hit.point);
+            Debug.Log($"Transition click: Original X={hit.point.x:F2} → Clamped X={processedClick.x:F2}");
+        }
+
+        // Try path transition first
+        if (TryStartPathTransition(processedClick)) return;
+
+        MoveOnCurrentPath(processedClick);
+    }
+
+    Vector3 ClampToHallway(Vector3 clickPosition)
+    {
+        Vector3 clamped = clickPosition;
+        float x = clickPosition.x;
+
+        // Determine which hallway based on X position
+        if (x < 0)
+        {
+           
+            // Left outer hallway: -10.5 to -8
+            if (x <= leftOuterHallwayInner)
             {
-                PathData targetPath = DeterminePathFromClick(hit.point);
-                
-                // Debug logging
-                string targetPathName = targetPath == frontPath ? "Front" : 
-                                       targetPath == middlePath ? "Middle" : 
-                                       targetPath == backPath ? "Back" : "NULL";
-                Debug.Log($"Attempting transition to: {targetPathName}");
-                
-                if (targetPath != null && targetPath != currentPath)
+                if (x < leftOuterHallwayOuter)
                 {
-                    TransitionToPath(targetPath);
-                    return;
+                    clamped.x = leftOuterHallwayOuter;
+                    debugMessage = "Clamped to left outer hallway outer";
                 }
-                else if (targetPath == null)
+                else if (x > leftOuterHallwayInner)
                 {
-                    Debug.LogError("Target path is NULL! Check Inspector assignments.");
+                    clamped.x = leftOuterHallwayInner;
+                    debugMessage = "Clamped to left outer hallway inner";
+                }
+                else
+                {
+                    debugMessage = "In left outer hallway";
                 }
             }
-            
-            // Normal movement on current path
-            if (currentPath != null)
+            // Left inner hallway: -3.3 to -2.1
+            else
             {
-                targetPosition = currentPath.GetClosestPointOnPath(hit.point);
-                isMoving = true;
-                ShowClickMarker(targetPosition);
+                if (x < leftInnerHallwayOuter)
+                {
+                    clamped.x = leftInnerHallwayOuter;
+                    debugMessage = "Clamped to left inner hallway outer";
+                }
+                else if (x > leftInnerHallwayInner)
+                {
+                    clamped.x = leftInnerHallwayInner;
+                    debugMessage = "Clamped to left inner hallway inner";
+                }
+                else
+                {
+                    debugMessage = "In left inner hallway";
+                }
             }
+        }
+        else if (x > 0)
+        {
+         
+     
+            if (x >= rightOuterHallwayInner)
+            {
+                if (x > rightOuterHallwayOuter)
+                {
+                    clamped.x = rightOuterHallwayOuter;
+                    debugMessage = "Clamped to right outer hallway outer";
+                }
+                else if (x < rightOuterHallwayInner)
+                {
+                    clamped.x = rightOuterHallwayInner;
+                    debugMessage = "Clamped to right outer hallway inner";
+                }
+                else
+                {
+                    debugMessage = "In right outer hallway";
+                }
+            }
+           
+            else
+            {
+                if (x < rightInnerHallwayInner)
+                {
+                    clamped.x = rightInnerHallwayInner;
+                    debugMessage = "Clamped to right inner hallway inner";
+                }
+                else if (x > rightInnerHallwayOuter)
+                {
+                    clamped.x = rightInnerHallwayOuter;
+                    debugMessage = "Clamped to right inner hallway outer";
+                }
+                else
+                {
+                    debugMessage = "In right inner hallway";
+                }
+            }
+        }
+
+        return clamped;
+    }
+
+    bool TryStartPathTransition(Vector3 clickPosition)
+    {
+        if (!ShouldTransition(clickPosition))
+        {
+            return false;
+        }
+
+        PathData targetPath = GetTargetPath(clickPosition);
+        
+        if (targetPath == null)
+        {
+            debugMessage = "Target path is NULL";
+            return false;
+        }
+
+        if (targetPath == currentPath)
+        {
+            debugMessage = "Already on target path";
+            return false;
+        }
+
+        TransitionToPath(targetPath, clickPosition.x);
+        return true;
+    }
+
+    void MoveOnCurrentPath(Vector3 clickPosition)
+    {
+        if (currentPath == null)
+        {
+            debugMessage = "Current path is NULL!";
+            return;
+        }
+
+        targetPosition = currentPath.GetClosestPointOnPath(clickPosition);
+        
+        isMoving = true;
+        ShowClickMarker(targetPosition);
+        debugMessage = "Moving on current path";
+        }
+    
+void MoveToTarget()
+{
+    Vector3 currentPos = transform.position;
+    Vector3 targetPos = targetPosition;
+    
+    Vector3 moveDirection = targetPos - currentPos;
+    moveDirection.y = 0;
+    
+    float distanceToTarget = moveDirection.magnitude;
+
+    if (distanceToTarget > stoppingDistance)
+    {
+        
+        Debug.Log($"[Animation] Moving! Distance: {distanceToTarget:F2}");
+        Debug.Log($"[Animation] Animator null? {(animator == null)}");
+        
+        if (animator != null)
+        {
+            animator.SetBool("Walk", true);
+            Debug.Log("[Animation] Set Walk = TRUE");
         }
         else
         {
-            debugInfo = "Click missed - no collider!";
+            Debug.LogError("[Animation] ANIMATOR IS NULL!");
         }
-    }
-    
-    bool ShouldTransition(Vector3 clickPosition)
-    {
-        float zDifference = clickPosition.z - transform.position.z;
-        
-        // Must click far enough forward/back
-        if (Mathf.Abs(zDifference) < depthThreshold)
-            return false;
-        
-        // Must click in a gap between containers
-        bool inLeftGap = clickPosition.x >= -3.75f && clickPosition.x <= -1.75f;
-        bool inRightGap = clickPosition.x >= 1.75f && clickPosition.x <= 3.75f;
-        
-        return inLeftGap || inRightGap;
-    }
-    
-    PathData DeterminePathFromClick(Vector3 clickPosition)
-    {
-        float zDifference = clickPosition.z - transform.position.z;
-        
-        bool clickingBackward = zDifference > 0;
-        bool clickingForward = zDifference < 0;
-        
-        // Front path logic
-        if (currentPath == frontPath)
-        {
-            return clickingBackward ? middlePath : frontPath;
-        }
-        
-        // Middle path logic
-        if (currentPath == middlePath)
-        {
-            if (clickingBackward) return backPath;
-            if (clickingForward) return frontPath;
-            return middlePath;
-        }
-        
-        // Back path logic
-        if (currentPath == backPath)
-        {
-            return clickingForward ? middlePath : backPath;
-        }
-        
-        return currentPath;
-    }
-    
-    void MoveToTarget()
-    {
-        Vector3 direction = (targetPosition - transform.position);
-        direction.y = 0;
-        
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
+            
+        Vector3 newPosition = Vector3.MoveTowards(
+            currentPos,
+            targetPos,
             moveSpeed * Time.deltaTime
         );
         
-        if (direction.magnitude > 0.1f)
+        transform.position = newPosition;
+
+        if (moveDirection.magnitude > 0.01f)
         {
-            direction.Normalize();
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,
                 rotationSpeed * Time.deltaTime
             );
         }
+    }
+    else
+    {
         
-        if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
-        {
-            isMoving = false;
-        }
-
-        //Checks for ChoiceWaypoint
-        if (Vector3.Distance(transform.position, targetPosition) < stoppingDistance)
-        {
-            isMoving = false;
-            CheckForChoiceWaypoint();
-        }
-
-    }
-
-    void ShowClickMarker(Vector3 position)
-    {
-        if (clickMarkerPrefab != null)
-        {
-            Vector3 markerPos = position + Vector3.up * markerYOffset;
-            GameObject marker = Instantiate(clickMarkerPrefab, markerPos, Quaternion.identity);
-            Destroy(marker, markerLifetime);
-        }
-    }
-    
-    void TransitionToPath(PathData newPath)
-    {
-        if (newPath == null || isTransitioning)
-            return;
+        Debug.Log("[Animation] Stopped - Set Walk = FALSE");
+        
+        if (animator != null)
+            animator.SetBool("Walk", false);  
             
-        Vector3 newPathPoint = newPath.GetClosestPointOnPath(transform.position);
-        
-        isTransitioning = true;
         isMoving = false;
-        transitionTimer = 0f;
-        transitionStartPos = transform.position;
-        transitionEndPos = newPathPoint;
-        
-        currentPath = newPath;
+        transform.position = targetPosition;
     }
-    
-    void HandleTransition()
-    {
-        transitionTimer += Time.deltaTime;
-        float progress = transitionTimer / transitionDuration;
-        
-        transform.position = Vector3.Lerp(transitionStartPos, transitionEndPos, progress);
-        
-        if (progress >= 1f)
-        {
-            isTransitioning = false;
-            transform.position = transitionEndPos;
-        }
-    }
+}
 
-    //Used to freeze primrose 
     public void LockMovement()
     {
         movementLocked = true;
         isMoving = false;
         isTransitioning = false;
+        
+        // Stop animation when locked
+        if (animator != null)
+            animator.SetBool("Walk", false);  
     }
 
     public void UnlockMovement()
     {
         movementLocked = false;
     }
-
-    // tells ChoiceWaypoint script to trigger choice system. 
-    void CheckForChoiceWaypoint()
+    
+    bool ShouldTransition(Vector3 clickPosition)
     {
-        if (currentPath == null || currentPath.waypoints == null)
-            return;
+        float zDifference = clickPosition.z - transform.position.z;
+        
+        Debug.Log($"[ShouldTransition] Z diff: {Mathf.Abs(zDifference):F2}, Threshold: {depthThreshold}");
+        Debug.Log($"[ShouldTransition] Meets threshold: {(Mathf.Abs(zDifference) >= depthThreshold)}");
+
+        if (Mathf.Abs(zDifference) < depthThreshold)
+        {
+            Debug.Log("[ShouldTransition] FAILED - Not deep enough");
+            return false;
+        }
+
+       
+        if (!requireHallwayForTransitions)
+        {
+            Debug.Log("[ShouldTransition] Hallway check disabled - allowing transition");
+            return true;
+        }
+
+     
+        bool inHallway = IsInHallway(clickPosition.x);
+        Debug.Log($"[ShouldTransition] Click X: {clickPosition.x:F2}, In hallway: {inHallway}");
+        return inHallway;
+    }
+    bool IsInHallway(float xPosition)
+    {
+        // Check all 4 hallways
+        bool inLeftInner = xPosition >= leftInnerHallwayOuter && xPosition <= leftInnerHallwayInner;
+        bool inRightInner = xPosition >= rightInnerHallwayInner && xPosition <= rightInnerHallwayOuter;
+        bool inLeftOuter = xPosition >= leftOuterHallwayOuter && xPosition <= leftOuterHallwayInner;
+        bool inRightOuter = xPosition >= rightOuterHallwayInner && xPosition <= rightOuterHallwayOuter;
+        
+        return inLeftInner || inRightInner || inLeftOuter || inRightOuter;
+    }
+PathData GetTargetPath(Vector3 clickPosition)
+{
+    float zDifference = clickPosition.z - transform.position.z;
+    bool clickingBackward = zDifference > 0;
+
+    string currentPathName = GetPathName(currentPath);
+    
+    Debug.Log("════════════════════════════════════════");
+    Debug.Log($"GetTargetPath CALLED");
+    Debug.Log($"Current: {currentPathName}");
+    Debug.Log($"Player Z: {transform.position.z:F2}");
+    Debug.Log($"Click Z: {clickPosition.z:F2}");
+    Debug.Log($"Z diff: {zDifference:F2}");
+    Debug.Log($"Clicking: {(clickingBackward ? "BACKWARD" : "FORWARD")}");
+    Debug.Log($"Middle Path assigned: {(middlePath != null ? "YES" : "NULL")}");
+    Debug.Log($"Back Path assigned: {(backPath != null ? "YES" : "NULL")}");
+    Debug.Log($"BackBack Path assigned: {(backBackPath != null ? "YES" : "NULL")}");
+
+    // Front → Middle (backward only)
+    if (currentPath == frontPath)
+    {
+        if (clickingBackward && middlePath != null)
+        {
+            Debug.Log("✓ Transitioning: Front → Middle");
+            return middlePath;
+        }
+        Debug.Log("✗ Can't transition from Front (either not backward or middlePath null)");
+        return null;
+    }
+
+    // Middle → Front or Back
+    if (currentPath == middlePath)
+    {
+        if (clickingBackward && backPath != null)
+        {
+            Debug.Log("✓ Transitioning: Middle → Back");
+            return backPath;
+        }
+        else if (!clickingBackward && frontPath != null)
+        {
+            Debug.Log("✓ Transitioning: Middle → Front");
+            return frontPath;
+        }
+        Debug.Log("✗ Can't transition from Middle");
+        return null;
+    }
+
+    // Back → Middle or BackBack
+    if (currentPath == backPath)
+    {
+        if (clickingBackward && backBackPath != null)
+        {
+            Debug.Log("✓ Transitioning: Back → BackBack");
+            return backBackPath;
+        }
+        else if (!clickingBackward && middlePath != null)
+        {
+            Debug.Log("✓ Transitioning: Back → Middle");
+            return middlePath;
+        }
+        Debug.Log("✗ Can't transition from Back");
+        return null;
+    }
+
+    // BackBack → Back (forward only)
+    if (currentPath == backBackPath)
+    {
+        if (!clickingBackward && backPath != null)
+        {
+            Debug.Log("✓ Transitioning: BackBack → Back");
+            return backPath;
+        }
+        Debug.Log("✗ Can't transition from BackBack");
+        return null;
+    }
+
+    Debug.Log("✗ Current path doesn't match any known path!");
+    Debug.Log("════════════════════════════════════════");
+    return null;
+}
+    void TransitionToPath(PathData newPath, float clickX)
+    {
+        if (newPath == null || isTransitioning) return;
+
+        transitionHallwayX = clickX;
+
+        Vector3 newPathPoint = newPath.GetClosestPointOnPath(transform.position);
+        newPathPoint.x = transitionHallwayX;
+
+        isTransitioning = true;
+        isMoving = false;
+        transitionTimer = 0f;
+        transitionStartPos = transform.position;
+        transitionEndPos = newPathPoint;
+        currentPath = newPath;
+
+        Debug.Log($"Started transition to {GetPathName(newPath)} at X={clickX:F2}");
+    }
+
+    void HandleTransition()
+    {
+
+        if (animator != null)
+        animator.SetBool("Walk", true);
+        
+    transitionTimer += Time.deltaTime;
+    float progress = Mathf.Clamp01(transitionTimer / transitionDuration);
+
+    Vector3 newPos = Vector3.Lerp(transitionStartPos, transitionEndPos, progress);
+    newPos.x = transitionHallwayX;
+    
+    transform.position = newPos;
+    
+    Vector3 direction = transitionEndPos - transitionStartPos;
+    direction.y = 0;
+    direction.x = 0;
+    
+    if (direction.magnitude > 0.01f)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
+    }
+
+    if (progress >= 1f)
+    {
+        //  Stop walking when transition completes
+        if (animator != null)
+            animator.SetBool("Walk", false);
+            
+        isTransitioning = false;
+        transform.position = transitionEndPos;
+        Debug.Log($"Transition complete. Now on: {GetPathName(currentPath)}");
+    
+    }
+    }
+
+    void CheckWaypointExits()
+    {
+        if (currentPath?.waypoints == null) return;
+
+        foreach (Transform wp in currentPath.waypoints)
+        {
+            if (wp == null) continue;
+
+            wp.GetComponent<ChoiceWaypoint>()?.CheckExit(transform.position);
+            wp.GetComponent<TransitionWaypoint>()?.CheckExit(transform.position);
+        }
+    }
+
+    void CheckWaypointTriggers()
+    {
+        if (movementLocked || currentPath?.waypoints == null) return;
 
         foreach (Transform wp in currentPath.waypoints)
         {
@@ -558,26 +562,134 @@ public class PathFollower : MonoBehaviour
                 choice.Trigger();
                 return;
             }
+
+            TransitionWaypoint transition = wp.GetComponent<TransitionWaypoint>();
+            if (transition != null && transition.CanTrigger(transform.position))
+            {
+                transition.Trigger();
+                return;
+            }
         }
     }
 
-    void OnGUI()
+    void ShowClickMarker(Vector3 position)
     {
-        GUI.contentColor = Color.yellow;
-        GUI.Label(new Rect(10, 10, 500, 20), debugInfo);
-        
-        if (lastClickPosition != Vector3.zero)
-        {
-            float zDiff = lastClickPosition.z - transform.position.z;
-            bool shouldTrans = ShouldTransition(lastClickPosition);
-            
-            string currentPathName = currentPath == frontPath ? "Front" : 
-                                    currentPath == middlePath ? "Middle" : 
-                                    currentPath == backPath ? "Back" : "Unknown";
-            
-            GUI.Label(new Rect(10, 30, 500, 20), $"Current Path: {currentPathName}");
-            GUI.Label(new Rect(10, 50, 500, 20), $"Z Difference: {zDiff:F2} (Threshold: {depthThreshold})");
-            GUI.Label(new Rect(10, 70, 500, 20), $"Should Transition: {shouldTrans}");
-        }
+        if (clickMarkerPrefab == null) return;
+
+        Vector3 markerPos = position + Vector3.up * markerYOffset;
+        GameObject marker = Instantiate(clickMarkerPrefab, markerPos, Quaternion.identity);
+        Destroy(marker, markerLifetime);
     }
+
+    string GetPathName(PathData path)
+    {
+        if (path == frontPath) return "FRONT";
+        if (path == middlePath) return "MIDDLE";
+        if (path == backPath) return "BACK";
+        if (path == backBackPath) return "BACK-BACK";
+        return "UNKNOWN";
+    }
+
+
+
+///
+/// 
+///    GUI PRINTOUT ON SCREEN FOR DEBUGGING 
+///     
+/// 
+/// 
+    // void OnGUI()
+    // {
+    //     if (!showDebugInfo) return;
+
+    //     GUI.color = Color.yellow;
+    //     GUI.Label(new Rect(10, 10, 400, 20), $"Current Path: {GetPathName(currentPath)}");
+    //     GUI.Label(new Rect(10, 30, 400, 20), $"Status: {debugMessage}");
+    //     GUI.Label(new Rect(10, 50, 400, 20), $"Moving: {isMoving} | Transitioning: {isTransitioning}");
+        
+    //     GUI.Label(new Rect(10, 70, 400, 20), $"Left Inner: [{leftInnerHallwayOuter:F2} to {leftInnerHallwayInner:F2}]");
+    //     GUI.Label(new Rect(10, 90, 400, 20), $"Right Inner: [{rightInnerHallwayInner:F2} to {rightInnerHallwayOuter:F2}]");
+    //     GUI.Label(new Rect(10, 110, 400, 20), $"Left Outer: [{leftOuterHallwayOuter:F2} to {leftOuterHallwayInner:F2}]");
+    //     GUI.Label(new Rect(10, 130, 400, 20), $"Right Outer: [{rightOuterHallwayInner:F2} to {rightOuterHallwayOuter:F2}]");
+        
+    //     if (isTransitioning)
+    //     {
+    //         GUI.Label(new Rect(10, 150, 400, 20), $"Hallway X: {transitionHallwayX:F2}");
+    //     }
+    // }
+
+    // void OnDrawGizmos()
+    // {
+    //     if (!showBoundaries) return;
+
+    //     float zPos = transform.position.z;
+    //     float zLength = 30f;
+        
+    //     // Left inner hallway (cyan)
+    //     Gizmos.color = Color.cyan;
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftInnerHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftInnerHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftInnerHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftInnerHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+        
+    //     // Right inner hallway (cyan)
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightInnerHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightInnerHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightInnerHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightInnerHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+
+    //     // Left outer hallway (magenta)
+    //     Gizmos.color = Color.magenta;
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftOuterHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftOuterHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(leftOuterHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(leftOuterHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+        
+    //     // Right outer hallway (magenta)
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightOuterHallwayInner, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightOuterHallwayInner, 0.5f, zPos + zLength/2)
+    //     );
+    //     Gizmos.DrawLine(
+    //         new Vector3(rightOuterHallwayOuter, 0.5f, zPos - zLength/2),
+    //         new Vector3(rightOuterHallwayOuter, 0.5f, zPos + zLength/2)
+    //     );
+
+    //     // Draw transition path
+    //     if (isTransitioning)
+    //     {
+    //         Gizmos.color = Color.yellow;
+    //         Gizmos.DrawLine(
+    //             new Vector3(transitionHallwayX, 0.5f, transitionStartPos.z),
+    //             new Vector3(transitionHallwayX, 0.5f, transitionEndPos.z)
+    //         );
+    //     }
+
+    //     // Draw last click
+    //     if (lastClickPosition != Vector3.zero)
+    //     {
+    //         Gizmos.color = Color.red;
+    //         Gizmos.DrawSphere(lastClickPosition, 0.3f);
+    //     }
+        
+    //     // Draw current target
+    //     if (isMoving && targetPosition != Vector3.zero)
+    //     {
+    //         Gizmos.color = Color.white;
+    //         Gizmos.DrawSphere(targetPosition, 0.2f);
+    //         Gizmos.DrawLine(transform.position, targetPosition);
+    //     }
+    // }
 }

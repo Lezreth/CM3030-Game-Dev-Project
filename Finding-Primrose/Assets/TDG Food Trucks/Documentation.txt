@@ -1,0 +1,15 @@
+TDG Food Trucks Festival
+
+If you enjoy our work, please leave us a review - http://theorydigitalgames.com/
+
+This low poly food truck bundle contains assets which are designed to be modular and interchangeable. We have designed this pack to be simple and easily modifiable with the goal of allowing you to easily create any kind of food truck desired.
+
+The pack includes four base truck models with unique UV layouts and UVs included. While all assets can be colored using Unity shaders, the included UV sheets can be modified with your own custom artwork. Find the corresponding UV sheets in the /Materials/UVs folder for each truck. Create your own UVs or use the included UV setup in addition to Unity shaders to color and design your trucks.
+
+To use with URP, extract the URP package and replace the contents of the Materials folder.
+
+Goes great with our Fairgrounds Pack!  https://assetstore.unity.com/packages/3d/props/tdg-fairgrounds-low-poly-3d-pack-241846
+
+This pack is completely compatible with all other [TDG packs] (https://assetstore.unity.com/publishers/71166) in both style and scale, as well as with other popular low poly packs available on the Unity asset store.
+
+If you have any questions or feedback, e-mail theorydigitalgames@gmail.com .

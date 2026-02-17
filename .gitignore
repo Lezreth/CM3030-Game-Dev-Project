@@ -12,6 +12,9 @@
 /Finding-Primrose/[Uu]ser[Ss]ettings/
 *.log
 
+# Mac OS DS_Store files (Desktop Services Store)
+.DS_Store
+
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
 *.blend1
 *.blend1.meta
@@ -99,3 +102,4 @@ InitTestScene*.unity*
 /Finding-Primrose/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /Finding-Primrose/Assets/CGF
 Finding-Primrose/Assets/CGF.meta
+.DS_Store
