@@ -5,43 +5,46 @@ using static Unity.VisualScripting.Member;
 public class InteractionController : MonoBehaviour
 {
     [Header("Primrose")]
+    //public GameObject choiceUI;
+    //public CanvasGroup choiceCanvas;
     public PathFollower playerPathFollower;
 
     //Private variables 
     private ChoiceWaypoint currentWaypoint;
     private bool interactionActive = false;
-    private GameObject activeUI;
-    private CanvasGroup activeCanvas;
-
 
     public void BeginInteraction(ChoiceWaypoint source)
     {
+        if (interactionActive) return;
+        interactionActive = true;
         currentWaypoint = source;
 
-        BeginInteraction(
-            source.choiceUI,
-            source.choiceCanvas,
-            source.npcFocusPoint
-        );
+        //Freeze Primrose
+        if (playerPathFollower != null)
+            playerPathFollower.LockMovement();
 
-        
-    interactionActive = true;
-    Debug.Log("[InteractionController] Starting new interaction");
+        if (source.choiceUI != null)
+            source.choiceUI.SetActive(true);
+
+        if (CameraController.Instance != null && source.npcFocusPoint != null)
+        {
+            CameraController.Instance.FocusOn(source.npcFocusPoint);
+        }
+
+        StartCoroutine(FadeInChoices(source.choiceCanvas));
     }
 
     public void ReturnToExploration()
     {
-        if (activeUI != null)
-            activeUI.SetActive(false);
+        if (currentWaypoint != null && currentWaypoint.choiceUI != null)
+            currentWaypoint.choiceUI.SetActive(false);
 
-        activeUI = null;
-        activeCanvas = null;
-
+        //Unfreeze Primrose
         if (playerPathFollower != null)
+        {
             playerPathFollower.UnlockMovement();
-
-        if (CameraController.Instance != null)
-            CameraController.Instance.ClearFocus();
+        }
+        CameraController.Instance.ClearFocus();
 
         interactionActive = false;
     }
@@ -79,29 +82,5 @@ public class InteractionController : MonoBehaviour
         canvas.alpha = 1;
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
-    }
-
-    public void BeginInteraction(
-     GameObject ui,
-     CanvasGroup canvas,
-     Transform focusPoint
- )
-    {
-        if (interactionActive) return;
-        interactionActive = true;
-
-        activeUI = ui;
-        activeCanvas = canvas;
-
-        if (playerPathFollower != null)
-            playerPathFollower.LockMovement();
-
-        if (ui != null)
-            ui.SetActive(true);
-
-        if (CameraController.Instance != null && focusPoint != null)
-            CameraController.Instance.FocusOn(focusPoint);
-
-        StartCoroutine(FadeInChoices(canvas));
     }
 }

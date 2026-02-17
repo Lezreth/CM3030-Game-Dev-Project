@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Used on the trigger waypoint to trigger BigenInteraction(). 
 public class ChoiceWaypoint : MonoBehaviour
 {
     [Header("Interaction")]
@@ -9,20 +9,18 @@ public class ChoiceWaypoint : MonoBehaviour
     [Header("Choices")]
     public ChoiceEffect choiceA;
     public ChoiceEffect choiceB;
-    public GameObject choiceUI;
+    public GameObject choiceUI;        
     public CanvasGroup choiceCanvas;
 
-    public GameObject npcObject;
     public float triggerRadius = 1.5f;
     private bool triggered = false;
     private bool waitingForExit = false;
 
-    public bool CanTrigger(Vector3 playerPosition)
+    public bool CanTrigger(Vector3 dogPosition)
     {
         if (waitingForExit) return false;
         if (triggered) return false;
-
-        return Vector3.Distance(playerPosition, transform.position) <= triggerRadius;
+        return Vector3.Distance(dogPosition, transform.position) <= triggerRadius;
     }
 
     public void Trigger()
@@ -30,27 +28,17 @@ public class ChoiceWaypoint : MonoBehaviour
         if (triggered) return;
         triggered = true;
 
-        if (npcObject != null)
-        {
-            ChefPatrolRoutine patrol = npcObject.GetComponent<ChefPatrolRoutine>();
-            if (patrol != null)
-            {
-                Debug.Log("[ChoiceWaypoint] Stopping chef patrol");
-                patrol.StopPatrol();
-            }
-        }
-
         if (interaction != null)
         {
             interaction.BeginInteraction(this);
         }
     }
 
-    public void CheckExit(Vector3 playerPosition)
+    public void CheckExit(Vector3 dogPosition)
     {
         if (!triggered) return;
 
-        float distance = Vector3.Distance(playerPosition, transform.position);
+        float distance = Vector3.Distance(dogPosition, transform.position);
         if (distance > triggerRadius)
         {
             triggered = false;
