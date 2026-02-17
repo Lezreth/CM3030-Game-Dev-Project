@@ -11,26 +11,6 @@ public class SceneTransitionController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip transitionSound;
 
-    private static SceneTransitionController instance;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-            
-            if (fadeImage != null)
-            {
-                DontDestroyOnLoad(fadeImage.transform.root.gameObject); 
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Start()
     {
         
@@ -58,7 +38,6 @@ public class SceneTransitionController : MonoBehaviour
             audioSource.PlayOneShot(transitionSound);
         }
 
-        // Fade to black
         yield return StartCoroutine(Fade(1f, 0.5f));
 
         Debug.Log("Loading scene");
@@ -66,7 +45,6 @@ public class SceneTransitionController : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        // Fade to clear
         Debug.Log("Fading in");
         yield return StartCoroutine(Fade(0f, 0.5f));
     }
@@ -90,7 +68,6 @@ public class SceneTransitionController : MonoBehaviour
             yield return null;
         }
 
-        // Ensure we hit target
         Color finalColor = fadeImage.color;
         finalColor.a = targetAlpha;
         fadeImage.color = finalColor;
