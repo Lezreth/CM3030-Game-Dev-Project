@@ -16,10 +16,10 @@ public class StatsManager : MonoBehaviour
     
 
     [Header("Stats 0-100")]
-    [Range(0,100)] public int trust = 40;
-    [Range(0,100)] public int hope = 45;
-    [Range(0,100)] public int hunger = 50;
-    [Range(0,100)] public int energy = 65;
+    [Range(0,100)] public int trust = 50;
+    [Range(0,100)] public int hope = 50;
+    [Range(0,100)] public int hunger = 70;
+    [Range(0,100)] public int energy = 40;
 
     [Header("Progress - Required Scenes")]
     [SerializeField] private string[] requiredScenes;
@@ -165,7 +165,7 @@ private void Update()
         Debug.Log("<color=yellow>=== TESTING ENDING 3: Alone But OK ===</color>");
         try
         {
-            SetTestStats(45, 55, 50, 55);
+            SetTestStats(65, 67, 45, 52);
             MarkAllScenesComplete();
             LoadAppropriateEnding();
         }

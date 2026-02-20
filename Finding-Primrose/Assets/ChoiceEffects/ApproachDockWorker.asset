@@ -16,10 +16,10 @@ MonoBehaviour:
   sceneId: Harbor
   deltas:
   - stat: 0
-    delta: 20
+    delta: 5
   - stat: 1
-    delta: 10
+    delta: 5
   - stat: 3
-    delta: -5
+    delta: 5
   - stat: 2
     delta: -10

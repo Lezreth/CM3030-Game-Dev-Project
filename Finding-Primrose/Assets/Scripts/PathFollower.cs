@@ -163,6 +163,12 @@ public class PathFollower : MonoBehaviour
 
     void MoveToTarget()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Eat"))
+        {
+            isMoving = false;
+            return;
+        }
+
         Vector3 currentPos = transform.position;
         Vector3 moveDirection = targetPosition - currentPos;
         moveDirection.y = 0;
