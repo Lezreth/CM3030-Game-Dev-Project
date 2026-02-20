@@ -10498,12 +10498,40 @@ PrefabInstance:
       value: Sniff the Jogger
       objectReference: {fileID: 0}
     - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1335419783}
     - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 615709236}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChooseOption
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayChoiceA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: NPCAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327122804540782491, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2102862129063533998, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -13,5 +13,4 @@ public class PrimroseAnimationController : MonoBehaviour
     {
         animator.SetTrigger("Eat");
     }
-
 }

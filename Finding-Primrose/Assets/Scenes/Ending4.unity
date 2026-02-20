@@ -9738,8 +9738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.73, y: 61.99}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 118, y: 80}
+  m_SizeDelta: {x: 360, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031225239
 MonoBehaviour:
@@ -9761,7 +9761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Endin 4
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9788,8 +9788,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.6
-  m_fontSizeBase: 33.6
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11779,8 +11779,14 @@ MonoBehaviour:
   storyText: {fileID: 1031225239}
   restartButton: {fileID: 442401593}
   uiCanvasGroup: {fileID: 0}
-  endingTitle: Ending 4
-  endingStory: ALone but ok
+  endingTitle: 'Ending 4: Alone and Sad - A Fading Hope '
+  endingStory: "Ending 4: Alone and Sad - A Fading Hope \n\nPrimrose sits on a busy
+    sidewalk, a small, unnoticed dog in a sea of moving feet. She still wags her
+    tail for anyone who makes eye contact, her trust in people is still unbroken,
+    but no one stops. Hunger pulls at her belly, and the hope that once made her
+    search every face has dimmed. With her head resting on her paws, she watches
+    the world pass her by, feeling more and more invisible and unwanted. This might
+    just be her new life. \n\nTrust >= 70, Hunger >= 70, Hope <= 40, Energy <= 50 "
   fadeInDelay: 2
   fadeInDuration: 1.5
   firstSceneName: Harbor

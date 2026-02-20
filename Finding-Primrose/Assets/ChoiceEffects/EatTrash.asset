@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 297c8ff87332d4393b0d87a039823660, type: 3}
-  m_Name: ChaseTheCat
+  m_Name: EatTrash
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceEffect
-  choiceId: ChaseTheCat
+  choiceId: EatTrash
   sceneId: Harbor
   deltas:
   - stat: 0
-    delta: 0
+    delta: -5
   - stat: 1
-    delta: 0
+    delta: -5
   - stat: 3
-    delta: -10
-  - stat: 2
     delta: 5
+  - stat: 2
+    delta: -5
