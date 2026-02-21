@@ -11,22 +11,21 @@ public class CameraFollow : MonoBehaviour
     public bool followY = false; 
     public bool followZ = true;
     
-    void LateUpdate()
+     [Header("Screen Bounds")]
+    public float xClamp = 5f; 
+
+   void LateUpdate()
     {
-        if (target == null)
-            return;
-        
-        // find desired position
+        if (target == null) return;
+
         Vector3 desiredPosition = target.position + offset;
-        
-        //  follow on different axes
+
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        
-        //lock axis
+
         float newX = followX ? smoothedPosition.x : transform.position.x;
         float newY = followY ? smoothedPosition.y : transform.position.y;
         float newZ = followZ ? smoothedPosition.z : transform.position.z;
-        
+
         transform.position = new Vector3(newX, newY, newZ);
     }
 }

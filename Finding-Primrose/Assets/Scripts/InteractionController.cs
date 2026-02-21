@@ -1,18 +1,16 @@
 using System.Collections;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
+using UnityEngine.AI;
 
 public class InteractionController : MonoBehaviour
 {
     [Header("Primrose")]
-    public PathFollower playerPathFollower;
+    public NavMeshAgent playerAgent; 
 
-    //Private variables 
     private ChoiceWaypoint currentWaypoint;
     private bool interactionActive = false;
     private GameObject activeUI;
     private CanvasGroup activeCanvas;
-
 
     public void BeginInteraction(ChoiceWaypoint source)
     {
@@ -24,9 +22,8 @@ public class InteractionController : MonoBehaviour
             source.npcFocusPoint
         );
 
-        
-    interactionActive = true;
-    Debug.Log("[InteractionController] Starting new interaction");
+        interactionActive = true;
+        Debug.Log("[InteractionController] Starting new interaction");
     }
 
     public void ReturnToExploration()
@@ -37,8 +34,12 @@ public class InteractionController : MonoBehaviour
         activeUI = null;
         activeCanvas = null;
 
-        if (playerPathFollower != null)
-            playerPathFollower.UnlockMovement();
+      
+        if (playerAgent != null)
+        {
+            playerAgent.isStopped = false;
+            Debug.Log("[InteractionController] NavMesh Agent resumed");
+        }
 
         if (CameraController.Instance != null)
             CameraController.Instance.ClearFocus();
@@ -50,13 +51,47 @@ public class InteractionController : MonoBehaviour
     {
         if (currentWaypoint == null) return;
 
-        if (optionIndex == 0 && currentWaypoint.choiceA != null)
-            StatsManager.I.ApplyChoice(currentWaypoint.choiceA);
+        ChoiceWaypoint waypoint = currentWaypoint;
+        currentWaypoint = null;
 
-        if (optionIndex == 1 && currentWaypoint.choiceB != null)
-            StatsManager.I.ApplyChoice(currentWaypoint.choiceB);
+        ChoiceEffect effect = optionIndex == 0 ? waypoint.choiceA : waypoint.choiceB;
+
+        if (effect != null)
+        {
+            Debug.Log($"[InteractionController] Applying choice {optionIndex} from '{waypoint.name}'");
+            StatsManager.I.ApplyChoice(effect);
+        }
+        else
+        {
+            Debug.LogWarning($"[InteractionController] No ChoiceEffect for option {optionIndex} on '{waypoint.name}'");
+        }
 
         ReturnToExploration();
+    }
+
+    public void BeginInteraction(GameObject ui, CanvasGroup canvas, Transform focusPoint)
+    {
+        if (interactionActive) return;
+        interactionActive = true;
+
+        activeUI = ui;
+        activeCanvas = canvas;
+
+        
+        if (playerAgent != null)
+        {
+            playerAgent.isStopped = true;
+            playerAgent.ResetPath();
+            Debug.Log("[InteractionController] NavMesh Agent stopped");
+        }
+
+        if (ui != null)
+            ui.SetActive(true);
+
+        if (CameraController.Instance != null && focusPoint != null)
+            CameraController.Instance.FocusOn(focusPoint);
+
+        StartCoroutine(FadeInChoices(canvas));
     }
 
     IEnumerator FadeInChoices(CanvasGroup canvas)
@@ -79,29 +114,5 @@ public class InteractionController : MonoBehaviour
         canvas.alpha = 1;
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
-    }
-
-    public void BeginInteraction(
-     GameObject ui,
-     CanvasGroup canvas,
-     Transform focusPoint
- )
-    {
-        if (interactionActive) return;
-        interactionActive = true;
-
-        activeUI = ui;
-        activeCanvas = canvas;
-
-        if (playerPathFollower != null)
-            playerPathFollower.LockMovement();
-
-        if (ui != null)
-            ui.SetActive(true);
-
-        if (CameraController.Instance != null && focusPoint != null)
-            CameraController.Instance.FocusOn(focusPoint);
-
-        StartCoroutine(FadeInChoices(canvas));
     }
 }

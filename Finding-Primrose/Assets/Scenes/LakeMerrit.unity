@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 27546754}
   - component: {fileID: 27546756}
   - component: {fileID: 27546755}
+  - component: {fileID: 27546757}
+  - component: {fileID: 27546758}
   m_Layer: 0
   m_Name: Primrose_pos
   m_TagString: Player
@@ -263,6 +265,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1946517, y: 0.6559989, z: 0.64982116}
   m_Center: {x: 0.0051946933, y: 0.29402757, z: 0.00046400973}
+--- !u!195 &27546757
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27546751}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0.5
+  m_Acceleration: 1
+  avoidancePriority: 50
+  m_AngularSpeed: 100
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &27546758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27546751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4382263d3c44943f39256fa4a658a5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavMeshScript
+  mainCamera: {fileID: 0}
+  waypoints:
+  - {fileID: 1476678727}
+  - {fileID: 408937867}
+  walkableLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  animator: {fileID: 1258060870}
 --- !u!1 &33657405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2149,8 @@ GameObject:
   - component: {fileID: 486598603}
   - component: {fileID: 486598602}
   - component: {fileID: 486598601}
-  m_Layer: 0
+  - component: {fileID: 486598605}
+  m_Layer: 3
   m_Name: pier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2205,6 +2250,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 587516318}
   m_LocalEulerAnglesHint: {x: 0, y: -88.773, z: 0}
+--- !u!114 &486598605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486598600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 62ff67e7b54ba43bbb7846539082407a, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &512179473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2823,7 +2900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587516318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3301,6 +3378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 666274164}
+  - component: {fileID: 666274165}
   m_Layer: 0
   m_Name: Lake
   m_TagString: Untagged
@@ -3326,6 +3404,22 @@ Transform:
   - {fileID: 216927380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &666274165
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666274163}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &689595364
 GameObject:
   m_ObjectHideFlags: 0
@@ -23657,7 +23751,8 @@ GameObject:
   - component: {fileID: 2110642653}
   - component: {fileID: 2110642652}
   - component: {fileID: 2110642651}
-  m_Layer: 0
+  - component: {fileID: 2110642655}
+  m_Layer: 3
   m_Name: Concrete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23758,6 +23853,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110642655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110642650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!4 &2131681102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a402dd86229bd0649a0a930d618ff9dc, type: 3}
