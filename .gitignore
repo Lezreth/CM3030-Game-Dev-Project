@@ -12,6 +12,15 @@
 /Finding-Primrose/[Uu]ser[Ss]ettings/
 *.log
 
+# WebGL build output
+Finding-Primrose/FindingPrimrose/Build/
+Finding-Primrose/FindingPrimrose/TemplateData/
+Finding-Primrose/FindingPrimrose/index.html
+Finding-Primrose/FindingPrimrose/*.zip
+
+# Unity recovery
+Finding-Primrose/Assets/_Recovery/
+
 # Mac OS DS_Store files (Desktop Services Store)
 .DS_Store
 
