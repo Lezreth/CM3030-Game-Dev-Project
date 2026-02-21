@@ -4356,6 +4356,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5813586171434068614, guid: df8da7a9c94c031408cabea4bd9a67fd, type: 3}
+      propertyPath: npcAudios.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813586171434068614, guid: df8da7a9c94c031408cabea4bd9a67fd, type: 3}
+      propertyPath: 'npcAudios.Array.data[0]'
+      value: 
+      objectReference: {fileID: 101614522}
     - target: {fileID: 6984753886179725252, guid: df8da7a9c94c031408cabea4bd9a67fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.26231
@@ -14426,6 +14434,7 @@ MonoBehaviour:
   followX: 1
   followY: 0
   followZ: 1
+  xClamp: 5
 --- !u!114 &1305973991
 MonoBehaviour:
   m_ObjectHideFlags: 0

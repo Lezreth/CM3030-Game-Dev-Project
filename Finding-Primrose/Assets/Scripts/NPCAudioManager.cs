@@ -36,6 +36,9 @@ public class NPCAudioManager : MonoBehaviour
     private bool hasPlayedApproach = false;
     private Transform playerTransform;
     private Coroutine currentPlayback;
+
+// is it still playing
+    public bool IsPlaying() => currentPlayback != null;
     
     // debug logging
     private float lastDebugTime = 0f;
@@ -43,8 +46,13 @@ public class NPCAudioManager : MonoBehaviour
 
     void Start()
     {
+
+//find the NPC audio list
+        FindObjectOfType<SceneTransitionController>()?.RegisterNPCAudio(this);
         // Find the player
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+    
+       
         if (player != null)
         {
             playerTransform = player.transform;
