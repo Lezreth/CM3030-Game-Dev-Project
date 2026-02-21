@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 using UnityEngine.InputSystem; 
 
+
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager I { get; private set; }
@@ -38,18 +39,26 @@ public class StatsManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool enableTestingKeys = true;
 
+private bool endingTriggered = false;
     private void Awake()
     {
+
+    
         if (I != null && I != this) { Destroy(gameObject); return; }
+        
         I = this;
-       
-        completedScenes.Clear(); 
+       DontDestroyOnLoad(gameObject);
+       //this clears out the status of the completed scenes 
+        //completedScenes.Clear(); 
+
         ClampAll();
        
         
         Debug.Log("=== StatsManager Initialized ===");
         Debug.Log($"Testing Keys Enabled: {enableTestingKeys}");
     }
+
+    public int CompletedSceneCount() => completedScenes.Count;
 private void Update()
 {
     // Check if keyboard exists (new Input System)
@@ -58,6 +67,8 @@ private void Update()
         Debug.LogWarning("Keyboard not detected!");
         return;
     }
+
+  
 
     if (!enableTestingKeys)
     {
@@ -233,28 +244,37 @@ private void Update()
     };
 
     public void ApplyChoice(ChoiceEffect effect)
+{
+    if (effect == null) return;
+    if (endingTriggered) return; //No double firing 
+
+    string currentScene = SceneManager.GetActiveScene().name;
+
+
+    if (!completedScenes.Contains(currentScene))
     {
-        if (effect == null) return;
-
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (!completedScenes.Contains(currentScene))
-        {
-            completedScenes.Add(currentScene);
-            Debug.Log($"✓ Completed: {currentScene} | Progress: {completedScenes.Count}/{requiredScenes.Length}");
-        }
-
-        foreach (var d in effect.deltas)
-            Add(d.stat, d.delta);
-
-        ClampAll();
-        OnStatsChanged?.Invoke();
-
-        if (AllRequiredScenesVisited())
-        {
-            Debug.Log("All required scenes visited! Triggering ending...");
-            LoadAppropriateEnding();
-        }
+        completedScenes.Add(currentScene);
+        Debug.Log($"✓ Choice made in: {currentScene} | Progress: {completedScenes.Count}/{requiredScenes.Length}");
     }
+
+    foreach (var d in effect.deltas)
+        Add(d.stat, d.delta);
+
+    ClampAll();
+    OnStatsChanged?.Invoke();
+
+    // evaluate ending once all required scenes have had a choice 
+    if (AllRequiredScenesVisited())
+    {
+        Debug.Log($"All {requiredScenes.Length} scenes completed — evaluating ending...");
+        LoadAppropriateEnding();
+    }
+    else
+    {
+        int remaining = requiredScenes.Length - completedScenes.Count;
+        Debug.Log($"Ending NOT yet triggered — {remaining} scene(s) still remaining.");
+    }
+}
 private void LoadAppropriateEnding()
 {
     Debug.Log("=== LoadAppropriateEnding Called ===");
@@ -312,10 +332,15 @@ private void LoadEnding()
         energy = Mathf.Clamp(energy, 0, 100);
     }
 
-    public bool AllRequiredScenesVisited()
+   public bool AllRequiredScenesVisited()
+{
+    if (requiredScenes == null || requiredScenes.Length == 0)
     {
-        foreach (var sceneName in requiredScenes)
-            if (!completedScenes.Contains(sceneName)) return false;
-        return true;
+        return false;
     }
+    
+    foreach (var sceneName in requiredScenes)
+        if (!completedScenes.Contains(sceneName)) return false;
+    return true;
+}
 }

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Harbor.unity
     guid: 2b54fa469edb84f5891cf31d7d4afe45
   - enabled: 1
-    path: Assets/Scenes/FoodTrucks.unity
+    path: Assets/Scenes/FoodTrucks/FoodTrucks.unity
     guid: d0ccaaa571be44f4284c39d0ba060a70
   - enabled: 1
     path: Assets/Scenes/LakeMerrit.unity

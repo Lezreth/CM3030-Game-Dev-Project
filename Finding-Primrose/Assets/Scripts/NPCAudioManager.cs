@@ -105,37 +105,37 @@ public class NPCAudioManager : MonoBehaviour
 
     public void PlayApproachSequence()
     {
-        Debug.Log("[NPCAudio] PlayApproachSequence() called");
+       
         PlaySequence(approachSequence);
     }
 
     public void PlayChoiceA()
     {
-        Debug.Log("[NPCAudio] PlayChoiceA() called");
+       
         PlaySequence(choiceA);
     }
 
     public void PlayChoiceB()
     {
-        Debug.Log("[NPCAudio] PlayChoiceB() called");
+       
         PlaySequence(choiceB);
     }
 
     public void PlaySequence(AudioSequence sequence)
     {
-        Debug.Log($"[NPCAudio] PlaySequence() called. Sequence null? {(sequence == null)}");
+        
         
         if (sequence == null || sequence.steps == null || sequence.steps.Length == 0)
         {
-            Debug.LogWarning("[NPCAudio] Cannot play - sequence is null or empty!");
+           
             return;
         }
 
-        Debug.Log($"[NPCAudio] Sequence has {sequence.steps.Length} steps");
+        
 
         if (currentPlayback != null)
         {
-            Debug.Log("[NPCAudio] Stopping previous playback");
+            
             StopCoroutine(currentPlayback);
         }
 
@@ -144,7 +144,7 @@ public class NPCAudioManager : MonoBehaviour
 
     private IEnumerator PlayRoutine(AudioSequence sequence)
     {
-        Debug.Log($"[NPCAudio] ▶ STARTING PlayRoutine with {sequence.steps.Length} steps");
+        
         
         int stepIndex = 0;
         foreach (var step in sequence.steps)
