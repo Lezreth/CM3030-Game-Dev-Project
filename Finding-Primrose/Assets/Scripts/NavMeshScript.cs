@@ -1,17 +1,22 @@
+
+
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class NavMeshScript : MonoBehaviour
 {
-  
     private NavMeshAgent agent;
     public Camera mainCamera;
 
-    [SerializeField] private ChoiceWaypoint[] waypoints; 
-    
-    [SerializeField] private LayerMask walkableLayer; 
-    [SerializeField] private Animator animator; 
+    [SerializeField] private ChoiceWaypoint[] waypoints;
+    [SerializeField] private LayerMask walkableLayer;
+    [SerializeField] private Animator animator;
+
+    [Header("Click Marker")]
+    [SerializeField] private GameObject clickMarkerPrefab;  
+    [SerializeField] private float markerDuration = 0.8f;
 
     void Start()
     {
@@ -21,27 +26,16 @@ public class NavMeshScript : MonoBehaviour
 
     void Update()
     {
-         CheckWaypointProximity();
-        
+        CheckWaypointProximity();
+
         bool isMoving = agent.velocity.magnitude > 0.1f;
         if (animator != null)
             animator.SetBool("Walk", isMoving);
 
-        // if (isMoving)
-        // {
-        //     Quaternion targetRotation = Quaternion.LookRotation(agent.velocity.normalized);
-        //     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        // }
-        // Rotate to face movement direction
         if (agent.hasPath && !agent.isStopped && agent.velocity.magnitude > 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(agent.velocity.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
-
-        if (agent.hasPath && !agent.isStopped)
-        {
-            Debug.Log($"[MOVING] Actual pos: {transform.position} | Destination: {agent.destination} | Remaining: {agent.remainingDistance}");
         }
 
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
@@ -51,35 +45,60 @@ public class NavMeshScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, walkableLayer))
         {
-            NavMeshPath path = new NavMeshPath();
-            agent.CalculatePath(hit.point, path);
-            Debug.Log($"[CLICK] Destination: {hit.point}");
-            Debug.Log($"[PATH] Status: {path.status}");
-
-            UnityEngine.AI.NavMeshHit navSample;
-            bool sampled = UnityEngine.AI.NavMesh.SamplePosition(hit.point, out navSample, 2f, UnityEngine.AI.NavMesh.AllAreas);
-            Debug.Log($"[NAVMESH SAMPLE] Exists: {sampled} | Nearest point: {navSample.position}");
-
             agent.SetDestination(hit.point);
+            ShowMarker(hit.point);
         }
+    }
+
+    void ShowMarker(Vector3 point)
+    {
+        if (clickMarkerPrefab == null) return;
+        GameObject marker = Instantiate(clickMarkerPrefab, point + Vector3.up * 0.02f, Quaternion.Euler(90f, 0f, 0f));
+        StartCoroutine(FadeMarker(marker));
+    }
+
+    IEnumerator FadeMarker(GameObject marker)
+    {
+        Renderer rend = marker.GetComponent<Renderer>();
+        Material mat = rend.material;
+
+        // Fade in
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / 0.12f;
+            mat.SetColor("_BaseColor", new Color(1f, 1f, 1f, Mathf.Clamp01(t)));
+            yield return null;
+        }
+
+        // hold
+        yield return new WaitForSeconds(markerDuration);
+
+        // Fade out
+        t = 1f;
+        while (t > 0f)
+        {
+            t -= Time.deltaTime / 0.3f;
+            mat.SetColor("_BaseColor", new Color(1f, 1f, 1f, Mathf.Clamp01(t)));
+            yield return null;
+        }
+
+        Destroy(marker);
     }
 
     void CheckWaypointProximity()
     {
         if (waypoints == null) return;
-        
+
         foreach (ChoiceWaypoint waypoint in waypoints)
         {
             if (waypoint == null) continue;
-            
+
             waypoint.CheckExit(transform.position);
-            
+
             if (waypoint.CanTrigger(transform.position))
             {
-                Debug.Log($"[WAYPOINT] Triggering: {waypoint.name}");
                 waypoint.Trigger();
-                
-                // Stop the agent when interaction begins
                 agent.isStopped = true;
                 agent.ResetPath();
             }
