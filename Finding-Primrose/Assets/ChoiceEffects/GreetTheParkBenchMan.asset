@@ -16,10 +16,10 @@ MonoBehaviour:
   sceneId: LakeMerritt
   deltas:
   - stat: 0
-    delta: 5
+    delta: 25
   - stat: 1
-    delta: 5
+    delta: 15
   - stat: 3
-    delta: 5
+    delta: 0
   - stat: 2
-    delta: -5
+    delta: -10

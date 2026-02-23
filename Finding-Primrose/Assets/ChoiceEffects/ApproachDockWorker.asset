@@ -16,9 +16,9 @@ MonoBehaviour:
   sceneId: Harbor
   deltas:
   - stat: 0
-    delta: 5
+    delta: 20
   - stat: 1
-    delta: 5
+    delta: 15
   - stat: 3
     delta: 5
   - stat: 2
