@@ -24,10 +24,10 @@ public class OutcomeEvaluator : MonoBehaviour
         }
 
         // Ending 3: Alone But OK - Default/middle range
-        if ((trust >= 65 && trust <= 70) && (hope >= 65 && hope <= 70) && hunger < 50 && (energy >= 50 && energy <= 55))
-        {
-            return "Ending3";
-        }
+        //if ((trust >= 65 && trust <= 70) && (hope >= 65 && hope <= 70) && hunger < 50 && (energy >= 50 && energy <= 55))
+        //{
+        //    return "Ending3";
+        //}
 
         // Ending 4: Alone & Sad - High trust/hunger but low hope/energy
         if (trust >= 70 && hunger >= 70 && (hope < 40 || energy < 50))
@@ -35,6 +35,6 @@ public class OutcomeEvaluator : MonoBehaviour
             return "Ending4";  
         }
 
-        return null;
+        return "Ending3";
     }
 }

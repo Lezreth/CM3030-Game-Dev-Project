@@ -21,7 +21,6 @@ public class ChoiceWaypoint : MonoBehaviour
     {
         if (waitingForExit) return false;
         if (triggered) return false;
-
         return Vector3.Distance(playerPosition, transform.position) <= triggerRadius;
     }
 
