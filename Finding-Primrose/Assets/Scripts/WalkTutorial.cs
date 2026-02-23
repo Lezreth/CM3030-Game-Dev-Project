@@ -14,6 +14,13 @@ public class WalkTutorial : MonoBehaviour
 
     void Start()
     {
+
+         if (PlayerPrefs.GetInt("WalkTutorialSeen", 0) == 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         label.text = "";
         label.color = new Color(1f, 0.85f, 0.1f);
         StartCoroutine(IntroSequence());
@@ -44,7 +51,10 @@ public class WalkTutorial : MonoBehaviour
 
     IEnumerator PostClickSequence()
     {
-        // Immediately fade out whatever text is showing
+
+        PlayerPrefs.SetInt("WalkTutorialSeen", 1);
+        PlayerPrefs.Save();
+        // fade out whatever text is showing
         yield return StartCoroutine(FadeTextOut(0.3f));
         yield return new WaitForSeconds(0.2f);
 
