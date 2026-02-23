@@ -16,33 +16,69 @@ public class CatMover : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    //void Update()
+    //{
+    //    if (isRunning && waypoints.Length > 0)
+    //    {
+    //        // Move the cat to waypoint
+    //        Vector3 direction = waypoints[currentWaypointIndex].position - transform.position;
+    //        direction.y = 0; 
+
+    //        if (direction.magnitude > 0.1f)
+    //        {
+    //            direction.Normalize();
+    //            controller.Move(direction * speed * Time.deltaTime);
+
+    //            animator.SetBool("catRun", true);
+    //        }
+    //        else
+    //        {
+    //            // stop and go to the next waypoint
+    //            animator.SetBool("catRun", false);
+    //            currentWaypointIndex++;
+
+    //            if (currentWaypointIndex >= waypoints.Length)
+    //            {
+    //                StopRun();
+    //            }
+    //        }
+    //    }
+    //}
     void Update()
     {
-        if (isRunning && waypoints.Length > 0)
+        if (!isRunning || waypoints.Length == 0) return;
+
+        Transform target = waypoints[currentWaypointIndex];
+
+        Vector3 flatTargetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+        Vector3 direction = flatTargetPos - transform.position;
+
+        float distance = direction.magnitude;
+
+        if (distance <= 0.2f)
         {
-            // Move the cat to waypoint
-            Vector3 direction = waypoints[currentWaypointIndex].position - transform.position;
-            direction.y = 0; 
+            currentWaypointIndex++;
 
-            if (direction.magnitude > 0.1f)
+            if (currentWaypointIndex >= waypoints.Length)
             {
-                direction.Normalize();
-                controller.Move(direction * speed * Time.deltaTime);
-
-                animator.SetBool("catRun", true);
+                StopRun();
+                return;
             }
-            else
-            {
-                // stop and go to the next waypoint
-                animator.SetBool("catRun", false);
-                currentWaypointIndex++;
 
-                if (currentWaypointIndex >= waypoints.Length)
-                {
-                    StopRun();
-                }
-            }
+            return; 
         }
+
+        direction.Normalize();
+
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            Quaternion.LookRotation(direction),
+            Time.deltaTime * 8f
+        );
+
+        controller.Move(direction * speed * Time.deltaTime);
+
+        animator.SetBool("catRun", true);
     }
 
     public void StartRun()
