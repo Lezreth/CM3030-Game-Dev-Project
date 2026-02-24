@@ -19817,11 +19817,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0
+  far clip plane: 25
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -19845,15 +19845,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305973985}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08280819, y: 0, z: 0, w: 0.9965655}
-  m_LocalPosition: {x: 0.415, y: 0.64, z: -2.71}
+  m_LocalRotation: {x: 0.2806982, y: -0, z: -0, w: 0.9597961}
+  m_LocalPosition: {x: 0.415, y: 8.13, z: -14.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2097660603}
   - {fileID: 1743736660}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 9.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32.604, y: 0, z: 0}
 --- !u!114 &1305973989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19911,7 +19911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   target: {fileID: 27546752}
-  offset: {x: 0, y: 6, z: -1.3}
+  offset: {x: 0, y: 0, z: -10}
   smoothSpeed: 2
   followX: 1
   followY: 0
@@ -19924,13 +19924,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305973985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d122c7dbbf464d543947412277fb5465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   focusSpeed: 2
   arriveThreshold: 0.05
+  focusedSize: 4
 --- !u!4 &1310464797 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298394626439844243, guid: 5bc78959db865f74f85d4c6513d2ec87, type: 3}
