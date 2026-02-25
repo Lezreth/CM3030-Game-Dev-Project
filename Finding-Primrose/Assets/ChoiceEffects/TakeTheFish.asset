@@ -22,4 +22,4 @@ MonoBehaviour:
   - stat: 3
     delta: 10
   - stat: 2
-    delta: 5
+    delta: -5

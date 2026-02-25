@@ -46,8 +46,8 @@ Material:
     - _Edge1: 0.42
     - _Edge2: 0.7
     - _Float: 3
-    - _Noise_Scale: 66
-    - _Outline_Intensity: 3
+    - _Noise_Scale: 1
+    - _Outline_Intensity: 1.65
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Wavy_Line: 0
