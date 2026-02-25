@@ -292,8 +292,8 @@ MonoBehaviour:
   zoomSpeed: 3
   worldCentreX: 0
   worldHalfWidth: 20
-  leftPrefab: {fileID: 4946628272705172, guid: 9e8e0b40d65774beda47f18c3ee49a86, type: 3}
-  rightPrefab: {fileID: 4946628272705172, guid: 9e8e0b40d65774beda47f18c3ee49a86, type: 3}
+  leftPrefab: {fileID: 521130496897907557, guid: 66b3e174c8850491598eacc29af9a457, type: 3}
+  rightPrefab: {fileID: 521130496897907557, guid: 66b3e174c8850491598eacc29af9a457, type: 3}
   leftSpawnPoint: {fileID: 888770059}
   rightSpawnPoint: {fileID: 888770059}
   burstCount: 30
