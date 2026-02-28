@@ -16,34 +16,6 @@ public class CatMover : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    //void Update()
-    //{
-    //    if (isRunning && waypoints.Length > 0)
-    //    {
-    //        // Move the cat to waypoint
-    //        Vector3 direction = waypoints[currentWaypointIndex].position - transform.position;
-    //        direction.y = 0; 
-
-    //        if (direction.magnitude > 0.1f)
-    //        {
-    //            direction.Normalize();
-    //            controller.Move(direction * speed * Time.deltaTime);
-
-    //            animator.SetBool("catRun", true);
-    //        }
-    //        else
-    //        {
-    //            // stop and go to the next waypoint
-    //            animator.SetBool("catRun", false);
-    //            currentWaypointIndex++;
-
-    //            if (currentWaypointIndex >= waypoints.Length)
-    //            {
-    //                StopRun();
-    //            }
-    //        }
-    //    }
-    //}
     void Update()
     {
         if (!isRunning || waypoints.Length == 0) return;
