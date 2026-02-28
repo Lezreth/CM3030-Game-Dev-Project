@@ -29040,6 +29040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1187652750}
     m_Modifications:
+    - target: {fileID: 2240586897987993355, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3572048343076525974, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -29133,12 +29137,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 181
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 356
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
