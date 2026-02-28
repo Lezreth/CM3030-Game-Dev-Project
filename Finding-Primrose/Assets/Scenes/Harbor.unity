@@ -26694,7 +26694,7 @@ MonoBehaviour:
     steps:
     - clip: {fileID: 8300000, guid: 56c70f4306f229746bf913d873e95075, type: 3}
       delayAfter: 0
-    - clip: {fileID: 8300000, guid: 9214e7b36e5cf4c45ac141cf5800d4eb, type: 3}
+    - clip: {fileID: 8300000, guid: 54e26ff4b41e17046afcc8460f08aa89, type: 3}
       delayAfter: 0
   choiceB:
     steps:
