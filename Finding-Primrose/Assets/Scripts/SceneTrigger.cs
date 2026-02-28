@@ -53,7 +53,7 @@ public class EdgeSceneTrigger : MonoBehaviour
 
     public void ConfirmTransition()
     {
-        Debug.Log("═══════════════════════════════════════");
+       
         Debug.Log($"[EdgeTrigger] ConfirmTransition() CALLED!");
         Debug.Log($"[EdgeTrigger] Scene to load: {sceneToLoad}");
         
