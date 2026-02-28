@@ -42,16 +42,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Depth_Line: 1
+    - _Depth_Line_Bias: 1
     - _Distortion: 1
     - _Edge1: 0.42
     - _Edge2: 0.7
     - _Float: 3
-    - _Noise_Scale: 1
+    - _Moire_Intensity: 15
+    - _MultiplyA: 10
+    - _MultiplyB: 2
+    - _Noise_Scale: 100
+    - _Offset: 0.01
     - _Outline_Intensity: 1.65
+    - _Outline_Type: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Wavy_Line: 0
     m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Vector4: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
