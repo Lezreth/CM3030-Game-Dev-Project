@@ -3880,8 +3880,8 @@
     "m_ObjectId": "137a8a6313c148cc9f71669296039a78",
     "m_Title": "\"Watercolor\" Noise",
     "m_Position": {
-        "x": 835.9998779296875,
-        "y": -770.9998779296875
+        "x": 836.0,
+        "y": -771.0
     }
 }
 
@@ -4043,8 +4043,8 @@
     "m_ObjectId": "16a339f5536041faa373509c00675106",
     "m_Title": "Parallax Mapping",
     "m_Position": {
-        "x": 3154.999755859375,
-        "y": 168.00001525878907
+        "x": 3155.0,
+        "y": 168.0
     }
 }
 
@@ -4588,8 +4588,8 @@
     "m_ObjectId": "211775b0e2194b77b452befea2e71f01",
     "m_Title": "Emission",
     "m_Position": {
-        "x": 3778.999755859375,
-        "y": 1313.9998779296875
+        "x": 3779.0,
+        "y": 1314.0
     }
 }
 
@@ -5318,7 +5318,7 @@
     "m_Title": "Regular Noise",
     "m_Position": {
         "x": 832.0,
-        "y": -339.9999694824219
+        "y": -340.0
     }
 }
 
@@ -5895,13 +5895,13 @@
     "m_RefNameGeneratedByDisplayName": "Saturation",
     "m_DefaultReferenceName": "_Saturation",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
     "overrideHLSLDeclaration": true,
-    "hlslDeclarationOverride": 2,
+    "hlslDeclarationOverride": 1,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
@@ -6567,7 +6567,7 @@
     "m_Title": "World Space UV",
     "m_Position": {
         "x": -2343.0,
-        "y": 10.00003433227539
+        "y": 10.0
     }
 }
 
@@ -6781,8 +6781,8 @@
     "m_ObjectId": "463e2e95506a4d0f9cc0918f2ae8ef5c",
     "m_Title": "Albedo (Base Color/Texture)",
     "m_Position": {
-        "x": 3780.999755859375,
-        "y": -267.99993896484377
+        "x": 3781.0,
+        "y": -268.0
     }
 }
 
@@ -6809,7 +6809,7 @@
     "m_Title": "Noise",
     "m_Position": {
         "x": -1779.0,
-        "y": 11.000011444091797
+        "y": 11.0
     }
 }
 
@@ -7161,8 +7161,8 @@
     "m_ObjectId": "4d5369635eff42d4b82427e3d4f7366c",
     "m_Title": "Offset shadow pos based on noise, but controlled by light dir/rot",
     "m_Position": {
-        "x": -882.999755859375,
-        "y": -45.99997329711914
+        "x": -883.0,
+        "y": -46.0
     }
 }
 
@@ -7493,8 +7493,8 @@
     "m_ObjectId": "54ebad5bd2e44818bc1c3486326fff6a",
     "m_Title": "Ambient Occlusion",
     "m_Position": {
-        "x": 3778.999755859375,
-        "y": 1691.9998779296875
+        "x": 3779.0,
+        "y": 1692.0
     }
 }
 
@@ -7542,8 +7542,8 @@
     "m_ObjectId": "55cfa5a8993c482aa5b0c39328fc8af0",
     "m_Title": "Triplanar Noise",
     "m_Position": {
-        "x": 277.9997863769531,
-        "y": -688.9998779296875
+        "x": 278.0,
+        "y": -689.0
     }
 }
 
@@ -7578,8 +7578,8 @@
     "m_ObjectId": "567640019a3c4e699011b0480ac28b51",
     "m_Title": "Normal",
     "m_Position": {
-        "x": 3780.999755859375,
-        "y": 216.00001525878907
+        "x": 3781.0,
+        "y": 216.0
     }
 }
 
@@ -7863,8 +7863,8 @@
     "m_ObjectId": "58f4ef4ecf664781923ea6779adc4615",
     "m_Title": "Watercolor Shadows",
     "m_Position": {
-        "x": 255.00006103515626,
-        "y": 132.00003051757813
+        "x": 255.0,
+        "y": 132.0
     }
 }
 
@@ -9227,7 +9227,7 @@
     "m_Title": "Shading x Noise",
     "m_Position": {
         "x": 1136.0,
-        "y": -211.99996948242188
+        "y": -212.0
     }
 }
 
@@ -9554,8 +9554,8 @@
     "m_ObjectId": "79cdbcebd1ac4b3fb8a9b1f242ccca0e",
     "m_Title": "Fresnel",
     "m_Position": {
-        "x": 1228.9998779296875,
-        "y": 58.00001907348633
+        "x": 1229.0,
+        "y": 58.0
     }
 }
 
@@ -9729,7 +9729,7 @@
     "m_ObjectId": "7cb4484118aa41648ecc19fb28f85be5",
     "m_Title": "Metallic and Smoothness",
     "m_Position": {
-        "x": 3780.999755859375,
+        "x": 3781.0,
         "y": 590.0
     }
 }
@@ -9844,8 +9844,8 @@
     "m_ObjectId": "805a393a6cb04cd2a95f9b37ddf9eb2f",
     "m_Title": "x Shadows",
     "m_Position": {
-        "x": 1346.9998779296875,
-        "y": -211.99996948242188
+        "x": 1347.0,
+        "y": -212.0
     }
 }
 
@@ -10411,8 +10411,8 @@
     "m_ObjectId": "8c71927b76e8465890e1b825baa7ef8d",
     "m_Title": "Saturation",
     "m_Position": {
-        "x": 5375.88623046875,
-        "y": -312.9996337890625
+        "x": 5376.0,
+        "y": -313.0
     }
 }
 
@@ -10662,7 +10662,7 @@
     "m_ObjectId": "9005e5c1d6ed4aef995cd29391005318",
     "m_Title": "N Dot L (Diffuse)",
     "m_Position": {
-        "x": -89.00003051757813,
+        "x": -89.0,
         "y": -345.0
     }
 }
@@ -11268,8 +11268,8 @@
     "m_ObjectId": "9b5b69783af44ac4ac7b468696691625",
     "m_Title": "x Watercolor Noise",
     "m_Position": {
-        "x": 1820.9998779296875,
-        "y": -234.9999542236328
+        "x": 1821.0,
+        "y": -235.0
     }
 }
 
@@ -14748,8 +14748,8 @@
     "m_ObjectId": "cd74fea9e8ae4f80886515c842322798",
     "m_Title": "Highlights & Shadows Tinting",
     "m_Position": {
-        "x": 2204.999755859375,
-        "y": -450.9999084472656
+        "x": 2205.0,
+        "y": -451.0
     }
 }
 
@@ -15278,8 +15278,8 @@
     "m_ObjectId": "d60a2e835e2a4e5c9ffb513d586d9b21",
     "m_Title": "Saturation",
     "m_Position": {
-        "x": 5375.88623046875,
-        "y": 1276.99951171875
+        "x": 5376.0,
+        "y": 1277.0
     }
 }
 
@@ -16007,8 +16007,8 @@
     "m_ObjectId": "e022bdab586e4458aca4ee570789058f",
     "m_Title": "Tiling and Offset",
     "m_Position": {
-        "x": 3024.999755859375,
-        "y": 449.9999694824219
+        "x": 3025.0,
+        "y": 450.0
     }
 }
 
@@ -16053,8 +16053,8 @@
     "m_ObjectId": "e0c346aa476045cd932388eba009917a",
     "m_Title": "Main Light",
     "m_Position": {
-        "x": -89.00003051757813,
-        "y": 60.0000114440918
+        "x": -89.0,
+        "y": 60.0
     }
 }
 
@@ -16395,7 +16395,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "e5e6cea2d4eb49abb09894c1d068af8b",
     "m_Id": 0,
-    "m_DisplayName": "Parallax Map",
+    "m_DisplayName": "Parallax (Bump) Map",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
