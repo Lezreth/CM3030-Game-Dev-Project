@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ChoiceWaypoint : MonoBehaviour
 {
+    private static HashSet<string> usedGroups = new HashSet<string>();
+
     [Header("Interaction")]
     public InteractionController interaction;
     public Transform npcFocusPoint;
@@ -12,14 +15,22 @@ public class ChoiceWaypoint : MonoBehaviour
     public GameObject choiceUI;
     public CanvasGroup choiceCanvas;
 
+    [Header("Linking")]
+    public string interactionGroup;
+
     public GameObject npcObject;
     public float triggerRadius = 1.5f;
+
     private bool triggered = false;
     private bool waitingForExit = false;
+    private bool used = false;
 
     public bool CanTrigger(Vector3 playerPosition)
     {
+        if (used) return false;
         if (waitingForExit) return false;
+        if (!string.IsNullOrEmpty(interactionGroup) && usedGroups.Contains(interactionGroup))
+            return false;
         if (triggered) return false;
         return Vector3.Distance(playerPosition, transform.position) <= triggerRadius;
     }
@@ -65,6 +76,16 @@ public class ChoiceWaypoint : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, triggerRadius);
+    }
+
+    public void MarkAsUsed()
+    {
+        used = true;
+
+        if (!string.IsNullOrEmpty(interactionGroup))
+        {
+            usedGroups.Add(interactionGroup);
+        }
     }
 }
 

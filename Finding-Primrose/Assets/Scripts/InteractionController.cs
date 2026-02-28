@@ -66,6 +66,7 @@ public class InteractionController : MonoBehaviour
             Debug.LogWarning($"[InteractionController] No ChoiceEffect for option {optionIndex} on '{waypoint.name}'");
         }
 
+        waypoint.MarkAsUsed();
         ReturnToExploration();
     }
 
