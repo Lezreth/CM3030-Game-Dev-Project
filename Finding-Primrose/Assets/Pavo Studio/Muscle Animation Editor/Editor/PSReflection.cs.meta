@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: c8061413aabf42c4e810e32f7405b9c9
+timeCreated: 1529187373
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 32233
+  packageName: Muscle Animation Editor
+  packageVersion: 2.5
+  assetPath: Assets/Pavo Studio/Muscle Animation Editor/Editor/PSReflection.cs
+  uploadId: 519400

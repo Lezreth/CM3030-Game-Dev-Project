@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 3293949f781227e4a9fe137472b87e03
+timeCreated: 1529187373
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 32233
+  packageName: Muscle Animation Editor
+  packageVersion: 2.5
+  assetPath: Assets/Pavo Studio/Muscle Animation Editor/Editor/PSMuscleHandle.cs
+  uploadId: 519400
