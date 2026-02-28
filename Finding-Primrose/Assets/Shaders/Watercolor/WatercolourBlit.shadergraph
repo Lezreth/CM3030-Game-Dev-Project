@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "5d2dbc964d554bcfa71fdaada064838c"
+        },
+        {
+            "m_Id": "4576bd385f624010af55405d96cfa40b"
         }
     ],
     "m_Keywords": [],
@@ -122,6 +125,9 @@
         },
         {
             "m_Id": "42f2d0cbea4d442eb13e0f46f1aa3673"
+        },
+        {
+            "m_Id": "cc836c58fc124969aae7d9005082ba0c"
         }
     ],
     "m_GroupDatas": [
@@ -555,6 +561,20 @@
                     "m_Id": "f652fe7081de9a8eae8e92fb0ce3d32e"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "cc836c58fc124969aae7d9005082ba0c"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "17f487cd41d4ce8ca637eee7b9d0d2e5"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -1670,8 +1690,8 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": 3.0,
-    "m_FloatType": 1,
+    "m_Value": 1.649999976158142,
+    "m_FloatType": 0,
     "m_LiteralFloatMode": false,
     "m_RangeValues": {
         "x": 0.0,
@@ -1859,8 +1879,8 @@
     "m_ObjectId": "3a6535f32e8a4e29a19bb4c1de2ae4e2",
     "m_Title": "Sample Blit Source",
     "m_Position": {
-        "x": -563.0,
-        "y": -79.0
+        "x": -562.9999389648438,
+        "y": -78.99998474121094
     }
 }
 
@@ -2096,6 +2116,50 @@
         "w": 0.0
     },
     "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "4576bd385f624010af55405d96cfa40b",
+    "m_Guid": {
+        "m_GuidSerialized": "313488bc-a4c9-45a7-a2ce-9f24a428adc0"
+    },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
+    "m_Name": "Moire Darkness",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Moire Darkness",
+    "m_DefaultReferenceName": "_Moire_Darkness",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
+    "m_Value": 10.0,
+    "m_FloatType": 0,
+    "m_LiteralFloatMode": false,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -2812,8 +2876,8 @@
     "m_ObjectId": "6dc26c78cdfc4ca8aa24ce6b36b8d5e9",
     "m_Title": "Distortion",
     "m_Position": {
-        "x": -1566.0,
-        "y": -173.0
+        "x": -1565.9998779296875,
+        "y": -172.9999542236328
     }
 }
 
@@ -3892,6 +3956,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "cc836c58fc124969aae7d9005082ba0c",
+    "m_Group": {
+        "m_Id": "a017b7410df04e899fe05a1c215764ea"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 182.0,
+            "y": 484.0,
+            "width": 153.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "ef526b6833f341aca48b44d6ffb3bfc4"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "4576bd385f624010af55405d96cfa40b"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SaturateNode",
     "m_ObjectId": "cce1cc2844a07784a7c97738ab64a486",
     "m_Group": {
@@ -4474,18 +4574,37 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "ef526b6833f341aca48b44d6ffb3bfc4",
+    "m_Id": 0,
+    "m_DisplayName": "Moire Darkness",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": [],
+    "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.CategoryData",
     "m_ObjectId": "ef946ac2df7b4f5eb7d2745cf52df9e0",
     "m_Name": "",
     "m_ChildObjectList": [
         {
-            "m_Id": "306095f1c1824e07a6462572793f2b21"
-        },
-        {
             "m_Id": "d0f19d19af5b4061a3106cf922931d34"
         },
         {
+            "m_Id": "306095f1c1824e07a6462572793f2b21"
+        },
+        {
             "m_Id": "5d2dbc964d554bcfa71fdaada064838c"
+        },
+        {
+            "m_Id": "4576bd385f624010af55405d96cfa40b"
         }
     ]
 }
