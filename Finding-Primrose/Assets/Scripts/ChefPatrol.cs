@@ -8,58 +8,34 @@ public class ChefPatrolRoutine : MonoBehaviour
     public class PatrolPoint
     {
         public Transform point;
-
-        [Header("Stop Facing")]
-        [Tooltip("If enabled, chef will rotate after arriving before playing the action.")]
-        public bool setFacing = false;
-
-        [Tooltip("If Use Waypoint Rotation is ON, this value is ignored.")]
-        public float facingY = 0f; // degrees
-
-        [Tooltip("If ON, chef uses point.rotation.y as final facing (recommended).")]
-        public bool useWaypointRotation = true;
-
-        [Header("Stop Behavior")]
-        public bool waitHere = false;
-        public float waitSeconds = 0f;
-
-        [Header("Animation Trigger")]
-        [Tooltip("Animator trigger to fire after arriving (and after facing, if enabled).")]
-        public string triggerName;    
-        public float triggerDelay = 0f;   
+        public string animationTrigger;
+        public float waitSeconds = 2f;
     }
 
-    [Header("Route (in order)")]
+    [Header("Route")]
     public List<PatrolPoint> route = new List<PatrolPoint>();
 
     [Header("Settings")]
     public float moveSpeed = 2f;
     public float stoppingDistance = 0.5f;
-    public float turnSpeed = 8f;
 
-    [Header("Animation")]
+    [Header("References")]
     public Animator animator;
-
-    [Header("Transforms to Move/Rotate")]
-    [Tooltip("Transform that moves through the world (often the GameObject this script is on).")]
-    public Transform moveTarget;
-
-    [Tooltip("Transform that visually rotates the character (often same as moveTarget).")]
-    public Transform rotateTarget;
+    public Transform moveTransform;
+    public Transform rotateTransform;
 
     private bool isActive = true;
-
-    private Coroutine patrolCoroutine;
 
     void Start()
     {
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+        if (moveTransform == null)
+            moveTransform = transform;
+        if (rotateTransform == null)
+            rotateTransform = transform;
 
-        if (moveTarget == null) moveTarget = transform;
-        if (rotateTarget == null) rotateTarget = transform;
-
-        patrolCoroutine = StartCoroutine(PatrolRoutine());
+        StartCoroutine(PatrolRoutine());
     }
 
     IEnumerator PatrolRoutine()
@@ -69,101 +45,36 @@ public class ChefPatrolRoutine : MonoBehaviour
         while (isActive && route != null && route.Count > 0)
         {
             PatrolPoint p = route[i];
+            if (p.point == null) { i++; continue; }
 
-            if (p.point == null)
+            animator.SetBool("Walking", true);
+            while (Vector3.Distance(moveTransform.position, p.point.position) > stoppingDistance)
             {
-                Debug.LogError($"[Chef] Route point {i} is NULL!");
-                yield break;
+                Vector3 dir = (p.point.position - moveTransform.position).normalized;
+                dir.y = 0;
+                moveTransform.position += dir * moveSpeed * Time.deltaTime;
+                rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation,
+                    Quaternion.LookRotation(dir), Time.deltaTime * 8f);
+                yield return null;
             }
 
-            Debug.Log($"[Chef] Walking to route point {i}: {p.point.name}");
-            yield return WalkToWaypoint(p.point);
+            animator.SetBool("Walking", false);
 
-            // Stop orientation 
-            if (p.setFacing)
+            if (!string.IsNullOrEmpty(p.animationTrigger) && p.waitSeconds > 0)
             {
-                float y = p.useWaypointRotation ? p.point.eulerAngles.y : p.facingY;
-                Debug.Log($"[Chef] STOP FACE at {p.point.name}: setFacing={p.setFacing} useWaypointRotation={p.useWaypointRotation} facingY={p.facingY:F1} waypointY={p.point.eulerAngles.y:F1} rotateTarget={rotateTarget.name} currentY={rotateTarget.eulerAngles.y:F1}");
-
-                yield return RotateToFacing(y);
-            }
-
-            // Trigger animation
-            if (!string.IsNullOrEmpty(p.triggerName))
-            {
-                if (p.triggerDelay > 0f)
-                    yield return new WaitForSeconds(p.triggerDelay);
-
-                animator.SetTrigger(p.triggerName);
-            }
-
-            // Optional wait
-            if (p.waitHere && p.waitSeconds > 0f)
+                rotateTransform.rotation = Quaternion.Euler(0, p.point.eulerAngles.y, 0);
+                animator.SetTrigger(p.animationTrigger);
                 yield return new WaitForSeconds(p.waitSeconds);
+            }
 
             i = (i + 1) % route.Count;
         }
     }
 
-    IEnumerator WalkToWaypoint(Transform waypoint)
-    {
-        if (waypoint == null)
-        {
-            Debug.LogError("[Chef] Waypoint is NULL!");
-            yield break;
-        }
-
-        // Cache target once (prevents jitter if waypoint is moved/parented weirdly)
-        Vector3 target = waypoint.position;
-        target.y = moveTarget.position.y;
-
-        animator.SetBool("Walking", true);
-
-        while (Vector3.Distance(moveTarget.position, target) > stoppingDistance)
-        {
-            Vector3 toTarget = target - moveTarget.position;
-            Vector3 direction = toTarget.normalized;
-
-            moveTarget.position += direction * moveSpeed * Time.deltaTime;
-
-            // Face movement direction while walking
-            if (toTarget.sqrMagnitude > 0.0001f)
-            {
-                Quaternion look = Quaternion.LookRotation(direction);
-                rotateTarget.rotation = Quaternion.Slerp(rotateTarget.rotation, look, turnSpeed * Time.deltaTime);
-            }
-
-            yield return null;
-        }
-
-        animator.SetBool("Walking", false);
-    }
-
-    IEnumerator RotateToFacing(float yDegrees)
-    {
-        Quaternion targetRot = Quaternion.Euler(0f, yDegrees, 0f);
-
-        while (Quaternion.Angle(rotateTarget.rotation, targetRot) > 1f)
-        {
-            rotateTarget.rotation = Quaternion.Slerp(
-                rotateTarget.rotation,
-                targetRot,
-                turnSpeed * Time.deltaTime
-            );
-            yield return null;
-        }
-
-        rotateTarget.rotation = targetRot;
-    }
-
-    // When player triggers the choice
     public void StopPatrol()
     {
         isActive = false;
-
-        if (patrolCoroutine != null)
-            StopCoroutine(patrolCoroutine);
-
+        StopAllCoroutines();
         animator.SetBool("Walking", false);
     }
 }
