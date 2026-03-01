@@ -5,6 +5,8 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager I { get; private set; }
 
+    private static readonly int SaturationID = Shader.PropertyToID("_Saturation");
+
 
     [Header("Music")]
     public AudioClip musicHappy;    // Ending 1: Family Finds Her
@@ -13,6 +15,13 @@ public class MusicManager : MonoBehaviour
     public AudioClip musicEnergetic;// Ending 2: Taken In By Stranger
     public AudioClip musicStart;    // Start music
 
+
+    [Header("Saturation")]
+    [SerializeField] private float saturationHappy = 1f;
+    [SerializeField] private float saturationNeutral = 0.6f;
+    [SerializeField] private float saturationBad = 0f;
+    [SerializeField] private float saturationEnergetic = .5f;
+    [SerializeField] private float saturationStart = 0.8f;
     [Header("Settings")]
     [SerializeField] private float crossfadeDuration = 2f;
     [SerializeField] private float masterVolume = 1f;
@@ -40,6 +49,7 @@ public class MusicManager : MonoBehaviour
     sourceB.loop = true;
     sourceA.playOnAwake = false;
     sourceB.playOnAwake = false;
+    Shader.SetGlobalFloat(SaturationID, saturationStart);
 
     }
 
@@ -126,6 +136,11 @@ public class MusicManager : MonoBehaviour
         if (clip == null) return;
         currentClip = clip;
 
+        // Set saturation based on its clip
+        if (clip == musicHappy)        Shader.SetGlobalFloat(SaturationID, saturationHappy);
+        else if (clip == musicBad)     Shader.SetGlobalFloat(SaturationID, saturationBad);
+        else if (clip == musicEnergetic) Shader.SetGlobalFloat(SaturationID, saturationEnergetic);
+        else if (clip == musicNeutral) Shader.SetGlobalFloat(SaturationID, saturationNeutral);
         if (currentFade != null)
             StopCoroutine(currentFade);
 
@@ -159,15 +174,6 @@ public class MusicManager : MonoBehaviour
         isPlayingA = !isPlayingA;
     }
 
-    private void PlayImmediate(AudioClip clip)
-    {
-        if (clip == null) return;
-        currentClip = clip;
-        activeSouce.clip = clip;
-        activeSouce.volume = masterVolume;
-        activeSouce.loop = true;
-        activeSouce.Play();
-    }
 
     // Call this from ending scenes to fade out music
     public void FadeOut(float duration = 2f)
@@ -187,6 +193,17 @@ public class MusicManager : MonoBehaviour
             yield return null;
         }
         activeSouce.Stop();
+    }
+
+        private void PlayImmediate(AudioClip clip)
+    {
+        if (clip == null) return;
+        currentClip = clip;
+        Shader.SetGlobalFloat(SaturationID, saturationStart);
+        activeSouce.clip = clip;
+        activeSouce.volume = masterVolume;
+        activeSouce.loop = true;
+        activeSouce.Play();
     }
 
         private void OnDestroy()
