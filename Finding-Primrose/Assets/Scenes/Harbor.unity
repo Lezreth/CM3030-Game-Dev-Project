@@ -284,9 +284,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7346445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f77460d0441e4271973a399978cc415, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cbc4f1e3528e42c284152c9e7aa9ca9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::SandwichEatTrigger
+  mouthTransform: {fileID: 1664249458}
+  primroseAnimator: {fileID: 918594356}
+  eatDistance: 0.5
 --- !u!1001 &7622757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,6 +819,7 @@ Transform:
   m_Children:
   - {fileID: 655551420}
   - {fileID: 1302788399}
+  - {fileID: 1664249458}
   m_Father: {fileID: 1997967560}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &27546755
@@ -19811,6 +19815,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3371584681637950155, guid: 85e1ed37fa2ad474a8de0a9aeb62821e, type: 3}
   m_PrefabInstance: {fileID: 1660129047}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1664249457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664249458}
+  m_Layer: 0
+  m_Name: eat point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664249458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664249457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.172, z: 0.5192}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 27546752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679828807
 GameObject:
   m_ObjectHideFlags: 0
