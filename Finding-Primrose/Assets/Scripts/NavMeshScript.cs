@@ -29,8 +29,23 @@ public class NavMeshScript : MonoBehaviour
         CheckWaypointProximity();
 
         bool isMoving = agent.velocity.magnitude > 0.1f;
+        //if (animator != null)
+        //    animator.SetBool("Walk", isMoving);
         if (animator != null)
-            animator.SetBool("Walk", isMoving);
+        {
+            bool isCrouching = animator.GetBool("CautiousCrouch");
+
+            if (isCrouching)
+            {
+                animator.SetBool("Walk", false); 
+                animator.SetBool("CautiousWalk", isMoving);
+            }
+            else
+            {
+                animator.SetBool("CautiousWalk", false);
+                animator.SetBool("Walk", isMoving);
+            }
+        }
 
         if (agent.hasPath && !agent.isStopped && agent.velocity.magnitude > 0.1f)
         {
