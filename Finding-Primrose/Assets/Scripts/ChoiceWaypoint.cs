@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class ChoiceWaypoint : MonoBehaviour
 {
-    private static HashSet<string> usedGroups = new HashSet<string>();
-
+    
     [Header("Interaction")]
     public InteractionController interaction;
     public Transform npcFocusPoint;
@@ -18,20 +17,37 @@ public class ChoiceWaypoint : MonoBehaviour
     [Header("Linking")]
     public string interactionGroup;
 
+    [Header("Persistence")]
+    public string waypointID;
+
+    [Header("Player Animation")]
+    public PrimroseAnimationController primroseAnim;
+
+    [Header("Animation")]
+    public bool triggerCrouchOnActivate;
+
     public GameObject npcObject;
     public float triggerRadius = 1.5f;
 
+    private static HashSet<string> usedGroups = new HashSet<string>();
+    private static HashSet<string> usedWaypoints = new HashSet<string>();
+
     private bool triggered = false;
     private bool waitingForExit = false;
-    private bool used = false;
 
     public bool CanTrigger(Vector3 playerPosition)
     {
-        if (used) return false;
         if (waitingForExit) return false;
+        if (triggered) return false;
+
+        // looks to see what individual waypoints were used 
+        if (!string.IsNullOrEmpty(waypointID) && usedWaypoints.Contains(waypointID))
+            return false;
+
+        // Used to see if any waypoints form the group was used 
         if (!string.IsNullOrEmpty(interactionGroup) && usedGroups.Contains(interactionGroup))
             return false;
-        if (triggered) return false;
+
         return Vector3.Distance(playerPosition, transform.position) <= triggerRadius;
     }
 
@@ -39,6 +55,15 @@ public class ChoiceWaypoint : MonoBehaviour
     {
         if (triggered) return;
         triggered = true;
+
+        // Check the box if you want primrose to crouch. 
+        if (primroseAnim != null)
+        {
+            if (triggerCrouchOnActivate && primroseAnim != null)
+            {
+                primroseAnim.SetCautiousCrouch(true);
+            }
+        }
 
         if (npcObject != null)
         {
@@ -80,7 +105,10 @@ public class ChoiceWaypoint : MonoBehaviour
 
     public void MarkAsUsed()
     {
-        used = true;
+        if (!string.IsNullOrEmpty(waypointID))
+        {
+            usedWaypoints.Add(waypointID);
+        }
 
         if (!string.IsNullOrEmpty(interactionGroup))
         {

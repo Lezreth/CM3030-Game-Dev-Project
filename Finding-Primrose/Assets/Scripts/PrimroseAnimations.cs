@@ -13,4 +13,15 @@ public class PrimroseAnimationController : MonoBehaviour
     {
         animator.SetTrigger("Eat");
     }
+
+    public void SetCautiousCrouch(bool state)
+    {
+        animator.SetBool("CautiousCrouch", state);
+    }
+
+    public void SetCautiousWalk(bool state)
+    {
+        animator.SetBool("CautiousWalk", state);
+    }
+
 }
