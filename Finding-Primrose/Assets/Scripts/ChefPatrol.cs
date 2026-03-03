@@ -10,6 +10,7 @@ public class ChefPatrolRoutine : MonoBehaviour
         public Transform point;
         public string animationTrigger;
         public float waitSeconds = 2f;
+        public float facingY = 0f;
     }
 
     [Header("Route")]
@@ -22,21 +23,36 @@ public class ChefPatrolRoutine : MonoBehaviour
     [Header("References")]
     public Animator animator;
     public Transform moveTransform;
-    public Transform rotateTransform;
 
     private bool isActive = true;
 
     void Start()
     {
-        if (animator == null)
-            animator = GetComponentInChildren<Animator>();
-        if (moveTransform == null)
-            moveTransform = transform;
-        if (rotateTransform == null)
-            rotateTransform = transform;
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+        if (moveTransform == null) moveTransform = transform;
 
         StartCoroutine(PatrolRoutine());
+        StartCoroutine(DebugLoop());
     }
+
+    IEnumerator DebugLoop()
+    {
+        while (true)
+        {
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            string animName = "Unknown";
+            if (state.IsName("Walking")) animName = "Walking";
+            else if (state.IsName("Standing_Idle")) animName = "Standing_Idle";
+            else if (state.IsName("Cleaning_Sweeping")) animName = "Cleaning_Sweeping";
+            else if (state.IsName("Cleaning_Table")) animName = "Cleaning_Table";
+            else animName = $"Hash:{state.shortNameHash}";
+            string transition = animator.IsInTransition(0) ? " [TRANSITIONING]" : "";
+            Debug.Log($"[Chef] Anim: {animName}{transition} | Waypoint: {_debugStatus}");
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private string _debugStatus = "starting";
 
     IEnumerator PatrolRoutine()
     {
@@ -45,7 +61,10 @@ public class ChefPatrolRoutine : MonoBehaviour
         while (isActive && route != null && route.Count > 0)
         {
             PatrolPoint p = route[i];
-            if (p.point == null) { i++; continue; }
+            if (p.point == null) { i = (i + 1) % route.Count; continue; }
+
+            int from = ((i - 1) + route.Count) % route.Count;
+            _debugStatus = $"walking {from} -> {i}";
 
             animator.SetBool("Walking", true);
             while (Vector3.Distance(moveTransform.position, p.point.position) > stoppingDistance)
@@ -53,18 +72,31 @@ public class ChefPatrolRoutine : MonoBehaviour
                 Vector3 dir = (p.point.position - moveTransform.position).normalized;
                 dir.y = 0;
                 moveTransform.position += dir * moveSpeed * Time.deltaTime;
-                rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation,
-                    Quaternion.LookRotation(dir), Time.deltaTime * 8f);
                 yield return null;
             }
 
             animator.SetBool("Walking", false);
+            _debugStatus = $"at waypoint {i} ({p.animationTrigger})";
 
-            if (!string.IsNullOrEmpty(p.animationTrigger) && p.waitSeconds > 0)
+            // Rotate to facing
+            Quaternion targetRot = Quaternion.Euler(0, p.facingY, 0);
+            Quaternion startRot = moveTransform.rotation;
+            float t = 0f;
+            while (t < 1f)
             {
-                rotateTransform.rotation = Quaternion.Euler(0, p.point.eulerAngles.y, 0);
+                t += Time.deltaTime * 5f;
+                moveTransform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+                yield return null;
+            }
+
+            if (!string.IsNullOrEmpty(p.animationTrigger))
+            {
                 animator.SetTrigger(p.animationTrigger);
                 yield return new WaitForSeconds(p.waitSeconds);
+            }
+            else
+            {
+                yield return null;
             }
 
             i = (i + 1) % route.Count;
