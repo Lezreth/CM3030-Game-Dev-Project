@@ -13553,6 +13553,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f391ec43bebbdf4a92586cae1d3aca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishDestroyer
+--- !u!114 &1007790335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007790323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c032fb4e23fc149318f92ad466dbf19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCAudioManager
+  source: {fileID: 2099503474}
+  approachSequence:
+    steps:
+    - clip: {fileID: 8300000, guid: 56c70f4306f229746bf913d873e95075, type: 3}
+      delayAfter: 0
+  choiceA:
+    steps: []
+  choiceB:
+    steps: []
+  triggerDistance: 3.5
+  playerTag: Player
 --- !u!1001 &1020443106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18046,6 +18069,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.00048828
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0002593994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.116997
+      objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 189.1586
@@ -18056,7 +18091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -333.87827
+      value: -480
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18080,7 +18115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_text
-      value: Birds!?
+      value: 'Birds!? (Click for Lake Merrit) '
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_fontSize
@@ -18097,6 +18132,22 @@ PrefabInstance:
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 462.878
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 241.2604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -153.9447
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 42.5923
       objectReference: {fileID: 0}
     - target: {fileID: 6741019964626201443, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Name
@@ -22265,7 +22316,7 @@ MonoBehaviour:
       delayAfter: 0
   choiceA:
     steps:
-    - clip: {fileID: 8300000, guid: 56c70f4306f229746bf913d873e95075, type: 3}
+    - clip: {fileID: 0}
       delayAfter: 0
     - clip: {fileID: 8300000, guid: 09bbd550301a356409d03cd82ae5dd80, type: 3}
       delayAfter: 0
@@ -23392,6 +23443,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7151594660703261423, guid: 3a245daa6cb83334d8a55a5e90125b88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1007790331}
+    - targetCorrespondingSourceObject: {fileID: 7151594660703261423, guid: 3a245daa6cb83334d8a55a5e90125b88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1007790335}
   m_SourcePrefab: {fileID: 100100000, guid: 3a245daa6cb83334d8a55a5e90125b88, type: 3}
 --- !u!1001 &173081640181646614
 PrefabInstance:
@@ -24187,8 +24241,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.00057983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.00021362305
       objectReference: {fileID: 0}
     - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -24204,11 +24262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -332
+      value: -445
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -84.7435
+      value: -112
       objectReference: {fileID: 0}
     - target: {fileID: 2416466170821777262, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -24222,6 +24280,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1599358374}
+    - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_text
+      value: Smells like tacos!                (Click for food trucks)
+      objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_fontSize
       value: 26
@@ -24284,19 +24346,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b9fa6b1772f586e4b996cd3511b11329, type: 2}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 259.9473
+      value: 352.3746
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 138.9329
+      value: 189.7009
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -173.74883
+      value: -176.18732
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.9536
+      value: 0.8382
       objectReference: {fileID: 0}
     - target: {fileID: 6741019964626201443, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Name

@@ -28390,6 +28390,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.00048828
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0002593994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.116997
+      objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 203.1415
@@ -28405,6 +28417,10 @@ PrefabInstance:
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_text
+      value: Smells like tacos!                (Click for food trucks)
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_fontSize
@@ -28424,19 +28440,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 407.4
+      value: 498.3591
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 203.713
+      value: 241.789
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -153.7
+      value: -158.98834
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42.8565
+      value: 40.741226
       objectReference: {fileID: 0}
     - target: {fileID: 6741019964626201443, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Name

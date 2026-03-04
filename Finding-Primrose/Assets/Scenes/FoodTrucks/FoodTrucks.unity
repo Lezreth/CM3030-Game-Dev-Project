@@ -4352,11 +4352,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -0.00048828
+      value: -21.7039
       objectReference: {fileID: 0}
     - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0002593994
+      value: 0.00019836426
       objectReference: {fileID: 0}
     - target: {fileID: 1119307059069969327, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4372,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -334.97827
+      value: -471
       objectReference: {fileID: 0}
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4400,7 +4400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_text
-      value: What's that sound?
+      value: 'Birds!? (Click for Lake Merrit) '
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_fontSize
@@ -4420,27 +4420,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Color.b
-      value: 0.3764706
+      value: 0.7169812
       objectReference: {fileID: 0}
     - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Color.g
-      value: 0.3764706
+      value: 0.5580278
       objectReference: {fileID: 0}
     - target: {fileID: 5791431551025334978, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_Color.r
-      value: 0.3764706
+      value: 0.6708334
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 341.2786
+      value: 447.0236
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 189.4769
+      value: 237.2245
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -158.72632
+      value: -151.80821
       objectReference: {fileID: 0}
     - target: {fileID: 6041330030366947996, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
