@@ -4170,6 +4170,9 @@ MonoBehaviour:
   choiceUI: {fileID: 1299069262}
   choiceCanvas: {fileID: 1299069261}
   interactionGroup: BenchManAndJogger
+  waypointID: Jogger
+  primroseAnim: {fileID: 0}
+  triggerCrouchOnActivate: 0
   npcObject: {fileID: 0}
   triggerRadius: 1.5
 --- !u!1 &410506902
@@ -11528,12 +11531,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceWaypoint
   interaction: {fileID: 1335419783}
-  npcFocusPoint: {fileID: 622516359}
+  npcFocusPoint: {fileID: 1642695113}
   choiceA: {fileID: 11400000, guid: 220c140442398554891570b651eb7f05, type: 2}
   choiceB: {fileID: 0}
   choiceUI: {fileID: 768172906}
   choiceCanvas: {fileID: 768172909}
   interactionGroup: 
+  waypointID: Birds
+  primroseAnim: {fileID: 0}
+  triggerCrouchOnActivate: 0
   npcObject: {fileID: 0}
   triggerRadius: 1.5
 --- !u!1 &666274163
@@ -16907,7 +16913,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2568744703424513788, guid: fdd07314dd7d3d449912d547ccbbd333, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1258060872}
   m_SourcePrefab: {fileID: 100100000, guid: fdd07314dd7d3d449912d547ccbbd333, type: 3}
 --- !u!4 &1258060869 stripped
 Transform:
@@ -16924,6 +16933,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2568744703424513788, guid: fdd07314dd7d3d449912d547ccbbd333, type: 3}
   m_PrefabInstance: {fileID: 1258060868}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1258060872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258060871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec553e9fe913c94fb35fd0f7da6e821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PrimroseAnimationController
 --- !u!4 &1273989624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400094, guid: c42b8d643b928594d8e92b17b63dfe06, type: 3}
@@ -18448,6 +18469,9 @@ MonoBehaviour:
   choiceUI: {fileID: 512179475}
   choiceCanvas: {fileID: 512179474}
   interactionGroup: BenchManAndJogger
+  waypointID: BenchMan
+  primroseAnim: {fileID: 0}
+  triggerCrouchOnActivate: 0
   npcObject: {fileID: 0}
   triggerRadius: 1.5
 --- !u!1 &1493479261
