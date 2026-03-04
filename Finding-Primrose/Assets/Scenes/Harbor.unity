@@ -11492,10 +11492,10 @@ MonoBehaviour:
   musicBad: {fileID: 8300000, guid: 50ff6069e44a94355991948207237c6e, type: 3}
   musicEnergetic: {fileID: 8300000, guid: 32aad15f184784ff391dbe33ebd6e1c2, type: 3}
   musicStart: {fileID: 8300000, guid: ab7cb993bbd7b46fba809bffd52cb5f8, type: 3}
-  saturationHappy: 1
-  saturationNeutral: 0.6
+  saturationHappy: 1.3
+  saturationNeutral: 0.2
   saturationBad: 0
-  saturationEnergetic: 0.5
+  saturationEnergetic: 0.4
   saturationStart: 0.8
   crossfadeDuration: 2
   masterVolume: 0.3
