@@ -6541,6 +6541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d122c7dbbf464d543947412277fb5465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  cameraFollow: {fileID: 1305973990}
   focusSpeed: 5
   arriveThreshold: 0.05
 --- !u!4 &1306165100 stripped

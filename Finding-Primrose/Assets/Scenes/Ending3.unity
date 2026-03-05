@@ -6523,6 +6523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d122c7dbbf464d543947412277fb5465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  cameraFollow: {fileID: 1305973990}
   focusSpeed: 5
   arriveThreshold: 0.05
 --- !u!4 &1306165100 stripped
@@ -7631,7 +7632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.35043, y: 2.7690582}
+  m_AnchoredPosition: {x: 112.350464, y: 2.769043}
   m_SizeDelta: {x: -391.6915, y: -262.13812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481600271

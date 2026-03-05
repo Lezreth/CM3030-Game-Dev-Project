@@ -3174,7 +3174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750933202390842268, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: -2.12
       objectReference: {fileID: 0}
     - target: {fileID: 4750933202390842268, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3182,7 +3182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750933202390842268, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.1
+      value: 2.68
       objectReference: {fileID: 0}
     - target: {fileID: 7224780960407290280, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_Name
@@ -4871,15 +4871,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771145631}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.69251496, z: -0, w: 0.7214035}
-  m_LocalPosition: {x: 12.211328, y: -0.03000004, z: 4.2390933}
-  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1.4285715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.0582597, y: 0, z: 8.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1192516234}
   - {fileID: 1722866561}
   - {fileID: 2137724655}
-  m_Father: {fileID: 1045359123}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772669769 stripped
 GameObject:
@@ -6515,9 +6515,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1235027880}
-    - targetCorrespondingSourceObject: {fileID: 400084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 771145632}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
       insertIndex: -1
@@ -8732,6 +8729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d122c7dbbf464d543947412277fb5465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  cameraFollow: {fileID: 1305973990}
   focusSpeed: 5
   arriveThreshold: 0.05
 --- !u!4 &1306165100 stripped
@@ -9423,7 +9421,7 @@ MonoBehaviour:
   primroseAnim: {fileID: 1443487831}
   triggerCrouchOnActivate: 0
   npcObject: {fileID: 1045359121}
-  triggerRadius: 1.5
+  triggerRadius: 1.18
 --- !u!1 &1423068902
 GameObject:
   m_ObjectHideFlags: 0
@@ -15271,4 +15269,5 @@ SceneRoots:
   - {fileID: 1110778631}
   - {fileID: 1478336116}
   - {fileID: 2007430833}
+  - {fileID: 771145632}
   - {fileID: 2107616853}
