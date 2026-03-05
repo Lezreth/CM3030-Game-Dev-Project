@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -7,6 +8,11 @@ public class MusicManager : MonoBehaviour
 
     private static readonly int SaturationID = Shader.PropertyToID("_Saturation");
 
+
+    private static readonly HashSet<string> endingScenes = new()
+    {
+        "Ending1", "Ending2", "Ending3", "Ending4" 
+    };
 
     [Header("Music")]
     public AudioClip musicHappy;    // Ending 1: Family Finds Her
@@ -75,13 +81,23 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, 
-                            UnityEngine.SceneManagement.LoadSceneMode mode)
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene,
+                                UnityEngine.SceneManagement.LoadSceneMode mode)
     {
-        Debug.Log($"[MusicManager] Scene loaded: {scene.name}");
-        Debug.Log($"[MusicManager] sourceA null: {sourceA == null} | sourceB null: {sourceB == null}");
-        Debug.Log($"[MusicManager] currentClip: {(currentClip != null ? currentClip.name : "NULL")}");
-        Debug.Log($"[MusicManager] isPlaying: {activeSouce?.isPlaying}");
+            Debug.Log($"[MusicManager] Scene loaded: {scene.name}");
+            Debug.Log($"[MusicManager] sourceA null: {sourceA == null} | sourceB null: {sourceB == null}");
+            Debug.Log($"[MusicManager] currentClip: {(currentClip != null ? currentClip.name : "NULL")}");
+            Debug.Log($"[MusicManager] isPlaying: {activeSouce?.isPlaying}");
+
+        if (endingScenes.Contains(scene.name))
+        {
+            if (StatsManager.I != null)
+                StatsManager.I.ResetToDefaults();
+
+            PlayImmediate(musicStart);
+            Shader.SetGlobalFloat(SaturationID, saturationStart);
+            return;
+        }
 
         if (StatsManager.I != null)
         {
@@ -91,14 +107,12 @@ public class MusicManager : MonoBehaviour
 
         if (!activeSouce.isPlaying && currentClip != null)
         {
-            Debug.Log("[MusicManager] Resuming music...");
             activeSouce.clip = currentClip;
             activeSouce.volume = masterVolume;
             activeSouce.loop = true;
             activeSouce.Play();
         }
     }
-    
 
     private void OnStatsChanged()
     {

@@ -3090,7 +3090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1650586345692177467, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9117398
+      value: 3.28
       objectReference: {fileID: 0}
     - target: {fileID: 1650586345692177467, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3098,7 +3098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1650586345692177467, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.610001
+      value: -10.32
       objectReference: {fileID: 0}
     - target: {fileID: 1650586345692177467, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3182,7 +3182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750933202390842268, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.95
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7224780960407290280, guid: de5ff079cd1024775b3692c1c088b027, type: 3}
       propertyPath: m_Name
@@ -4871,15 +4871,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771145631}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.05826, y: 0, z: 8.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.69251496, z: -0, w: 0.7214035}
+  m_LocalPosition: {x: 12.211328, y: -0.03000004, z: 4.2390933}
+  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1.4285715}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1192516234}
   - {fileID: 1722866561}
   - {fileID: 2137724655}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1045359123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772669769 stripped
 GameObject:
@@ -6515,6 +6515,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1235027880}
+    - targetCorrespondingSourceObject: {fileID: 400084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 771145632}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100084, guid: cdb996b4c5f5f794cabfa29e18e9865d, type: 3}
       insertIndex: -1
@@ -6635,7 +6638,7 @@ MonoBehaviour:
       delayAfter: 1
     - clip: {fileID: 8300000, guid: 8d74b3f71807d4217a2eb6aa5f0a9c16, type: 3}
       delayAfter: 0
-  triggerDistance: 1
+  triggerDistance: 2
   playerTag: Player
 --- !u!208 &1045359126
 NavMeshObstacle:
@@ -9417,10 +9420,10 @@ MonoBehaviour:
   choiceCanvas: {fileID: 1625084170}
   interactionGroup: 
   waypointID: Chef
-  primroseAnim: {fileID: 0}
+  primroseAnim: {fileID: 1443487831}
   triggerCrouchOnActivate: 0
   npcObject: {fileID: 1045359121}
-  triggerRadius: 2
+  triggerRadius: 1.5
 --- !u!1 &1423068902
 GameObject:
   m_ObjectHideFlags: 0
@@ -15262,7 +15265,6 @@ SceneRoots:
   - {fileID: 1713894489}
   - {fileID: 1882200059}
   - {fileID: 342233563}
-  - {fileID: 771145632}
   - {fileID: 1625084169}
   - {fileID: 1813868168}
   - {fileID: 575900946}
