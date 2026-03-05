@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -11487,16 +11487,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ea47b0d7d534a6c8d36c5c94aebb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  musicHappy: {fileID: 8300000, guid: c5e9a157f988748378a0f4dbf693faf3, type: 3}
+  musicHappy: {fileID: 8300000, guid: 0b284090a0d7941ec8282c06ef3167fb, type: 3}
   musicNeutral: {fileID: 8300000, guid: 1fc870f0a31ee40968441f551b70efbf, type: 3}
   musicBad: {fileID: 8300000, guid: 50ff6069e44a94355991948207237c6e, type: 3}
   musicEnergetic: {fileID: 8300000, guid: 32aad15f184784ff391dbe33ebd6e1c2, type: 3}
   musicStart: {fileID: 8300000, guid: ab7cb993bbd7b46fba809bffd52cb5f8, type: 3}
-  saturationHappy: 1.3
-  saturationNeutral: 0.2
-  saturationBad: 0
-  saturationEnergetic: 0.4
-  saturationStart: 0.8
+  saturationHappy: 1
+  saturationNeutral: 0.7
+  saturationBad: 0.1
+  saturationEnergetic: 0.3
+  saturationStart: 0.5
   crossfadeDuration: 2
   masterVolume: 0.3
 --- !u!1001 &821415866
@@ -14324,6 +14324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   label: {fileID: 1164083749}
+  replayButton: {fileID: 0}
 --- !u!64 &1113850412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14714,8 +14715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -332}
-  m_SizeDelta: {x: 1163.8, y: 50}
+  m_AnchoredPosition: {x: 0, y: -214.8}
+  m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164083749
 MonoBehaviour:
@@ -14746,8 +14747,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251007
-  m_fontColor: {r: 1, g: 0.9295865, b: 0, a: 1}
+    rgba: 4294908672
+  m_fontColor: {r: 0, g: 0.104789734, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14764,8 +14765,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16708,7 +16709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   target: {fileID: 27546752}
-  offset: {x: 0, y: 6, z: -1.3}
+  offset: {x: 0, y: 6, z: -1.8}
   smoothSpeed: 2
   followX: 1
   followY: 0
@@ -24988,15 +24989,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 120
+      value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 238
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

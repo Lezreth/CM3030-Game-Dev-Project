@@ -294,9 +294,9 @@ MonoBehaviour:
   zoomSpeed: 3
   worldCentreX: 0
   worldHalfWidth: 20
-  leftPrefab: {fileID: 521130496897907557, guid: 66b3e174c8850491598eacc29af9a457, type: 3}
+  leftPrefab: {fileID: 6916285563084231104, guid: 3631bb11960ef4aba9fef8e22b57a645, type: 3}
   rightPrefab: {fileID: 521130496897907557, guid: 66b3e174c8850491598eacc29af9a457, type: 3}
-  leftSpawnPoint: {fileID: 888770059}
+  leftSpawnPoint: {fileID: 766981329}
   rightSpawnPoint: {fileID: 888770059}
   burstCount: 30
   destroyAfter: 3
@@ -11868,11 +11868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 120
+      value: 120.79
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 176.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11895,6 +11895,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400094, guid: c42b8d643b928594d8e92b17b63dfe06, type: 3}
   m_PrefabInstance: {fileID: 1885787993}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &766981328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766981329}
+  m_Layer: 0
+  m_Name: left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &766981329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766981328}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.05, y: 0, z: 1.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305973988}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768172906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6236627299831601598, guid: 3fbc0a03d33f14045957bdb79e7a19b3, type: 3}
@@ -13168,7 +13199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 888770059}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13183,7 +13214,7 @@ Transform:
   m_GameObject: {fileID: 888770058}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83, y: 0, z: 1.86}
+  m_LocalPosition: {x: 1.27, y: 0, z: 1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17552,6 +17583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 888770059}
+  - {fileID: 766981329}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1305973989
@@ -17611,7 +17643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 27546752}
-  offset: {x: 0, y: 5, z: -1.6}
+  offset: {x: 0, y: 5, z: -1.8}
   smoothSpeed: 5
   followX: 1
   followY: 0
@@ -28417,6 +28449,18 @@ PrefabInstance:
     - target: {fileID: 1824627356210046425, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416466170821777262, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 396569519}
+    - target: {fileID: 2416466170821777262, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416466170821777262, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EdgeSceneTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4285543774359196672, guid: 740c762ebb6f5404d931d70ca2d65e3a, type: 3}
       propertyPath: m_text

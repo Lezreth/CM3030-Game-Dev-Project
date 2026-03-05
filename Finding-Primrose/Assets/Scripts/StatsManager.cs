@@ -195,4 +195,16 @@ void OnGUI()
         foreach (var s in requiredScenes) completedScenes.Add(s);
         LoadAppropriateEnding();
     }
+
+        public void ResetToDefaults()
+    {
+        trust = 50;
+        hope = 50;
+        hunger = 70;
+        energy = 65;
+        completedScenes.Clear();
+        endingTriggered = false;
+        ClampAll();
+        OnStatsChanged?.Invoke();
+    }
 }

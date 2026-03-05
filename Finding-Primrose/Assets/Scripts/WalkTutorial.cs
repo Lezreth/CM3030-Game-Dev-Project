@@ -2,20 +2,25 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class WalkTutorial : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI label;
-
-
+    [SerializeField] private Button replayButton;
 
     private bool clicked = false;
 
     void Start()
     {
+        if (replayButton != null)
+        {
+            replayButton.onClick.AddListener(ReplayTutorial);
+            replayButton.gameObject.SetActive(false);
+        }
 
-         if (PlayerPrefs.GetInt("WalkTutorialSeen", 0) == 1)
+        if (PlayerPrefs.GetInt("WalkTutorialSeen", 0) == 1)
         {
             Destroy(gameObject);
             return;
@@ -38,12 +43,29 @@ public class WalkTutorial : MonoBehaviour
         }
     }
 
+    // --- Public Methods ---
+
+    public void ReplayTutorial()
+    {
+        clicked = false;
+        PlayerPrefs.SetInt("WalkTutorialSeen", 0);
+        PlayerPrefs.Save();
+
+        if (replayButton != null)
+            replayButton.gameObject.SetActive(false);
+
+        StopAllCoroutines();
+        label.text = "";
+        label.color = new Color(1f, 0.85f, 0.1f, 0f);
+        StartCoroutine(IntroSequence());
+    }
+
     // --- Sequences ---
 
     IEnumerator IntroSequence()
     {
         yield return StartCoroutine(FadeTextIn("It's very early and you're alone and hungry."));
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(3.2f);
         yield return StartCoroutine(FadeTextOut());
         yield return new WaitForSeconds(0.4f);
         yield return StartCoroutine(FadeTextIn("Click the ground to move."));
@@ -51,23 +73,31 @@ public class WalkTutorial : MonoBehaviour
 
     IEnumerator PostClickSequence()
     {
-
         PlayerPrefs.SetInt("WalkTutorialSeen", 1);
         PlayerPrefs.Save();
-        // fade out whatever text is showing
+
         yield return StartCoroutine(FadeTextOut(0.3f));
         yield return new WaitForSeconds(0.2f);
 
         yield return StartCoroutine(FadeTextIn("Great, explore the area."));
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(3.2f);
+        yield return StartCoroutine(FadeTextOut());
+        yield return new WaitForSeconds(0.4f);
+
+        yield return StartCoroutine(FadeTextIn("Try to find food, and learn to trust those you can."));
+        yield return new WaitForSeconds(3.5f);
         yield return StartCoroutine(FadeTextOut());
         yield return new WaitForSeconds(0.4f);
 
         yield return StartCoroutine(FadeTextIn("Good luck and be careful!"));
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.5f);
 
         yield return StartCoroutine(FadeTextOut());
-        Destroy(gameObject);
+
+        if (replayButton != null)
+            replayButton.gameObject.SetActive(true);
+        else
+            Destroy(gameObject);
     }
 
     // --- Text Helpers ---
