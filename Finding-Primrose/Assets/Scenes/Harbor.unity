@@ -4908,7 +4908,7 @@ PrefabInstance:
     - target: {fileID: 2475568616052828567, guid: f597f1dcbb9164a4dbd208a4d876ae4d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f705192970a61654fa7f1017ab24ba39, type: 2}
+      objectReference: {fileID: 2100000, guid: e89497e63a2b2d34ebd60a9c277f3583, type: 2}
     - target: {fileID: 6298834174758672602, guid: f597f1dcbb9164a4dbd208a4d876ae4d, type: 3}
       propertyPath: m_Name
       value: man_construction_worker
@@ -16122,6 +16122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.0000010819392
       objectReference: {fileID: 0}
+    - target: {fileID: 5581337077081627095, guid: 44a0de0f766c9634eb66f1d56b7edc9d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e54482b5faa67a540a06e0c3b01d7998, type: 2}
     - target: {fileID: 5959223521622568615, guid: 44a0de0f766c9634eb66f1d56b7edc9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -55.11337
