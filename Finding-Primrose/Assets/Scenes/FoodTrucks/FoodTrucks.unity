@@ -8711,12 +8711,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 27546752}
-  offset: {x: 0, y: 6, z: -1.9}
+  offset: {x: 0, y: 0.4, z: -1.9}
   smoothSpeed: 1
   followX: 1
   followY: 0
   followZ: 1
   xClamp: 5
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraRadius: 0.3
 --- !u!114 &1305973991
 MonoBehaviour:
   m_ObjectHideFlags: 0
