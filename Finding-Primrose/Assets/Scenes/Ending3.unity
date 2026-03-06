@@ -6511,6 +6511,10 @@ MonoBehaviour:
   followY: 0
   followZ: 1
   xClamp: 5
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraRadius: 0.3
 --- !u!114 &1305973991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7632,8 +7636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.350464, y: 2.769043}
-  m_SizeDelta: {x: -391.6915, y: -262.13812}
+  m_AnchoredPosition: {x: 112.350464, y: 45.200005}
+  m_SizeDelta: {x: -391.6915, y: -347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481600271
 MonoBehaviour:
