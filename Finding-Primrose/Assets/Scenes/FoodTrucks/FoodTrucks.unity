@@ -6870,7 +6870,7 @@ MonoBehaviour:
       delayAfter: 1
     - clip: {fileID: 8300000, guid: 8d74b3f71807d4217a2eb6aa5f0a9c16, type: 3}
       delayAfter: 0
-  triggerDistance: 2
+  triggerDistance: 3
   playerTag: Player
 --- !u!208 &1045359126
 NavMeshObstacle:
