@@ -10,6 +10,8 @@ public class StatsManager : MonoBehaviour
 {
     public static StatsManager I { get; private set; }
 
+    public bool IsSceneCompleted(string sceneName) => completedScenes.Contains(sceneName);
+
     [Header("Stats 0-100")]
     [Range(0,100)] public int trust = 50;
     [Range(0,100)] public int hope = 50;
