@@ -3,8 +3,8 @@ using UnityEditor;
 
 public class ShaderTesterWindow : EditorWindow
 {
-    private string _variableName = "_Saturation"; // Default name
-    private bool _isEffectEnabled;
+    private string _variableName = "_Saturation";
+    private float _sliderValue = 0.0f;
 
     [MenuItem("Window/Shader Global Tester")]
     public static void ShowWindow()
@@ -16,14 +16,12 @@ public class ShaderTesterWindow : EditorWindow
     {
         GUILayout.Label("Global Shader Settings", EditorStyles.boldLabel);
 
-        // 1. Text Box for Variable Name
         _variableName = EditorGUILayout.TextField("Shader Variable Name", _variableName);
 
         EditorGUILayout.Space();
 
-        // 2. Toggle Switch
         EditorGUI.BeginChangeCheck();
-        _isEffectEnabled = EditorGUILayout.Toggle("Enable Effect (1.0 / 0.0)", _isEffectEnabled);
+        _sliderValue = EditorGUILayout.Slider("Effect Value", _sliderValue, 0.0f, 1.0f);
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -32,24 +30,22 @@ public class ShaderTesterWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        // 3. Debug Help
         if (GUILayout.Button("Force Global Refresh"))
         {
             UpdateShader();
         }
 
-        EditorGUILayout.HelpBox($"Currently setting {_variableName} to: {(_isEffectEnabled ? "1.0" : "0.0")}", MessageType.Info);
+        EditorGUILayout.HelpBox($"Currently setting {_variableName} to: {_sliderValue:F2}", MessageType.Info);
     }
 
     void UpdateShader()
     {
         if (string.IsNullOrEmpty(_variableName)) return;
 
-        // Set the global value
-        Shader.SetGlobalFloat(_variableName, _isEffectEnabled ? 1.0f : 0.0f);
+        // Set the global value using the float
+        Shader.SetGlobalFloat(_variableName, _sliderValue);
 
-        // Force the Scene View to update immediately
         SceneView.RepaintAll();
-        Debug.Log($"[ShaderTester] {_variableName} set to {(_isEffectEnabled ? "1.0" : "0.0")}");
+        Debug.Log($"[ShaderTester] {_variableName} set to {_sliderValue}");
     }
 }
