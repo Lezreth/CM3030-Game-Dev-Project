@@ -4180,7 +4180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceWaypoint
   interaction: {fileID: 1335419783}
-  npcFocusPoint: {fileID: 834171610}
+  npcFocusPoint: {fileID: 1642695113}
   choiceA: {fileID: 11400000, guid: 627fc458113572344bfa4613520d7870, type: 2}
   choiceB: {fileID: 0}
   choiceUI: {fileID: 1299069262}
@@ -18536,7 +18536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceWaypoint
   interaction: {fileID: 1335419783}
-  npcFocusPoint: {fileID: 968111036}
+  npcFocusPoint: {fileID: 1642695113}
   choiceA: {fileID: 11400000, guid: 82fb5cf756a69d647b0166e32f3de3a7, type: 2}
   choiceB: {fileID: 0}
   choiceUI: {fileID: 512179475}

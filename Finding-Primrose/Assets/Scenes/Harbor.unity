@@ -17352,7 +17352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceWaypoint
   interaction: {fileID: 1599358374}
-  npcFocusPoint: {fileID: 2017837914}
+  npcFocusPoint: {fileID: 1302788399}
   choiceA: {fileID: 11400000, guid: 4ebb4672ce51179498973569658cb71b, type: 2}
   choiceB: {fileID: 11400000, guid: 33e63db1e63debe418ec6342cc4a3fb2, type: 2}
   choiceUI: {fileID: 12174430}
@@ -26706,7 +26706,7 @@ PrefabInstance:
     - target: {fileID: 8271683299685289407, guid: db4f93c77a959774f9932cb665ff3aae, type: 3}
       propertyPath: npcFocusPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1302788399}
     - target: {fileID: 8271683299685289407, guid: db4f93c77a959774f9932cb665ff3aae, type: 3}
       propertyPath: triggerCrouchOnActivate
       value: 1
