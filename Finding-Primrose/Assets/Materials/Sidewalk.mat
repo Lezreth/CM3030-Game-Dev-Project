@@ -133,6 +133,7 @@ Material:
     - _DstBlendAlpha: 0
     - _ENVIRONMENTREFLECTIONS_OFF: 0
     - _EnvironmentReflections: 1
+    - _Exclude_Camera_Clip: 1
     - _Fresnel_Amount: 0.5
     - _Fresnel_Power: 3
     - _GlossMapScale: 0

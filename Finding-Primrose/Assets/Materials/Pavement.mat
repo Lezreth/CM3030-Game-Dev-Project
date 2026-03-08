@@ -146,6 +146,7 @@ Material:
     - _DstBlendAlpha: 0
     - _ENVIRONMENTREFLECTIONS_OFF: 0
     - _EnvironmentReflections: 1
+    - _Exclude_Camera_Clip: 1
     - _Fresnel_Amount: 0.1
     - _Fresnel_Power: 1
     - _GlossMapScale: 0
@@ -154,6 +155,7 @@ Material:
     - _Metallic: 0
     - _Noise_Brighten: 0.15
     - _Noise_Strength: 0.52
+    - _Noise_Tile: 0.1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Parallax_Strength: 0.005
