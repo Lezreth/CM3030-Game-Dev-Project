@@ -8,33 +8,24 @@ public class WalkTutorial : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI label;
-    [SerializeField] private Button replayButton;
-
-    [Header("Highlight Targets")]
+    [SerializeField] private Image sniffButtonImage;
     [SerializeField] private RectTransform statMetersParent;
-    [SerializeField] private RectTransform sniffButton;
-    [SerializeField] private TextMeshProUGUI tipLabel;
+
+    [Header("Debug")]
+    [SerializeField] private bool debugAlwaysShow = false;
 
     private bool clicked = false;
 
     void Start()
     {
-        if (replayButton != null)
-        {
-            replayButton.onClick.AddListener(ReplayTutorial);
-            replayButton.gameObject.SetActive(false);
-        }
-
-        if (PlayerPrefs.GetInt("WalkTutorialSeen", 0) == 1)
+        if (!debugAlwaysShow && PlayerPrefs.GetInt("WalkTutorialSeen", 0) == 1)
         {
             Destroy(gameObject);
             return;
         }
 
-        if (tipLabel != null) tipLabel.color = new Color(1f, 1f, 1f, 0f);
-
         label.text = "";
-        label.color = new Color(1f, 0.85f, 0.1f);
+        label.color = new Color(1f, 0.85f, 0.1f, 0f);
         StartCoroutine(IntroSequence());
     }
 
@@ -50,25 +41,7 @@ public class WalkTutorial : MonoBehaviour
         }
     }
 
-    // --- Public Methods ---
-
-    public void ReplayTutorial()
-    {
-        clicked = false;
-        PlayerPrefs.SetInt("WalkTutorialSeen", 0);
-        PlayerPrefs.Save();
-
-        if (replayButton != null)
-            replayButton.gameObject.SetActive(false);
-
-        StopAllCoroutines();
-        label.text = "";
-        label.color = new Color(1f, 0.85f, 0.1f, 0f);
-        if (tipLabel != null) tipLabel.color = new Color(1f, 1f, 1f, 0f);
-        StartCoroutine(IntroSequence());
-    }
-
-    // --- Sequences ---
+   
 
     IEnumerator IntroSequence()
     {
@@ -90,17 +63,20 @@ public class WalkTutorial : MonoBehaviour
         yield return StartCoroutine(FadeTextIn("Great, explore the area."));
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(FadeTextOut());
-
-        // Highlight stat meters
-        if (statMetersParent != null)
-            yield return StartCoroutine(HighlightElement(statMetersParent, "These are your health metrics."));
-
         yield return new WaitForSeconds(0.3f);
 
-        // Highlight sniff button
-        if (sniffButton != null)
-            yield return StartCoroutine(HighlightElement(sniffButton, "Sniffing gives clues about direction."));
+        yield return StartCoroutine(FadeTextIn("These are your health metrics."));
+        if (statMetersParent != null)
+            StartCoroutine(PulseUIGroup(statMetersParent, 3f));
+        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(FadeTextOut());
+        yield return new WaitForSeconds(0.3f);
 
+        yield return StartCoroutine(FadeTextIn("Sniffing gives clues about direction."));
+        if (sniffButtonImage != null)
+            StartCoroutine(PulseButtonColor(sniffButtonImage, 3f));
+        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(FadeTextOut());
         yield return new WaitForSeconds(0.3f);
 
         yield return StartCoroutine(FadeTextIn("Try to find food, and learn to trust those you can."));
@@ -111,69 +87,71 @@ public class WalkTutorial : MonoBehaviour
         yield return StartCoroutine(FadeTextIn("Good luck and be careful!"));
         yield return new WaitForSeconds(3.5f);
         yield return StartCoroutine(FadeTextOut());
+        yield return new WaitForSeconds(0.5f);
 
-        if (replayButton != null)
-            replayButton.gameObject.SetActive(true);
-        else
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 
-    // --- Highlight ---
+   
 
-    IEnumerator HighlightElement(RectTransform target, string tip, float duration = 3f)
+    IEnumerator PulseUIGroup(RectTransform parent, float duration)
     {
-        if (tipLabel != null)
-        {
-            tipLabel.transform.position = target.position + Vector3.up * 80f;
-            tipLabel.text = tip;
-            yield return StartCoroutine(FadeTipIn());
-        }
+       
+        Image[] images = parent.GetComponentsInChildren<Image>(true);
+        TextMeshProUGUI[] texts = parent.GetComponentsInChildren<TextMeshProUGUI>(true);
 
-        Vector3 originalScale = target.localScale;
+        Color[] originalImageColors = new Color[images.Length];
+        Color[] originalTextColors  = new Color[texts.Length];
+
+        for (int i = 0; i < images.Length; i++) originalImageColors[i] = images[i].color;
+        for (int i = 0; i < texts.Length;  i++) originalTextColors[i]  = texts[i].color;
+
+        Color highlightColor = new Color(1f, 0.85f, 0.1f); 
         float elapsed = 0f;
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float pulse = 1f + Mathf.Sin(elapsed * 4f) * 0.03f;
-            target.localScale = originalScale * pulse;
+            float t = (Mathf.Sin(elapsed * 5f) + 1f) / 2f;
+
+            for (int i = 0; i < images.Length; i++)
+                images[i].color = Color.Lerp(originalImageColors[i], highlightColor, t);
+
+            for (int i = 0; i < texts.Length; i++)
+                texts[i].color = Color.Lerp(originalTextColors[i], highlightColor, t);
+
             yield return null;
         }
 
-        target.localScale = originalScale;
-        yield return StartCoroutine(FadeTipOut());
+        // Restore originals
+        for (int i = 0; i < images.Length; i++) images[i].color = originalImageColors[i];
+        for (int i = 0; i < texts.Length;  i++) texts[i].color  = originalTextColors[i];
     }
 
-    IEnumerator FadeTipIn(float duration = 0.4f)
+
+
+    IEnumerator PulseButtonColor(Image img, float duration)
     {
-        tipLabel.color = new Color(1f, 0.95f, 0.4f, 0f);
+        Color originalColor = img.color;
+        Color highlightColor = new Color(1f, 0.85f, 0.1f); 
         float elapsed = 0f;
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            tipLabel.color = new Color(1f, 0.95f, 0.4f, Mathf.Clamp01(elapsed / duration));
+            float t = (Mathf.Sin(elapsed * 5f) + 1f) / 2f; 
+            img.color = Color.Lerp(originalColor, highlightColor, t);
             yield return null;
         }
+
+        img.color = originalColor; 
     }
 
-    IEnumerator FadeTipOut(float duration = 0.4f)
-    {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            tipLabel.color = new Color(1f, 0.95f, 0.4f, Mathf.Lerp(1f, 0f, elapsed / duration));
-            yield return null;
-        }
-        if (tipLabel != null) tipLabel.text = "";
-    }
 
-    // --- Text Helpers ---
 
     IEnumerator FadeTextIn(string message, float duration = 0.6f)
     {
         label.text = message;
-        label.color = new Color(label.color.r, label.color.g, label.color.b, 0f);
-
         float elapsed = 0f;
         while (elapsed < duration)
         {
@@ -188,7 +166,6 @@ public class WalkTutorial : MonoBehaviour
     {
         float startAlpha = label.color.a;
         float elapsed = 0f;
-
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;

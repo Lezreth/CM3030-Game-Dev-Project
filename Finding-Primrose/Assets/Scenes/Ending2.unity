@@ -10607,8 +10607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.18155, y: 1.5263062}
-  m_SizeDelta: {x: -389.2013, y: -57.9986}
+  m_AnchoredPosition: {x: 112.18155, y: -3.1999512}
+  m_SizeDelta: {x: -389.2013, y: -560.6001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1220584458
 MonoBehaviour:
@@ -11486,12 +11486,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 27546752}
-  offset: {x: 0.6, y: 5, z: -0.9}
+  offset: {x: 0.4, y: 0.4, z: -0.9}
   smoothSpeed: 2
   followX: 1
   followY: 0
   followZ: 1
   xClamp: 5
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraRadius: 0.3
 --- !u!114 &1305973991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11837,15 +11841,15 @@ MonoBehaviour:
   restartButton: {fileID: 442401593}
   uiCanvasGroup: {fileID: 0}
   endingTitle: '"ENDING 2: TAKEN IN BY STRANGER" '
-  endingStory: 'Ending 2 : Taken In - A Cautious Welcome
+  endingStory: 'Taken In - A Cautious Welcome
 
 
-    Exhausted and wary,
-    Primrose barely has the energy to lift her head as a stranger approaches. But
-    instead of shooing her away, the stranger offers a soft voice and a gentle hand.
-    She is carried into a warm, quiet home, much different to the cold pavement she
-    knows. Though she is safe from the streets now, the fear still lives in her eyes.
-    It will take time, patience, and love to teach her heart to trust again.
+    Exhausted and wary, Primrose
+    barely has the energy to lift her head as a stranger approaches. But instead
+    of shooing her away, the stranger offers a soft voice and a gentle hand. She
+    is carried into a warm, quiet home, much different to the cold pavement she knows.
+    Though she is safe from the streets now, the fear still lives in her eyes. It
+    will take time, patience, and love to teach her heart to trust again.
 
 '
   fadeInDelay: 2

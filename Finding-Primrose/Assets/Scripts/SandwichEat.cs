@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SandwichEatTrigger : MonoBehaviour
 {
@@ -12,13 +13,19 @@ public class SandwichEatTrigger : MonoBehaviour
         if (hasTriggered || mouthTransform == null) return;
 
         float distance = Vector3.Distance(transform.position, mouthTransform.position);
-        Debug.Log("Distance to mouth: " + distance);
+        
 
         if (distance < eatDistance)
         {
             hasTriggered = true;
             primroseAnimator.SetTrigger("Eat");
-            gameObject.SetActive(false);
+            StartCoroutine(DisableAfterDelay());
         }
+    }
+
+    IEnumerator DisableAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
     }
 }
