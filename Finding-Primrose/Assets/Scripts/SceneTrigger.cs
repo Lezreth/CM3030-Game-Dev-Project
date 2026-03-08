@@ -19,6 +19,7 @@ public class EdgeSceneTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+       Debug.Log($"[EdgeTrigger] Something entered: {other.gameObject.name} tag: {other.tag}");
         if (other.CompareTag("Player"))
         {
             Debug.Log($"[EdgeTrigger] PLAYER ENTERED! Showing UI for {sceneToLoad}");
@@ -36,6 +37,7 @@ public class EdgeSceneTrigger : MonoBehaviour
                 cancelButton.onClick.RemoveAllListeners();
                 cancelButton.onClick.AddListener(CancelTransition);
             }
+            
             
             // Show UI
             interaction.BeginInteraction(uiPanel, uiCanvas, focusPoint);

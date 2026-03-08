@@ -841,7 +841,7 @@ Transform:
   m_GameObject: {fileID: 27546751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -11.896999, y: 0.009999976, z: -17.928001}
+  m_LocalPosition: {x: -11.896999, y: -0.05, z: -17.928001}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -916,7 +916,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 0.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -1371,8 +1371,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 5.959911, z: 19.25}
-  m_Center: {x: 0, y: 0.5053685, z: -3.2997558}
+  m_Size: {x: 1.1382755, y: 5.959911, z: 19.250002}
+  m_Center: {x: -0.06913721, y: 0.5053685, z: -3.2997558}
 --- !u!1001 &67411764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1762,7 +1762,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122284659
 MonoBehaviour:
@@ -13520,7 +13520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6804335170021724803, guid: fdd07314dd7d3d449912d547ccbbd333, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6804335170021724803, guid: fdd07314dd7d3d449912d547ccbbd333, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15083,7 +15083,7 @@ Transform:
   m_GameObject: {fileID: 1113850409}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.36, y: -0.09, z: 0}
+  m_LocalPosition: {x: 0.36, y: -0.1, z: 0}
   m_LocalScale: {x: 1.93, y: 0.87, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15103,10 +15103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   label: {fileID: 1164083749}
-  replayButton: {fileID: 0}
+  sniffButtonImage: {fileID: 1651459496}
   statMetersParent: {fileID: 469970060}
-  sniffButton: {fileID: 1651459499}
-  tipLabel: {fileID: 0}
+  debugAlwaysShow: 1
 --- !u!64 &1113850412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15124,7 +15123,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -15136,7 +15135,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113850409}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15563,8 +15562,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.86
-  m_fontSizeBase: 23.86
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16438,7 +16437,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 99.1, y: -457.99994}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264997875
 MonoBehaviour:
@@ -16679,8 +16678,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 5.959911, z: 19.250547}
-  m_Center: {x: 0, y: 0.5053685, z: -3.2997558}
+  m_Size: {x: 2.9714804, y: 5.959911, z: 19.250546}
+  m_Center: {x: -1.1322446, y: 0.5053685, z: -3.2997558}
 --- !u!4 &1268903016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298394626439844243, guid: 5bc78959db865f74f85d4c6513d2ec87, type: 3}
@@ -21014,11 +21013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!224 &1651459499 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
-  m_PrefabInstance: {fileID: 7809250013935742319}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1660129047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26624,7 +26618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579135513859398520, guid: 9148b6c8f1dad4f25890994012ac1a93, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 220
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

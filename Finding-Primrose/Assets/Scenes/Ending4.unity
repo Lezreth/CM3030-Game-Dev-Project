@@ -145,12 +145,12 @@ Transform:
   m_GameObject: {fileID: 27546751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.5938679, z: -0, w: 0.8045626}
-  m_LocalPosition: {x: -0.015568912, y: 1.164, z: -10.308174}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6000001, y: 0.6, z: 0.6000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1443487829}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 686069997}
   m_LocalEulerAnglesHint: {x: 0, y: 72.864, z: 0}
 --- !u!114 &27546754
 MonoBehaviour:
@@ -3410,6 +3410,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679466705}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &686069996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686069997}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &686069997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686069996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.12541975, z: 0, w: 0.99210376}
+  m_LocalPosition: {x: -0.015568912, y: 1.164, z: -10.308174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 27546752}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 14.41, z: 0}
 --- !u!1 &732464802
 GameObject:
   m_ObjectHideFlags: 0
@@ -4946,7 +4978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118, y: 80}
+  m_AnchoredPosition: {x: 118, y: 111.7}
   m_SizeDelta: {x: 291, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031225239
@@ -4996,8 +5028,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6640,12 +6672,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 27546752}
-  offset: {x: 0.67, y: 5, z: -0.88}
+  offset: {x: 0.67, y: 0.4, z: -0.88}
   smoothSpeed: 2
   followX: 1
   followY: 0
   followZ: 1
   xClamp: 5
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraRadius: 0.3
 --- !u!114 &1305973991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6991,13 +7027,13 @@ MonoBehaviour:
   restartButton: {fileID: 442401593}
   uiCanvasGroup: {fileID: 0}
   endingTitle: 'Ending 4: Alone and Sad - A Fading Hope '
-  endingStory: "Ending 4: Alone and Sad - A Fading Hope \n\nPrimrose sits on a busy
-    sidewalk, a small, unnoticed dog in a sea of moving feet. She still wags her
-    tail for anyone who makes eye contact, her trust in people is still unbroken,
-    but no one stops. Hunger pulls at her belly, and the hope that once made her
-    search every face has dimmed. With her head resting on her paws, she watches
-    the world pass her by, feeling more and more invisible and unwanted. This might
-    just be her new life. \n"
+  endingStory: "Alone and Sad - A Fading Hope \n\nPrimrose sits on a busy sidewalk,
+    a small, unnoticed dog in a sea of moving feet. She still wags her tail for anyone
+    who makes eye contact, her trust in people is still unbroken, but no one stops.
+    Hunger pulls at her belly, and the hope that once made her search every face
+    has dimmed. With her head resting on her paws, she watches the world pass her
+    by, feeling more and more invisible and unwanted. This might just be her new
+    life. \n"
   fadeInDelay: 2
   fadeInDuration: 1.5
   firstSceneName: Harbor
@@ -7337,8 +7373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 111.73651, y: 3.3158875}
-  m_SizeDelta: {x: -392.9193, y: -268.4118}
+  m_AnchoredPosition: {x: 111.73651, y: 38.5}
+  m_SizeDelta: {x: -392.9193, y: -761}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428586998
 MonoBehaviour:
@@ -10816,7 +10852,7 @@ SceneRoots:
   - {fileID: 1303078074}
   - {fileID: 1679828810}
   - {fileID: 1713894489}
-  - {fileID: 27546752}
+  - {fileID: 686069997}
   - {fileID: 586183152}
   - {fileID: 575900946}
   - {fileID: 888901091}
