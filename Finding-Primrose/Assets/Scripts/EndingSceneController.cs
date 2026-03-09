@@ -60,14 +60,15 @@ public class EndingSceneController : MonoBehaviour
             restartButton.gameObject.SetActive(true);
     }
     
+
     public void RestartGame()
     {
-
-        Debug.Log("Restarting game from ending scene...");
+        Debug.Log("Restarting game");
+        
+        ChoiceWaypoint.ResetAllWaypoints(); 
+        
         if (StatsManager.I != null)
-        {
             Destroy(StatsManager.I.gameObject);
-        }
         
         SceneManager.LoadScene(firstSceneName);
     }

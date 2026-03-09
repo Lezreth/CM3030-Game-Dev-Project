@@ -51,6 +51,12 @@ public class ChoiceWaypoint : MonoBehaviour
         return Vector3.Distance(playerPosition, transform.position) <= triggerRadius;
     }
 
+//for replays
+    public static void ResetAllWaypoints()
+    {
+        usedGroups.Clear();
+        usedWaypoints.Clear();
+    }
     public void Trigger()
     {
         if (triggered) return;

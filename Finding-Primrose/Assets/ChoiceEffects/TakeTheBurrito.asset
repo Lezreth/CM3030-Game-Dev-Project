@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297c8ff87332d4393b0d87a039823660, type: 3}
   m_Name: TakeTheBurrito
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceEffect
-  choiceId: TakeTheBurrito
+  choiceId: IgnoreTheBurrito
   sceneId: FoodTrucks
   deltas:
   - stat: 0
