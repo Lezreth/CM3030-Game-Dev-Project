@@ -84,10 +84,10 @@ public class MusicManager : MonoBehaviour
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene,
                                 UnityEngine.SceneManagement.LoadSceneMode mode)
     {
-            Debug.Log($"[MusicManager] Scene loaded: {scene.name}");
-            Debug.Log($"[MusicManager] sourceA null: {sourceA == null} | sourceB null: {sourceB == null}");
-            Debug.Log($"[MusicManager] currentClip: {(currentClip != null ? currentClip.name : "NULL")}");
-            Debug.Log($"[MusicManager] isPlaying: {activeSouce?.isPlaying}");
+            // Debug.Log($"[MusicManager] Scene loaded: {scene.name}");
+            // Debug.Log($"[MusicManager] sourceA null: {sourceA == null} | sourceB null: {sourceB == null}");
+            // Debug.Log($"[MusicManager] currentClip: {(currentClip != null ? currentClip.name : "NULL")}");
+            // Debug.Log($"[MusicManager] isPlaying: {activeSouce?.isPlaying}");
 
         if (endingScenes.Contains(scene.name))
         {
@@ -150,7 +150,7 @@ public class MusicManager : MonoBehaviour
         if (clip == null) return;
         currentClip = clip;
 
-        // Set saturation based on its clip
+        // Set saturation based on music
         if (clip == musicHappy)        Shader.SetGlobalFloat(SaturationID, saturationHappy);
         else if (clip == musicBad)     Shader.SetGlobalFloat(SaturationID, saturationBad);
         else if (clip == musicEnergetic) Shader.SetGlobalFloat(SaturationID, saturationEnergetic);
@@ -189,7 +189,7 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    // Call this from ending scenes to fade out music
+    // Call from ending scenes to fade out music
     public void FadeOut(float duration = 2f)
     {
         if (currentFade != null) StopCoroutine(currentFade);
@@ -222,6 +222,6 @@ public class MusicManager : MonoBehaviour
 
         private void OnDestroy()
     {
-        Debug.Log("[MusicManager] I AM BEING DESTROYED");
+        // Debug.Log("[MusicManager] I AM BEING DESTROYED");
     }
 }

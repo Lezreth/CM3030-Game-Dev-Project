@@ -56,14 +56,8 @@ public class ChoiceWaypoint : MonoBehaviour
         if (triggered) return;
         triggered = true;
 
-        // Check the box if you want primrose to crouch. 
-        if (primroseAnim != null)
-        {
-            if (triggerCrouchOnActivate && primroseAnim != null)
-            {
-                primroseAnim.SetCautiousCrouch(true);
-            }
-        }
+        if (primroseAnim != null && triggerCrouchOnActivate)
+            primroseAnim.SetCautiousCrouch(true);
 
         if (npcObject != null)
         {
@@ -72,15 +66,13 @@ public class ChoiceWaypoint : MonoBehaviour
             {
                 Debug.Log("[ChoiceWaypoint] Stopping chef patrol");
                 patrol.StopPatrol();
+                interaction.activePatrol = patrol;  // ← inside the block where patrol exists
             }
         }
 
         if (interaction != null)
-        {
             interaction.BeginInteraction(this);
-        }
     }
-
     public void CheckExit(Vector3 playerPosition)
     {
         if (!triggered) return;

@@ -109,4 +109,10 @@ public class ChefPatrolRoutine : MonoBehaviour
         StopAllCoroutines();
         animator.SetBool("Walking", false);
     }
+
+    public void ResumePatrol()
+    {
+        isActive = true;
+        StartCoroutine(PatrolRoutine());
+    }
 }
