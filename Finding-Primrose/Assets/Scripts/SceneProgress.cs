@@ -20,7 +20,7 @@ public class SceneProgress : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             
-            // Re-subscribe after scene loads since OnEnable may have missed StatsManager
+           
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -61,7 +61,7 @@ public class SceneProgress : MonoBehaviour
 
 void Update()
 {
-    // One-time late subscription if StatsManager wasn't ready on Enable
+    
     if (StatsManager.I != null && !subscribed)
     {
         StatsManager.I.OnStatsChanged += Refresh;

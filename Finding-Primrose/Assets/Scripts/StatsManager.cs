@@ -117,7 +117,7 @@ public class StatsManager : MonoBehaviour
         );
     }
 
-    // ── DEBUG HUD (persists across all scenes) ───────────────────
+    // ── DEBUG HUD ───────────────────
 
 void OnGUI()
     {
